@@ -733,8 +733,10 @@ for idx, (val, x, y, w, h, size, bold, col) in {
     r = p.add_run()
     r.text = val
     style_run(r, size, col, bold)
-qr = picture(s, ASSETS / "qr_repo.png", 280, 192, 160, 160, name="Repository QR code")
+qr = picture(s, ASSETS / "qr_repo.png", 280, 188, 160, 160, name="Repository QR code")
 qr.click_action.hyperlink.address = REPO
+text(s, 200, 354, 320, 16, "Scan to view the report and code", size=12, color=MUTED, align=PP_ALIGN.CENTER,
+     name="QR caption")
 notes(s, "Thank you. I'm happy to take questions.\n\nQ&A preparation:\n"
          "1) Coincidental substring matches? Cases need at least three normalized characters and must not appear in "
          "the task; a 20-case spot check found the target visible on every inspected source screen.\n"
