@@ -416,77 +416,86 @@ notes(s, "[3:15-3:55] Here is the whole method. At training time, the logged tex
          "to type.")
 
 # ---------------------------------------------------------------- 7 labels
-s = new_slide("Step 1: deriving look-back labels from demonstrations")
-card(s, 36, 90, 352, 62, name="Definition")
-text(s, 50, 96, 324, 22, [[("Vₜ = { i < t : norm(aₜ) ⊂ norm(OCRᵢ) }", {"bold": True})]],
-     size=17, color=DARK)
-text(s, 50, 122, 324, 28, "aₜ: text typed at step t; norm: lowercase, drop whitespace and commas",
-     size=11, color=MUTED)
-text(s, 36, 162, 352, 18, "A typing step becomes a case only if the text", size=14, color=DARK, bold=True)
-text(s, 36, 184, 352, 110, [
-    {"runs": "has at least three normalized characters", "bullet": True, "after": 3},
-    {"runs": "does not appear in the task instruction", "bullet": True, "after": 3},
-    {"runs": [("is absent from the current screen ", {}), ("(no leakage)", {"color": DEEP, "bold": True})],
-     "bullet": True, "after": 3},
-    {"runs": "appears on at least one earlier screen", "bullet": True},
-], size=13, color=GREY)
-text(s, 36, 290, 352, 80, [
-    {"runs": [("Labels. ", {"bold": True, "color": DARK}),
-              ("Every earlier screen with OCR is a training item with yₜᵢ = 1[i ∈ Vₜ]. "
-               "The typed text is used only to label and to score, never as model input.", {})]},
-], size=13, color=GREY)
-stats = [("188", "development cases", "from 1,038 candidate entries in 800 sampled trajectories"),
-         ("2,861", "labeled case–screen pairs", "463 positive (16.2%) from the same 188 decisions"),
-         ("93", "held-out cases", "from 90 trajectories disjoint from development"),
-         ("0", "human source-screen labels", "every label comes from the logged text")]
-for k, (big, head, body) in enumerate(stats):
-    x, y = 408 + (k % 2) * 142, 90 + (k // 2) * 142
-    card(s, x, y, 134, 132, fill=ROSE if k == 3 else PALE, name=f"Stat {head}")
-    text(s, x + 10, y + 10, 114, 36, big, size=28, color=RED, bold=True)
-    text(s, x + 10, y + 50, 114, 34, head, size=13, color=DARK, bold=True)
-    text(s, x + 10, y + 86, 114, 42, body, size=10, color=MUTED)
-notes(s, "[3:55-4:35] Step one in detail. The valid source set V_t contains every earlier screen whose normalized OCR "
-         "contains the normalized typed text. A typing step becomes a case only if the text has at least three "
-         "characters, is not in the task instruction, is absent from the current screen, and appears earlier. The "
-         "current-screen condition matters, and I will come back to it. Every earlier screen then becomes a training "
-         "item. From 800 sampled trajectories and 1,038 candidate entries we keep 188 development cases, which expand "
-         "to 2,861 labeled pairs, 463 of them positive, plus 93 held-out cases. No human labels any of them.")
+s = new_slide("Step 1: turn the typed text into labels")
+for k, (head, body) in enumerate([
+        ("Search earlier screens for the typed text",
+         "The log says the user typed “Electronic Study”. We look for it in the OCR of every earlier screen."),
+        ("Keep only real look-back steps",
+         "The text must be gone from the current screen but appear on an earlier one.")]):
+    x = 36 + k * 332
+    card(s, x, 90, 316, 194, name=f"Label step {k + 1}")
+    number_badge(s, x + 14, 102, str(k + 1), d=26)
+    text(s, x + 50, 100, 254, 30, head, size=15, color=DARK, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, x + 14, 138, 288, 50, body, size=13, color=GREY)
+x = 36
+for j, scr in enumerate(range(3, 10)):
+    hit = scr in (4, 5, 6)
+    bx = x + 21 + j * 40
+    b = rect(s, bx, 196, 34, 34, ROSE if hit else WHITE, line=RED if hit else LINE,
+             shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.12, name=f"Screen {scr}")
+    label_shape(b, str(scr), 11, DEEP if hit else MUTED, bold=hit)
+    text(s, bx, 234, 34, 14, "1" if hit else "0", size=12, color=RED if hit else MUTED, bold=True,
+         align=PP_ALIGN.CENTER)
+text(s, x + 14, 256, 288, 16, "contains the text → label 1, otherwise 0", size=11, color=MUTED,
+     align=PP_ALIGN.CENTER)
+x = 368
+for j, (lab, ok) in enumerate([("Current screen:  text is gone", False), ("An earlier screen:  text is there", True)]):
+    chip = rect(s, x + 14, 196 + j * 38, 288, 30, ROSE if ok else WHITE, line=RED if ok else LINE,
+                shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3, name=f"Condition {j + 1}")
+    label_shape(chip, lab, 13, DEEP if ok else DARK, bold=ok)
+text(s, x + 14, 270, 288, 12, "(at least 3 characters, not copied from the task)", size=10, color=MUTED,
+     align=PP_ALIGN.CENTER)
+for k, (big, lab) in enumerate([("188", "typing steps kept"), ("2,861", "labeled screens"),
+                                ("0", "human labels")]):
+    x = 36 + k * 222
+    card(s, x, 294, 204, 80, fill=ROSE if k == 2 else PALE, name=f"Stat {lab}")
+    text(s, x + 14, 302, 176, 36, big, size=28, color=RED, bold=True, align=PP_ALIGN.CENTER)
+    text(s, x + 14, 342, 176, 22, lab, size=13, color=DARK, bold=True, align=PP_ALIGN.CENTER)
+notes(s, "[3:55-4:35] Step one is how we get the labels. The log tells us the user typed Electronic Study. We search "
+         "the OCR of every earlier screen for that text: screens 4, 5 and 6 contain it, so they get label 1, and the "
+         "others get 0. We only keep steps where the text is gone from the current screen but appeared earlier, so "
+         "the model really has to look back. This turns 188 typing steps into 2,861 labeled screens, with no human "
+         "labels at all.")
 
 # ---------------------------------------------------------------- 8 selectors + reader
-s = new_slide("Step 2: two selectors trained on the same labels")
-sel = [("Per-screen scorer", "pointwise", [
-    ("Input: ", "task, current OCR, one earlier screen (≤ 1,200 chars), distance t − i"),
-    ("Output: ", "sᵢ = P(Yes) from the Yes/No next-token logits"),
-    ("Loss: ", "binary cross-entropy on yₜᵢ, positives weighted ×3"),
-    ("Pick: ", "argmax sᵢ; t passes, about 12K tokens at t = 16")]),
-    ("Full-history selector", "listwise", [
-        ("Input: ", "task, current OCR, numbered history (≤ 700 chars per screen)"),
-        ("Output: ", "the index of a source screen (greedy, ≤ 5 tokens)"),
-        ("Target: ", "the latest valid screen, max Vₜ"),
-        ("Cost: ", "one pass over 1–5K tokens")])]
-for k, (head, kind, items) in enumerate(sel):
+s = new_slide("Step 2: pick the screen, then read it")
+for k, (head, body) in enumerate([
+        ("Per-screen scorer (7B)",
+         "Asks for each earlier screen: does it hold the text? Picks the screen with the highest yes-score."),
+        ("Full-history selector (7B)",
+         "Reads all earlier screens in one prompt and answers with a single screen number.")]):
     x = 36 + k * 332
-    card(s, x, 90, 316, 196, name=f"{head} card")
-    text(s, x + 14, 100, 288, 22, [[(head, {"bold": True, "color": DARK}), ("   " + kind, {"color": RED, "size": 12})]],
-         size=16)
-    text(s, x + 14, 130, 288, 150, [{"runs": [(a, {"bold": True, "color": DARK}), (b, {})], "bullet": True,
-                                     "after": 5} for a, b in items], size=13, color=GREY)
-text(s, 36, 294, 648, 18, [[("Shared: ", {"bold": True, "color": DARK}),
-                            ("Qwen2.5-7B-Instruct + LoRA rank 16 on attention · 2 epochs · lr 1e-4 · "
-                             "4 items per update", {})]], size=13, color=GREY)
-card(s, 36, 320, 648, 54, fill=ROSE, name="Reader")
-text(s, 50, 324, 620, 46, [[("Step 3: reader. ", {"bold": True, "color": DEEP}),
-                            ("A frozen Qwen2.5-14B-Instruct sees the task, all earlier OCR with the selected screen "
-                             "repeated and marked, and the current screen, then writes the text to type.", {})]],
-     size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "[4:35-5:25] Step two: two selectors that differ only in how the history reaches the model. The per-screen "
-         "scorer is pointwise: it sees the task, the current screen, one candidate and its distance, and outputs the "
-         "probability of Yes. We train it with weighted cross-entropy and pick the highest-scoring screen; it needs "
-         "one pass per candidate, about 12 thousand tokens at step 16. The full-history selector is listwise: it "
-         "reads the numbered history in one prompt and generates a screen index, trained to output the latest valid "
-         "screen, in one pass of 1 to 5 thousand tokens. Both use the same base model and LoRA settings. In step "
-         "three, a frozen 14B reader gets the full history with the chosen screen repeated and marked, and writes "
-         "the text.")
+    card(s, x, 90, 316, 194, name=f"Selector {k + 1}")
+    text(s, x + 14, 100, 288, 24, head, size=16, color=DARK, bold=True)
+    text(s, x + 14, 128, 288, 50, body, size=13, color=GREY)
+x = 36
+for j, (scr, hgt) in enumerate(zip(range(3, 10), (0.18, 0.62, 0.70, 0.95, 0.28, 0.16, 0.10))):
+    bx, top = x + 31 + j * 38, 236 - 52 * hgt
+    rect(s, bx, top, 26, 52 * hgt, RED if scr == 6 else BAR, name=f"Score bar {scr}")
+    text(s, bx - 4, 238, 34, 12, str(scr), size=10, color=MUTED, align=PP_ALIGN.CENTER)
+text(s, x + 14, 256, 288, 16, "highest yes-score → screen 6", size=12, color=RED, bold=True,
+     align=PP_ALIGN.CENTER)
+x = 368
+for j in range(11):
+    sel_ = j == 5
+    b = rect(s, x + 14 + j * 26, 200, 22, 34, ROSE if sel_ else WHITE, line=RED if sel_ else LINE,
+             shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.15, name=f"History screen {j}")
+    label_shape(b, str(j), 9, DEEP if sel_ else MUTED, bold=sel_)
+text(s, x + 14, 256, 288, 16, "one prompt, one answer: “screen 5”", size=12, color=RED, bold=True,
+     align=PP_ALIGN.CENTER)
+card(s, 36, 294, 648, 80, fill=ROSE, name="Reader")
+text(s, 50, 300, 620, 68, [
+    {"runs": [("Then read: ", {"bold": True, "color": DEEP}),
+              ("a 14B reader (not trained) sees the history with the chosen screen marked and writes the text to "
+               "type, e.g., ", {}), ("Electronic Study", {"italic": True}), (".", {})], "after": 4},
+    {"runs": "Both selectors are Qwen2.5-7B + LoRA, trained on the Step 1 labels.", "size": 12, "color": GREY},
+], size=14, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "[4:35-5:25] Step two: we train a 7B model to pick the screen, in one of two ways. The per-screen scorer "
+         "looks at one earlier screen at a time and asks: does this screen hold the text? It picks the screen with "
+         "the highest yes-score; in our example, screen 6. The full-history selector reads all earlier screens at "
+         "once and simply answers with a screen number; in our example, screen 5. Both are Qwen2.5-7B with LoRA, "
+         "trained on the same labels. Then a 14B reader, which we do not train, reads the chosen screen marked in the "
+         "history and writes the text to type.")
 
 # ---------------------------------------------------------------- 9 setup
 s = new_slide("Experimental setup")
@@ -824,8 +833,8 @@ notes(s, "[9:55-10:00] These are the main references; the report lists all 32 wi
 s = prs.slides.add_slide(LAYOUT["Title Slide"])
 ph = {p.placeholder_format.idx: p for p in s.placeholders}
 for idx, (val, x, y, w, h, size, bold, col) in {
-    0: ("Thank you", 60, 104, 600, 56, 36, True, DARK),
-    1: ("Questions?", 60, 160, 600, 30, 20, False, GREY),
+    0: ("Thank you", 60, 88, 600, 52, 36, True, DARK),
+    1: ("Questions?", 60, 140, 600, 28, 20, False, GREY),
 }.items():
     t = ph[idx]
     t.left, t.top, t.width, t.height = Pt(x), Pt(y), Pt(w), Pt(h)
@@ -836,11 +845,8 @@ for idx, (val, x, y, w, h, size, bold, col) in {
     r = p.add_run()
     r.text = val
     style_run(r, size, col, bold)
-text(s, 90, 220, 540, 44, "A recorded text entry is free supervision for look-back: zero human labels, "
-                          "50.0 → 72.3% localization, and reading as the next bottleneck.", size=14, color=DARK,
-     align=PP_ALIGN.CENTER)
-text(s, 60, 290, 600, 16, [[("github.com/WMSlalalala/verifier-supervised-lookback", {"color": TEAL, "link": REPO})]],
-     size=12, align=PP_ALIGN.CENTER)
+qr = picture(s, ASSETS / "qr_repo.png", 280, 192, 160, 160, name="Repository QR code")
+qr.click_action.hyperlink.address = REPO
 notes(s, "Thank you. I'm happy to take questions.\n\nQ&A preparation:\n"
          "1) Coincidental substring matches? Cases need at least three normalized characters and must not appear in "
          "the task; a 20-case spot check found the target visible on every inspected source screen.\n"
