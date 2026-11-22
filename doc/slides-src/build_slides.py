@@ -6,6 +6,7 @@ Usage: python build_slides.py ncsu_template.pptx assets Slides.pptx
 The template supplies the official NC State master, layouts and masthead;
 any existing slide is removed and the talk is rebuilt from scratch.
 """
+import re
 import sys
 from pathlib import Path
 
@@ -15,7 +16,7 @@ from pptx import Presentation
 from pptx.chart.data import CategoryChartData
 from pptx.dml.color import RGBColor
 from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION
-from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.oxml.ns import qn
 from pptx.util import Pt
@@ -156,7 +157,17 @@ def picture(slide, path, x, y, w, h, name=None):
     return pic
 
 
+TIMES = ["0:00-0:10", "0:10-0:50", "0:50-1:35", "1:35-2:00", "2:00-2:30", "2:30-2:50", "2:50-3:20",
+         "3:20-3:50", "3:50-4:15", "4:15-4:55", "4:55-5:25", "5:25-6:15", "6:15-6:50", "6:50-7:25", "7:25-8:00",
+         "8:00-8:20", "8:20-8:50", "8:50-9:10", "9:10-9:15", None]
+
+
 def notes(slide, body):
+    """Speaker notes, prefixed with the slide's slot in the 10-minute schedule."""
+    body = re.sub(r"^\[[^\]]*\]\s*", "", body)
+    idx = prs.slides.index(slide)
+    if idx < len(TIMES) and TIMES[idx]:
+        body = f"[{TIMES[idx]}] " + body
     slide.notes_slide.notes_text_frame.text = body
 
 
@@ -321,51 +332,101 @@ notes(s, "[1:00-1:50] There are three existing ways to handle this. First, put t
          "whole trajectory per decision. Bottom line: prompting alone does not reliably find the source screen, and "
          "later steps are much harder.")
 
-# ---------------------------------------------------------------- 4 key idea
-s = new_slide("The missing label is already in the demonstration")
-text(s, 36, 86, 648, 20, [[("To train look-back, we need one label: ", {"bold": True, "color": DARK}),
-                           ("which earlier screen holds the answer?", {})]], size=15, color=GREY)
-bw, gap, x0, ybox = 48, 6, 36, 142
-for i in range(12):
-    x = x0 + i * (bw + gap)
-    hit, cur = i in (4, 5, 6), i == 11
-    b = rect(s, x, ybox, bw, 50, ROSE if hit else (WHITE if cur else PALE),
-             line=RED if hit else (DARK if cur else LINE), shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.08,
-             name=f"Screen {i}")
-    label_shape(b, f"Screen\n{i}", 10, DEEP if hit else DARK, bold=hit or cur)
-    if i < 11:
-        chip = rect(s, x + 10, ybox + 56, bw - 20, 18, RED if hit else WHITE, line=None if hit else LINE,
-                    shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3, name=f"Label {i}")
-        label_shape(chip, "1" if hit else "0", 11, WHITE if hit else MUTED)
-text(s, x0 + 4 * (bw + gap) - 8, 116, 3 * bw + 2 * gap + 16, 22, "OCR contains the typed text", size=11,
-     color=RED, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.BOTTOM)
-text(s, 440, 112, 244, 26,
-     [[("TYPE at step 11: ", {}), ("“Electronic Study”", {"bold": True})]], size=11, color=DARK,
-     align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.BOTTOM)
-text(s, x0 + 11 * (bw + gap) - 10, ybox + 56, bw + 20, 30, "absent\nnow", size=10, color=MUTED,
-     align=PP_ALIGN.CENTER)
-steps = [
-    ("1", "Read the typed text", "The demonstration stores the string the user entered at step t."),
-    ("2", "Search earlier screens", "Run OCR on screens 0 ... t−1 and test whether the normalized "
-                                    "string occurs."),
-    ("3", "Label all matches", "Matching screens are positives, all others negatives: "
-                               "Vₜ = { i < t : aₜ ⊂ OCR(i) }."),
-]
-for k, (n, head, body) in enumerate(steps):
+# ---------------------------------------------------------------- 4-6 our observation
+SHOT = 1344 / 2992  # width / height of a GUI-Odyssey screenshot
+s = new_slide("Our observation 1: the log records the answer")
+card(s, 36, 88, 336, 286, name="Demonstration log")
+text(s, 50, 96, 310, 18, [[("Demonstration log", {"bold": True, "color": DARK}),
+                           ("   episode 4671561041722435", {"color": MUTED, "size": 10})]], size=12)
+log = [("0", "CLICK"), ("1", "CLICK"), ("2", "CLICK"), ("3", "TYPE “Electronic”"), ("4", "CLICK"),
+       ("5", "CLICK"), ("6", "HOME"), ("7", "CLICK"), ("8", "CLICK"), ("9", "CLICK"), ("10", "CLICK"),
+       ("11", "TYPE “Electronic Study”"), ("12", "CLICK"), ("13", "COMPLETE")]
+for i, (stp, act) in enumerate(log):
+    y = 120 + i * 17.6
+    if stp == "11":
+        rect(s, 44, y - 2, 320, 18, ROSE, line=RED, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3,
+             name="Step 11 row")
+    text(s, 48, y, 26, 15, stp, size=11, color=MUTED, align=PP_ALIGN.RIGHT, font=MONO)
+    text(s, 86, y, 190, 15, act, size=11, color=DEEP if stp == "11" else DARK, bold=stp == "11", font=MONO)
+text(s, 214, 120 + 3 * 17.6 + 1, 146, 14, "(word from the task)", size=10, color=MUTED)
+text(s, 262, 120 + 11 * 17.6 + 1, 98, 14, "← the answer", size=10, color=RED, bold=True,
+     align=PP_ALIGN.RIGHT)
+sh = 284
+sw = sh * SHOT
+picture(s, ASSETS / "shot11.png", 390, 88, sw, sh, name="Screen 11")
+hl = rect(s, 390 + 0.02 * sw, 88 + 0.568 * sh, 0.96 * sw, 0.056 * sh, None, line=RED,
+          shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3, name="Message box highlight")
+hl.line.width = Pt(2)
+text(s, 534, 92, 150, 18, "Screen 11 (current)", size=12, color=DARK, bold=True)
+text(s, 534, 116, 150, 66, [[("Step 11: ", {"bold": True, "color": DARK}),
+                             ("the user types into this message box.", {})]], size=13, color=GREY)
+text(s, 534, 186, 150, 60, "The title itself is nowhere on this screen.", size=13, color=GREY)
+card(s, 534, 262, 150, 112, fill=ROSE, name="Observation 1")
+text(s, 546, 270, 126, 96, "The answer is in the log, not on the screen.", size=15, color=DEEP, bold=True,
+     anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Here is what we observed. This is the actual action log of the example episode: mostly clicks, plus two "
+         "typing actions. At step 11 the log records TYPE Electronic Study, but on the screen at step 11, the Tumblr "
+         "message box, the title is nowhere to be seen. So the answer is in the log, even though it is no longer on "
+         "the screen. Step 3 also types a word, Electronic, but that word comes from the task, so it needs no "
+         "look-back.")
+
+s = new_slide("Our observation 2: earlier screens show where it was")
+text(s, 36, 84, 648, 18, [[("We search the OCR text of every earlier screen for ", {}),
+                           ("“Electronic Study”", {"bold": True, "color": DARK}), (".", {})]],
+     size=13, color=GREY)
+sh2 = 180
+sw2 = sh2 * SHOT
+for n, lab, state, x in [(6, "Screen 6 · Pandora", "found", 36), (8, "Screen 8 · Tumblr", "not found", 386),
+                         (9, "Screen 9 · Tumblr", "not found", 486), (11, "Screen 11 · now", "gone now", 600)]:
+    hit = state == "found"
+    text(s, x - 12, 108, sw2 + 24, 14, lab, size=10, color=DEEP if hit else DARK, bold=True, align=PP_ALIGN.CENTER)
+    picture(s, ASSETS / f"shot{n}.png", x, 126, sw2, sh2, name=f"Screen {n}")
+    frame = rect(s, x, 126, sw2, sh2, None, line=RED if hit else LINE, name=f"Screen {n} frame")
+    frame.line.width = Pt(2 if hit else 0.75)
+    chip = rect(s, x + (sw2 - 74) / 2, 312, 74, 20, RED if hit else WHITE, line=None if hit else LINE,
+                shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.45, name=f"Screen {n} result")
+    label_shape(chip, state, 11, WHITE if hit else MUTED)
+row = rect(s, 37, 126 + 0.535 * sh2, sw2 - 2, 0.093 * sh2, None, line=RED, name="Row highlight")
+row.line.width = Pt(2)
+link_line = s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Pt(36 + sw2), Pt(126 + 0.58 * sh2), Pt(134), Pt(204))
+link_line.line.color.rgb = RED
+link_line.line.width = Pt(1.25)
+card(s, 134, 146, 228, 140, name="Zoom")
+picture(s, ASSETS / "crop6_row.png", 144, 154, 208, 60, name="Zoomed row on screen 6")
+text(s, 146, 222, 206, 58, "The OCR of screen 6 contains the typed text.", size=13, color=DARK, bold=True)
+card(s, 36, 340, 648, 34, fill=ROSE, name="Observation 2")
+text(s, 50, 343, 620, 28, [[("Screens 4 and 5 (not shown) also contain it ", {}),
+                            ("→ the answer screens are 4, 5 and 6.", {"bold": True, "color": DEEP})]],
+     size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Next, we search the OCR text of the earlier screens for that string. Screen 6, the Pandora search results, "
+         "contains Electronic Study. Screens 8 and 9 in Tumblr do not, and neither does the current screen. Screens "
+         "4 and 5 also contain it. So the log tells us exactly where the answer was: screens 4, 5 and 6.")
+
+s = new_slide("Our observation 3: so the labels come for free")
+for k, (head, body, tag) in enumerate([
+        ("Human annotation", "Read the whole trajectory to label a single decision.", "slow and costly"),
+        ("Teacher model", "PAL-UI has a stronger model synthesize 8.6K step-level examples.",
+         "only as good as the teacher"),
+        ("Ours: match the log", "Search earlier screens for the text the user typed.",
+         "free · exact · every entry")]):
     x = 36 + k * 222
-    number_badge(s, x, 236, n, d=26)
-    text(s, x + 36, 236, 168, 26, head, size=14, color=DARK, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-    text(s, x, 268, 204, 60, body, size=13, color=GREY)
-card(s, 36, 334, 648, 40, fill=ROSE, name="Idea takeaway")
-text(s, 50, 338, 620, 32, [[("No human annotation, no teacher model. ", {"bold": True, "color": DEEP}),
-                            ("At test time the typed text is hidden, so the model must find the screen from the task "
-                             "and the screens alone.", {})]], size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "[1:50-2:40] So what training look-back really lacks is one label: at each text entry, which earlier "
-         "screen holds the answer. Our observation is that the demonstration already contains it, because it records "
-         "the text the user actually typed. In the example, the log says the user typed Electronic Study at step 11. "
-         "We run OCR on every earlier screen and search for that string. Screens 4, 5 and 6 contain it, so they get "
-         "label 1, and every other screen gets 0. This needs no human annotation and no teacher model. At test time "
-         "the typed text is hidden, so the model must find the screen from the task and the screens alone.")
+    ours = k == 2
+    card(s, x, 90, 204, 196, fill=ROSE if ours else PALE, name=f"Label source {k + 1}")
+    text(s, x + 14, 102, 176, 40, head, size=16, color=DEEP if ours else DARK, bold=True)
+    text(s, x + 14, 146, 176, 80, body, size=14, color=GREY)
+    text(s, x + 14, 238, 176, 40, tag, size=13, color=RED if ours else MUTED, bold=True)
+card(s, 36, 296, 648, 78, name="Observation summary")
+text(s, 50, 302, 620, 66, [
+    {"runs": [("Typed text from the log", {"bold": True, "color": DARK}), ("  +  ", {}),
+              ("OCR of earlier screens", {"bold": True, "color": DARK}), ("  →  ", {}),
+              ("answer screens (4, 5, 6 here)", {"bold": True, "color": RED})], "after": 5, "size": 14},
+    {"runs": "At test time the typed text is hidden, so the model must find the screen on its own.", "size": 12,
+     "color": GREY},
+], size=14, color=GREY, anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
+notes(s, "This is how we get labels for free. Human annotation would mean reading the whole trajectory for every "
+         "decision, and PAL-UI uses a stronger teacher model to synthesize examples, which is only as good as the "
+         "teacher. Matching the log is free, exact, and available for every logged text entry. At test time the "
+         "typed text is hidden, so the model has to find the screen on its own.")
 
 # ---------------------------------------------------------------- 5 contributions
 s = new_slide("Contributions")
@@ -451,11 +512,10 @@ for k, (big, lab) in enumerate([("188", "typing steps kept"), ("2,861", "labeled
     card(s, x, 294, 204, 80, fill=ROSE if k == 2 else PALE, name=f"Stat {lab}")
     text(s, x + 14, 302, 176, 36, big, size=28, color=RED, bold=True, align=PP_ALIGN.CENTER)
     text(s, x + 14, 342, 176, 22, lab, size=13, color=DARK, bold=True, align=PP_ALIGN.CENTER)
-notes(s, "[3:55-4:35] Step one is how we get the labels. The log tells us the user typed Electronic Study. We search "
-         "the OCR of every earlier screen for that text: screens 4, 5 and 6 contain it, so they get label 1, and the "
-         "others get 0. We only keep steps where the text is gone from the current screen but appeared earlier, so "
-         "the model really has to look back. This turns 188 typing steps into 2,861 labeled screens, with no human "
-         "labels at all.")
+notes(s, "Step one turns this observation into a rule. For every typing step, we search the earlier screens "
+         "for the typed text: matching screens get label 1, the rest 0. We keep only steps where the text is "
+         "gone from the current screen but appeared earlier, with at least three characters and not copied from "
+         "the task. This turns 188 typing steps into 2,861 labeled screens, with no human labels.")
 
 # ---------------------------------------------------------------- 8 selectors + reader
 s = new_slide("Step 2: pick the screen, then read it")
