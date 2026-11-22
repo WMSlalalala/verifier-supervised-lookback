@@ -1,31 +1,70 @@
 \documentclass{article}
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
 \usepackage[final]{neurips_2024}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage{booktabs,multirow,amsmath,graphicx,xcolor,url,microtype,listings}
-\graphicspath{{./}}
-\usepackage[colorlinks,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
-\usepackage{caption}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xcolor,caption,listings}
+\definecolor{inkblue}{HTML}{24556A}
+\usepackage[colorlinks=true,linkcolor=inkblue,citecolor=inkblue,urlcolor=inkblue,pdfauthor={Mingshuo Wang},pdftitle={Verifier-Supervised Look-Back}]{hyperref}
+\makeatletter
+\renewcommand{\@noticestring}{North Carolina State University. Final project report.}
+\makeatother
 \captionsetup{font=small,labelfont=bf}
-\lstset{basicstyle=\ttfamily\scriptsize,breaklines=true,frame=single,framesep=3pt,
-        rulecolor=\color{black!25},backgroundcolor=\color{black!3},
-        xleftmargin=2pt,xrightmargin=2pt,aboveskip=5pt,belowskip=3pt,columns=fullflexible}
-\newcommand{\pval}[1]{$p={#1}$}
-
-\title{Verifier-Supervised Look-Back: Label-Free Screen Retrieval for\\Delayed Information Needs in Mobile GUI Agents}
+\urlstyle{same}
+\raggedbottom
+\title{Verifier-Supervised Look-Back\\for Delayed Information Needs in Mobile GUI Agents}
 \author{Mingshuo Wang\\North Carolina State University}
-
 \begin{document}
 \maketitle
 \begin{abstract}
-\input{sections/abstract}
+A mobile agent may have to type a value that disappeared several screens ago. We use the text entered in a recorded demonstration to identify every earlier screen whose optical character recognition (OCR) contains that value. These matches supervise screen selection without additional human source-screen labels. On 188 GUI-Odyssey typing decisions, adapting a 7B per-screen scorer raises source localization from 50.0\% to 72.3\% and typed-text accuracy from 35.1\% to 44.7\%, holding its prompt and downstream reader fixed. A trained full-history selector achieves 65.4\% and 42.6\%. On 93 cases from disjoint trajectories in the same corpus, the trained selectors identify a valid screen in 76.3--79.6\% of cases, but recover the text in only 49.5--51.6\%. Repeated evidence and the gap between finding and copying it shape how these results should be interpreted. Code and predictions: \url{https://github.com/WMSlalalala/verifier-supervised-lookback}.
 \end{abstract}
-\input{sections/intro}
-\input{sections/method}
-\input{sections/results}
-\input{sections/related}
-\input{sections/code}
-\input{sections/conclusion}
-{\small\bibliographystyle{plainnat}\bibliography{refs}}
+
+\section{Introduction}
+Mobile GUI agents can now complete multi-step tasks in real applications~\citep{appagent,mobileagentv2,uitars}, and datasets have grown from short single-app tasks to long cross-app ones~\citep{aitw,androidcontrol,odysseypub}. As tasks grow longer, an agent sometimes has to type text that it saw several screens earlier but that is no longer on the current screen. For example, a user listens to music in Pandora and then opens Tumblr to send its title to a friend. When the agent reaches the message box, the title \emph{Electronic Study} is gone; it appeared only on earlier screens (Figure~\ref{fig:case}).
+
+\begin{figure}[t]\centering
+\includegraphics[width=\linewidth]{figures/scenario.pdf}
+\caption{A music title crosses an app boundary in GUI-Odyssey episode 4671561041722435. Screen 6 is the last of three valid sources before the typing action at step 11. The scorer selected screen 6 and the full-history selector selected screen 5. Both readers missed the target text. Screenshots cropped and annotated from the \href{https://huggingface.co/datasets/OpenGVLab/GUI-Odyssey}{GUI-Odyssey release}~\citep{odysseypub}, \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.}
+\label{fig:case}\end{figure}
+
+Existing approaches fall into three groups. The first places the entire history in the prompt. The target text must then compete for the model's attention with every menu item, button and message, and the history consumes more context as it grows. Long-context studies also find that models make poor use of information in the middle of their input and are easily misled by similar distractors~\citep{lost,ruler,haystacks}. The second writes a summary or note for each screen and retrieves through those summaries~\citep{readagent,memgpt,mobileagente}. Each summary is written before the agent knows what it will need, so the target text is easily dropped. Summarizers are also often designed or trained together with a specific agent; GUI-Rise, for instance, rewards its summaries by how well its own agent acts afterwards~\citep{guirise}, so a summarizer may not carry over to another agent or task. A recent third approach trains the agent to actively look back at earlier screenshots~\citep{palui}. Because ordinary demonstrations do not mark which screen to revisit, PAL-UI uses a stronger teacher model in a four-stage pipeline to synthesize 8.6K step-level examples, so its supervision is only as good as the teacher. Annotating these decisions by hand would be costly, since an annotator must read a whole trajectory to label a single decision.
+
+Training an agent to look back, however, hinges on one missing label: at each text entry, which earlier screen holds the answer? We observe that this label can be read directly from a demonstration, because the demonstration records the text the user actually typed. In Figure~\ref{fig:case}, the log shows that the user typed \emph{Electronic Study} at step 11. We run OCR on every earlier screen and search each one for that string: screens 4, 5 and 6 contain it and the others do not, so screens 4, 5 and 6 are labeled as answer screens. Every logged text entry yields labels in this way, without human annotation or a teacher model. With these labels, we train a model to find such a screen without knowing the answer. At test time the model never sees the typed text; it must decide which screen to revisit from the task description, the current screen and the earlier screens. The selected screen is then marked and passed to a reader, which writes the text to type.
+
+\paragraph{Contributions.}
+\begin{enumerate}\setlength{\itemsep}{2pt}
+\item \textbf{We verify that prompting alone does not reliably find the source screen.} On 188 typing steps from GUI-Odyssey, an untrained 7B per-screen model finds a valid source in 50.0\% of cases, a 14B full-history prompt in 54.8\% and a summary-based screen index in 41.0\%. The task becomes harder later in a trajectory: the full-history prompt finds 68.0\% of sources at steps $t\leq15$ but only 46.0\% at $t\geq16$.
+\item \textbf{We solve the missing-label problem by deriving labels from demonstrations.} Matching the typed text against the OCR of every earlier screen turns 188 logged entries into 2,861 labeled case--screen pairs, with no human or teacher labels. We train two 7B selectors on them: one scores each earlier screen, and the other reads the whole history and outputs a screen number. With the base model, prompt and reader held fixed, training raises the per-screen model's localization from 50.0\% to 72.3\% and its typed-text accuracy from 35.1\% to 44.7\%.
+\item \textbf{We evaluate extensively.} On 93 held-out cases from disjoint trajectories, the per-screen model's localization rises from 41.9\% to 79.6\%. We further compare two definitions of look-back distance and ablate both the selector and the reader. Together, these results validate look-back supervision that requires no human annotation.
+\end{enumerate}
+
+\section{Method}
+\label{sec:method}
+We study one typing decision at a time. At step $t$ of an episode, the agent knows that it must enter text that is not on the current screen; it must choose an earlier screen that shows the text and then produce the text. Its input is the task instruction $I$, the OCR text $O_t$ of the current screen and the OCR text of the earlier screens $O_0,\dots,O_{t-1}$, numbered in order. Figure~\ref{fig:method} shows how we derive training labels from a demonstration and how the two selectors use them at inference.
+
+\begin{figure}[t]\centering
+\includegraphics[width=\linewidth]{figures/method.pdf}
+\caption{Verifier-supervised look-back. During training, the logged text entry is matched against the OCR of every earlier screen; the resulting source set labels each candidate for the per-screen scorer and gives the latest valid screen ID as the target of the full-history selector. At inference, either selector chooses a screen without seeing the logged text, and a shared reader receives the history with the selected screen marked and predicts the text to type.}
+\label{fig:method}\end{figure}
+
+\subsection{Deriving look-back labels from demonstrations}
+\label{sec:labels}
+Let $a_t$ be the text entered at step $t$ of a demonstration. We lowercase strings and remove whitespace and commas, including the Chinese comma, and write $m(a,O)=1$ when the normalized $a$ occurs as a substring of the normalized $O$. The set of valid source screens is
+\[
+V_t=\{\,i : 0\leq i<t,\; m(a_t,O_i)=1\,\}.
+\]
+A text entry becomes a case if $a_t$ has at least three normalized characters, $m(a_t,I)=0$, OCR is available for the current screen, $m(a_t,O_t)=0$ and $V_t$ is non-empty. The last two conditions keep only entries whose answer has left the screen but appeared earlier; Section~\ref{sec:filters} shows that dropping the current-screen condition can reverse a comparison. Every earlier screen with OCR then receives the label $y_{ti}=\mathbf{1}[i\in V_t]$. In Figure~\ref{fig:case}, a single logged entry labels screens 4, 5 and 6 as positives and every other earlier screen as a negative. The entered text $a_t$ is used only to build labels and to score predictions; neither the selector nor the reader sees it at test time.
+
+\subsection{Selecting a source screen}
+We train two selectors that differ only in how the history reaches the model. Both start from Qwen2.5-7B-Instruct~\citep{qwen} and add a rank-16 LoRA adapter~\citep{lora} on the attention projections.
+
+\paragraph{Per-screen scorer.} The scorer judges one candidate at a time. For candidate $i$, its prompt contains $I$, $O_t$, $O_i$ (truncated to 1,200 characters) and the distance $t-i$, and it ends with a Yes/No question. We read the next-token logits of \texttt{Yes} and \texttt{No}, apply a two-way softmax to obtain $s_i=P(\texttt{Yes})$, and train with binary cross-entropy against $y_{ti}$, weighting positives by three. At inference, the scorer selects $\hat i=\arg\max_{i<t}s_i$. Because every earlier screen is a training item, the 188 development cases yield 2,861 case--screen pairs, of which 463 (16.2\%) are positive; these pairs share context within each of the 188 decisions.
+
+\paragraph{Full-history selector.} The selector reads $I$, $O_t$ and the numbered history in one prompt, with each earlier screen truncated to 700 characters, and generates the index of a source screen. When several screens match, we train it to output the latest one, $\max V_t$, which gives a single target sequence. The loss covers only the target tokens, and inference decodes greedily for at most five tokens. Both selectors train for two epochs at learning rate $10^{-4}$, accumulating four items per update. The scorer runs one forward pass per candidate, about 12K input tokens in total at $t=16$, whereas the selector reads 1--5K tokens in a single pass.
+
+\subsection{Reading the selected screen}
+A frozen Qwen2.5-14B-Instruct reader generates the text to enter. Its prompt contains $I$, the OCR of all earlier screens, the selected screen repeated and marked, and $O_t$. Keeping the rest of the history lets the reader recover from an imperfect selection, while the mark tells it where to look first. The trained selectors and the untrained per-screen control share this reader and prompt, so their typed-text accuracies differ only through the selected screen. A single-screen variant, which sees only the selected screen, serves as a reading control.
+
+\input{results}
+\input{closing}
 \end{document}

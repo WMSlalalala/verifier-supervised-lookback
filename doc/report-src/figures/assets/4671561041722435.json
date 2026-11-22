@@ -1,0 +1,212 @@
+{
+    "episode_id": "4671561041722435",
+    "device_info": {
+        "product": "sdk_gphone64_x86_64",
+        "release_version": "14",
+        "sdk_version": "34",
+        "h": 2992,
+        "w": 1344,
+        "device_name": "Pixel 8 Pro"
+    },
+    "task_info": {
+        "category": "Social_Sharing",
+        "app": [
+            "Tumblr",
+            "Pandora"
+        ],
+        "meta_task": "Listen to a album of {} style, then share the name of the album.",
+        "task": "Listen to a album of Electronic style, then share the name of the album.",
+        "instruction": "Start by listening to an album of Electronic style on Pandora. Once you've enjoyed the music, share the name of the album with katsunaksu on Tumblr."
+    },
+    "step_length": 14,
+    "steps": [
+        {
+            "step": 0,
+            "screenshot": "4671561041722435_0.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    411,
+                    529
+                ],
+                [
+                    411,
+                    529
+                ]
+            ],
+            "ps": "[(411, 529)]"
+        },
+        {
+            "step": 1,
+            "screenshot": "4671561041722435_1.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    603,
+                    941
+                ],
+                [
+                    603,
+                    941
+                ]
+            ],
+            "ps": "[(603, 941)]"
+        },
+        {
+            "step": 2,
+            "screenshot": "4671561041722435_2.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    331,
+                    90
+                ],
+                [
+                    331,
+                    90
+                ]
+            ],
+            "ps": "[(331, 90)]"
+        },
+        {
+            "step": 3,
+            "screenshot": "4671561041722435_3.png",
+            "action": "TEXT",
+            "info": " Electronic",
+            "ps": ""
+        },
+        {
+            "step": 4,
+            "screenshot": "4671561041722435_4.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    940,
+                    930
+                ],
+                [
+                    940,
+                    930
+                ]
+            ],
+            "ps": "[(940, 930)]"
+        },
+        {
+            "step": 5,
+            "screenshot": "4671561041722435_5.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    929,
+                    587
+                ],
+                [
+                    929,
+                    587
+                ]
+            ],
+            "ps": "[(929, 587)]"
+        },
+        {
+            "step": 6,
+            "screenshot": "4671561041722435_6.png",
+            "action": "CLICK",
+            "info": "KEY_HOME",
+            "ps": ""
+        },
+        {
+            "step": 7,
+            "screenshot": "4671561041722435_7.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    127,
+                    258
+                ],
+                [
+                    127,
+                    258
+                ]
+            ],
+            "ps": "[(127, 258)]"
+        },
+        {
+            "step": 8,
+            "screenshot": "4671561041722435_8.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    625,
+                    953
+                ],
+                [
+                    625,
+                    953
+                ]
+            ],
+            "ps": "[(625, 953)]"
+        },
+        {
+            "step": 9,
+            "screenshot": "4671561041722435_9.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    558,
+                    218
+                ],
+                [
+                    558,
+                    218
+                ]
+            ],
+            "ps": "[(558, 218)]"
+        },
+        {
+            "step": 10,
+            "screenshot": "4671561041722435_10.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    406,
+                    904
+                ],
+                [
+                    406,
+                    904
+                ]
+            ],
+            "ps": "[(406, 904)]"
+        },
+        {
+            "step": 11,
+            "screenshot": "4671561041722435_11.png",
+            "action": "TEXT",
+            "info": "Electronic Study",
+            "ps": ""
+        },
+        {
+            "step": 12,
+            "screenshot": "4671561041722435_12.png",
+            "action": "CLICK",
+            "info": [
+                [
+                    924,
+                    645
+                ],
+                [
+                    924,
+                    645
+                ]
+            ],
+            "ps": "[(924, 645)]"
+        },
+        {
+            "step": 13,
+            "screenshot": "4671561041722435_13.png",
+            "action": "COMPLETE",
+            "info": "",
+            "ps": "katsunaksu"
+        }
+    ]
+}

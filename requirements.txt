@@ -1,0 +1,10 @@
+# Third-party packages imported by the programs in src/ (everything else is the standard library).
+# Install a CUDA build of PyTorch that matches your driver first.
+torch
+transformers
+peft
+# OCR; needed only to re-mine cases from raw GUI-Odyssey screenshots.
+easyocr
+# Not imported directly: Transformers needs it to place models with device_map,
+# which the training, scoring and reading programs use.
+accelerate
