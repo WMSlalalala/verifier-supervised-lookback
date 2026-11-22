@@ -228,6 +228,16 @@ PAL-UI, the one trained look-back agent I know of, paid for \alert{8,600} hand-w
 \centering\includegraphics[width=0.93\textwidth]{figures/idea.png}
 \end{frame}
 
+\begin{frame}{Contributions}
+\vspace{0.35cm}
+\begin{itemize}\setlength\itemsep{0.62em}
+\item \textbf{Problem and labels.} I define the \emph{delayed information need}, build an automatic verifier that both mines and labels it, and measure how common it is: absent from AITZ, present in 31\% of sampled GUI-Odyssey tasks.
+\item \textbf{Method.} \emph{Verifier-supervised look-back}: training a look-back policy on labels the verifier produces for free, with two instantiations that share one objective and differ only in how the history reaches the model.
+\item \textbf{Finding.} The supervision is the lever, not the architecture. It lifts a one-call reader by 10.6 points and a per-screen scorer by 22.3; the two trained variants are not separable ($p=0.086$), and the decomposition's gain is confined to 8--12 screens back ($p=0.003$).
+\item \textbf{Validation and honesty.} An external sample confirms the margin; ablations show the design is insensitive to its settings; and I report two evaluation filters whose absence changed my conclusions more than any method did --- including one result I had to retract.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{The verifier, precisely}
 \vspace{0.3cm}
 \begin{columns}[T]
@@ -634,6 +644,52 @@ on clean data & \alert{$-22.7$} \gr{$p{=}0.019$}\\
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Code and how the experiments were run}
+\vspace{0.25cm}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+{\scriptsize
+\begin{semiverbatim}
+\color{ncgray}# 1. mine + label (CPU)\color{black}
+python src/verify_long.py
+python src/build_scorer_data.py
+
+\color{ncgray}# 2. train, 5 folds by trajectory\color{black}
+for f in 0 1 2 3 4; do
+  FOLD=$f python src/train_scorer.py
+  FOLD=$f python src/train_fullhist.py
+done
+
+\color{ncgray}# 3. the external set\color{black}
+FOLD=ext python src/train_scorer.py
+\end{semiverbatim}}
+\end{column}
+\begin{column}{0.50\textwidth}
+{\scriptsize
+\begin{semiverbatim}
+\color{ncgray}# 4. read stage + controls\color{black}
+SRC=trained HIST=1 \\
+  python src/read_scorer.py
+MARK=gold|recent|random|top2 ...
+
+\color{ncgray}# 5. every table in the report\color{black}
+python src/analyze_all.py
+
+\color{ncgray}# ablations: one env var each\color{black}
+NODIST=1   \color{ncgray}# drop the distance\color{black}
+POSW=1     \color{ncgray}# unweighted loss\color{black}
+MODEL=...3B-Instruct
+\end{semiverbatim}}
+\end{column}
+\end{columns}
+\vspace{0.45cm}
+\hrule
+\vspace{0.3cm}
+{\footnotesize 87 scripts, 112 result files, the derived OCR data, both papers, this deck and the full
+experiment log --- including the retracted results --- are all in the repository.
+\texttt{configure.sh} repoints the hardcoded paths to your machine.}
+\end{frame}
+
 \begin{frame}{Related work, in three lines}
 \vspace{0.5cm}
 \begin{itemize}\setlength\itemsep{0.85em}
@@ -641,6 +697,37 @@ on clean data & \alert{$-22.7$} \gr{$p{=}0.019$}\\
 \item \textbf{Write-ahead notes and look-back} --- GUI-Rise's rolling summary and Mobile-Agent-E's note-taker write before the need is known. PAL-UI trains look-back, on 8.6K curated labels; my verifier replaces exactly that supervision.
 \item \textbf{Gist-and-lookup and learned retrieval} --- ReadAgent, MemGPT, Generative Agents retrieve from short lines; doc2query and Toolformer train the \emph{writer} or the \emph{caller} from downstream signal. I train the \emph{retriever}, after finding the writer's ceiling is the screen itself.
 \end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\vspace{0.25cm}
+{\scriptsize
+\begin{columns}[T]
+\begin{column}{0.49\textwidth}
+\begin{itemize}\setlength\itemsep{0.30em}\setlength\leftmargini{1.1em}
+\item Lu et al. \textbf{GUI Odyssey}: a comprehensive dataset for cross-app GUI navigation on mobile devices. arXiv:2406.08451, 2024.
+\item Zhang et al. \textbf{Android in the Zoo} (AITZ): chain-of-action-thought for GUI agents. Findings of EMNLP, 2024.
+\item Lee et al. \textbf{ReadAgent}: a human-inspired reading agent with gist memory of very long contexts. ICML, 2024.
+\item Liu et al. \textbf{PAL-UI}: planning with active look-back for vision-based GUI agents. arXiv:2510.00413, 2025.
+\item Liu et al. \textbf{GUI-Rise}: structured reasoning and history summarization for GUI navigation. NeurIPS, 2025.
+\item Wang et al. \textbf{Mobile-Agent-E}: self-evolving mobile assistant for complex tasks. arXiv:2501.11733, 2025.
+\item Wen et al. \textbf{AutoDroid}: LLM-powered task automation in Android. MobiCom, 2024.
+\end{itemize}
+\end{column}
+\begin{column}{0.49\textwidth}
+\begin{itemize}\setlength\itemsep{0.30em}\setlength\leftmargini{1.1em}
+\item Wang et al. \textbf{Agent Workflow Memory}. arXiv:2409.07429, 2024.
+\item Nogueira et al. \textbf{Document expansion by query prediction} (doc2query). arXiv:1904.08375, 2019.
+\item Schick et al. \textbf{Toolformer}: language models can teach themselves to use tools. NeurIPS, 2023.
+\item Rafailov et al. \textbf{Direct Preference Optimization}. NeurIPS, 2023.
+\item Liu et al. \textbf{Lost in the Middle}: how language models use long contexts. TACL, 2024.
+\item Hsieh et al. \textbf{RULER}: what's the real context size of your long-context language models? arXiv:2404.06654, 2024.
+\item Qwen Team. \textbf{Qwen2.5 Technical Report}. arXiv:2412.15115, 2024.
+\end{itemize}
+\end{column}
+\end{columns}}
+\vspace{0.3cm}
+{\scriptsize\gr{Full bibliography (18 entries) in the report; see the repository.}}
 \end{frame}
 
 {\setbeamercolor{background canvas}{bg=wolfred}
