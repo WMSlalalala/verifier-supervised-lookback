@@ -635,14 +635,15 @@ for k, (n, head, body, big, lab) in enumerate(rows):
          anchor=MSO_ANCHOR.MIDDLE)
     text(s, 540, y + 44, 136, 28, lab, size=10, color=MUTED, align=PP_ALIGN.CENTER)
 text(s, 36, 344, 648, 30, [[("Limitations: ", {"bold": True, "color": DARK}),
-                            ("one corpus and one OCR engine; substring matches can be coincidental; we test one typing "
-                             "decision, not whole tasks.", {})]], size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
+                            ("all results come from one dataset (GUI-Odyssey) and one OCR tool, a matching string can "
+                             "occasionally be a coincidence, and we evaluate single typing steps rather than "
+                             "complete tasks.", {})]], size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
 notes(s, "To conclude, our three contributions. First, we verified the problem: prompting alone finds the right screen "
          "only about half the time, and less often late in a task. Second, we solved the missing-label problem: the "
          "typed text in the log gives 2,861 labels with zero human labels, and training lifts a 7B model from 50.0 to "
          "72.3 percent. Third, we evaluated extensively, including 93 held-out cases where it goes from 41.9 to 79.6 "
-         "percent. The main limits are one corpus and one OCR engine, possible coincidental matches, and no whole-task "
-         "test yet.")
+         "percent. The main limitations: all results come from one dataset and one OCR tool, a matching string can "
+         "occasionally be a coincidence, and we evaluate single typing steps rather than complete tasks.")
 
 # ---------------------------------------------------------------- 16 code
 s = new_slide("Code and running snippets")
