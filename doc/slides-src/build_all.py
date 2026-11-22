@@ -400,9 +400,9 @@ for i,(t,col) in enumerate(code): para(f,t if t else ' ',size=11.5,color=col,fon
 box(s,6.85,1.55,5.95,4.1,fill=LT)
 f=tb(s,7.10,1.80,5.45,3.7)
 code2=[('# 4. read stage + controls',MUT),('SRC=trained HIST=1 \\',BLACK),('  python src/read_scorer.py',BLACK),
- ('MARK=gold|recent|random|top2 …',BLACK),('',BLACK),('# 5. every table in the report',MUT),
+ ('MARK=gold|recent|random|top2',BLACK),('',BLACK),('# 5. every table in the report',MUT),
  ('python src/analyze_all.py',BLACK),('',BLACK),('# ablations: one env var each',MUT),
- ('NODIST=1   # drop the distance',BLACK),('POSW=1     # unweighted loss',BLACK),('MODEL=…3B-Instruct',BLACK)]
+ ('NODIST=1   # drop the distance',BLACK),('POSW=1     # unweighted loss',BLACK),('MODEL=Qwen/Qwen2.5-3B-Instruct',BLACK)]
 for i,(t,col) in enumerate(code2): para(f,t if t else ' ',size=11.5,color=col,font='Courier New',first=(i==0),space_after=3)
 f=tb(s,0.50,5.90,12.35,0.9); para(f,'87 scripts, 112 result files, the derived OCR data, both papers, this deck and the full experiment log — including the retracted results — are all in the repository. configure.sh repoints the hardcoded paths to your machine.',size=13,color=MUT,first=True,space_after=0)
 notes(s,'Everything is in the repo, including the scripts for the experiments that failed. configure.sh is the one thing you need to run before anything else.')
@@ -413,7 +413,7 @@ rows=[('Cross-episode memory','AutoDroid, AppAgent, Agent Workflow Memory, Synap
  ('Write-ahead notes and look-back','GUI-Rise’s rolling summary and Mobile-Agent-E’s note-taker write before the need is known. PAL-UI trains look-back on 8.6K curated labels — exactly the supervision my verifier replaces.',RED),
  ('Gist-and-lookup, learned retrieval','ReadAgent, MemGPT, Generative Agents retrieve from short lines; doc2query and Toolformer train the writer or the caller from downstream signal. I train the retriever, after finding the writer’s ceiling is the screen itself.',AQUA)]
 for i,(h,b,col) in enumerate(rows):
-    y=1.60+i*1.65; box(s,0.50,y,12.35,1.42,fill=LT)
+    y=1.55+i*1.75; box(s,0.50,y,12.35,1.42,fill=LT)
     f=tb(s,0.80,y+0.20,11.8,1.05)
     para(f,h,size=15,bold=True,color=col,first=True,space_after=5)
     para(f,b,size=14,space_after=0)
