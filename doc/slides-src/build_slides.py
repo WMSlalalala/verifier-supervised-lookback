@@ -628,161 +628,179 @@ notes(s, "[6:00-6:50] Main results. With the base model, prompt and reader fixed
          "The two trained selectors are statistically close: both architectures benefit from the same labels, and "
          "the remaining difference between them is not reliable.")
 
-# ---------------------------------------------------------------- 11 finding vs reading
-s = new_slide("Finding the screen is not the same as reading it")
-card(s, 36, 90, 268, 116, fill=ROSE, name="Reading gap")
-text(s, 50, 98, 240, 44, "62 of 136", size=34, color=RED, bold=True)
-text(s, 50, 146, 240, 56, "correct selections by the trained scorer still produce the wrong text (development)",
-     size=13, color=DARK)
-card(s, 36, 214, 268, 82, name="Recovery")
-text(s, 50, 220, 240, 30, "10 of 52", size=22, color=DARK, bold=True)
-text(s, 50, 250, 240, 42, "invalid selections where the reader still recovers the text from the history",
-     size=12, color=GREY)
-text(s, 36, 304, 268, 70, [
-    {"runs": "Held-out: 43 of 74 correct selections give the right text.", "bullet": True, "after": 4},
-    {"runs": "Pandora → Tumblr: both selectors chose valid screens; both readers missed the title.",
-     "bullet": True}], size=12, color=GREY)
+# ---------------------------------------------------------------- 13 finding vs reading
+s = new_slide("Finding the screen is not typing the text")
+flow = [("188", "typing steps", PALE, DARK), ("136", "the scorer finds a right screen", PALE, RED),
+        ("74", "the reader also types the right text", ROSE, RED)]
+for k, (big, lab, fill, col) in enumerate(flow):
+    x = 36 + k * 234
+    card(s, x, 90, 180, 92, fill=fill, name=f"Flow {big}")
+    text(s, x + 10, 96, 160, 40, big, size=30, color=col, bold=True, align=PP_ALIGN.CENTER)
+    text(s, x + 10, 138, 160, 38, lab, size=13, color=DARK, align=PP_ALIGN.CENTER)
+    if k < 2:
+        arrow = rect(s, x + 190, 124, 34, 22, BAR, shape=MSO_SHAPE.RIGHT_ARROW, name=f"Flow arrow {k + 1}")
+text(s, 404, 186, 166, 16, "62 right screens, wrong text", size=11, color=RED, bold=True, align=PP_ALIGN.CENTER)
+text(s, 36, 212, 380, 18, "What if the reader gets a screen we know is correct?", size=13, color=DARK, bold=True)
 cd = CategoryChartData()
-cats = ["Random earlier screen", "Most recent screen", "Scorer's top screen", "Scorer's top two", "Known valid screen"]
-vals = [36.7, 38.8, 44.7, 45.2, 45.2]
-cd.categories = cats
-cd.add_series("Typed-text accuracy (%)", vals)
-gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Pt(318), Pt(108), Pt(366), Pt(220), cd)
-gf.name = "Reader control chart"
+cd.categories = ["Random earlier screen", "Known correct screen", "Scorer's choice"]
+cd.add_series("Typed-text accuracy (%)", [36.7, 45.2, 44.7])
+gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Pt(36), Pt(232), Pt(380), Pt(140), cd)
+gf.name = "Reader marking chart"
 ch = gf.chart
 ch.has_title = False
 ch.has_legend = False
-ch.font.size = Pt(11)
+ch.font.size = Pt(12)
 ch.font.name = FONT
 plot = ch.plots[0]
-plot.gap_width = 55
+plot.gap_width = 45
 plot.has_data_labels = True
 dl = plot.data_labels
-dl.number_format = "0.0"
+dl.number_format = '0.0"%"'
 dl.number_format_is_linked = False
 dl.position = XL_LABEL_POSITION.OUTSIDE_END
-dl.font.size = Pt(11)
+dl.font.size = Pt(12)
 dl.font.bold = True
 dl.font.color.rgb = DARK
-for i, colr in enumerate([BAR, BAR, RED, RED, DARK]):
+for i, colr in enumerate([BAR, DARK, RED]):
     pt = plot.series[0].points[i]
     pt.format.fill.solid()
     pt.format.fill.fore_color.rgb = colr
 va = ch.value_axis
-va.minimum_scale, va.maximum_scale, va.major_unit = 0, 50, 10
-va.has_major_gridlines = True
-va.major_gridlines.format.line.color.rgb = LINE
-va.format.line.fill.background()
-va.tick_labels.font.size = Pt(10)
-va.tick_labels.font.color.rgb = MUTED
+va.minimum_scale, va.maximum_scale, va.major_unit = 0, 60, 20
+va.has_major_gridlines = False
+va.visible = False
 ca = ch.category_axis
 ca.format.line.color.rgb = LINE
-ca.tick_labels.font.size = Pt(11)
+ca.tick_labels.font.size = Pt(12)
 ca.tick_labels.font.color.rgb = DARK
-text(s, 318, 88, 366, 18, "Typed-text accuracy (%) by the screen the reader sees marked", size=12, color=DARK,
-     bold=True)
-card(s, 318, 334, 366, 40, fill=PALE, name="Reading takeaway")
-text(s, 330, 338, 342, 32, "Reading is now the bottleneck: marking a known-valid screen adds one correct entry "
-                           "(85 vs 84).", size=12, color=DARK, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "[6:50-7:30] But finding the screen is not the same as reading it. Of the scorer's 136 correct selections, "
-         "62 still produce the wrong text. Conversely, 10 of 52 wrong selections still recover the text, because the "
-         "full history stays in the reader's context. The chart varies only which screen the reader sees marked: "
-         "marking a screen we know is valid adds just one correct entry over the scorer's choice, while marking the "
-         "most recent or a random screen drops accuracy below 39 percent. So reading is now the bottleneck, as in the "
-         "Pandora example, where both selectors chose valid screens and both readers missed the title.")
+card(s, 432, 212, 252, 162, fill=ROSE, name="Reading takeaway")
+text(s, 446, 222, 224, 22, "Reading is the bottleneck", size=16, color=DEEP, bold=True)
+text(s, 446, 250, 224, 118, [
+    {"runs": "Knowing the right screen adds only one correct answer (85 vs 84).", "after": 8},
+    {"runs": "The reader must pick the right string on that screen and copy it exactly."},
+], size=13, color=DARK)
+notes(s, "Finding the screen is not the same as typing the text. Of 188 typing steps, the trained scorer finds a right "
+         "screen in 136, but the reader types the right text in only 74 of those, so 62 are lost at the reading step. "
+         "Even if we hand the reader a screen we know is correct, accuracy rises only from 44.7 to 45.2 percent, while "
+         "a random earlier screen drops it to 36.7. So reading, not finding, is now the bottleneck: the reader must "
+         "pick the right string on the screen and copy it exactly.")
 
-# ---------------------------------------------------------------- 12 distance
-s = new_slide("How far back? It depends on which copy you count")
-picture(s, ASSETS / "distance.png", 36, 92, 430, 190, name="Distance figure")
-text(s, 36, 286, 430, 28, "Localization by distance to the earliest (A) or most recent (B) matching screen; both "
-                          "panels split the same 188 development predictions.", size=10, color=MUTED)
-text(s, 484, 90, 200, 230, [
-    {"runs": [("The answer recurs ", {"bold": True, "color": DARK}), ("in 111 of 188 cases.", {})], "after": 8},
-    {"runs": [("Two distances: ", {"bold": True, "color": DARK}),
-              ("to the earliest copy (median 7) or the most recent copy (median 4).", {})], "after": 8},
-    {"runs": [("Earliest copy, 8–12 screens: ", {"bold": True, "color": DARK}),
-              ("scorer 78.2% vs trained full history 56.4% (p = 0.003).", {})], "after": 8},
-    {"runs": [("Most recent copy, 8–12: ", {"bold": True, "color": DARK}),
-              ("only 23 cases; 69.6% vs 47.8% (p = 0.131).", {})], "after": 8},
-    {"runs": [("Most recent copy ≥ 13 (14 cases): ", {"bold": True, "color": DARK}),
-              ("prompt 8, trained full history 4, scorer 3.", {})]},
-], size=12, color=GREY)
-card(s, 36, 326, 648, 48, fill=ROSE, name="Distance takeaway")
-text(s, 50, 330, 620, 40, [[("Takeaway: ", {"bold": True, "color": DEEP}),
-                            ("distance conclusions depend on which occurrence is measured, and the groups are too small "
-                             "for a precise cutoff between selectors.", {})]], size=13, color=DARK,
-     anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "[7:30-8:10] How far back must the model look? The answer recurs on several screens in 111 of 188 cases, "
-         "so distance can be measured to the earliest copy or to the most recent one; the medians are 7 and 4 "
-         "screens. Grouped by the earliest copy, the scorer's advantage concentrates at 8 to 12 screens, 78 versus "
-         "56 percent, p equals 0.003. Grouped by the most recent copy, that band has only 23 cases and the difference "
-         "is not significant. So conclusions about distance depend on which copy you count, and our groups are too "
-         "small for a precise cutoff.")
+# ---------------------------------------------------------------- 14 distance
+s = new_slide("How far back? The answer often repeats")
+text(s, 36, 84, 648, 18, "In our example the title is on screens 4, 5 and 6, and the agent types it at step 11.",
+     size=13, color=GREY)
+bw, gap = 44, 6
+x0 = 36 + (648 - (12 * bw + 11 * gap)) / 2
+centers = {}
+for i in range(12):
+    x = x0 + i * (bw + gap)
+    hit, cur = i in (4, 5, 6), i == 11
+    b = rect(s, x, 110, bw, 34, ROSE if hit else WHITE, line=RED if hit else (DARK if cur else LINE),
+             shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.15, name=f"Screen {i}")
+    b.line.width = Pt(1.5 if (hit or cur) else 0.75)
+    label_shape(b, "now" if cur else str(i), 11, DEEP if hit else DARK, bold=hit or cur)
+    centers[i] = x + bw / 2
 
-# ---------------------------------------------------------------- 13 ablations + filters
-s = new_slide("Ablations and two evaluation filters")
-text(s, 36, 88, 316, 18, "Selector ablations (development localization)", size=13, color=DARK, bold=True)
-table(s, 36, 110, [214, 102], [24] + [23] * 4,
-      [["Variant", "Loc. (%)"], ["7B, distance, weight 3 (default)", "72.3"], ["Omit distance header", "70.7"],
-       ["Positive weight 1", "72.3"], ["Smaller 3B model", "68.1"]], size=12, focus=(1,), name="Ablation table")
-text(s, 36, 232, 316, 140, [
-    {"runs": "Distance header: −1.6 pts (p = 0.61); class weights: no change.", "bullet": True, "after": 4},
-    {"runs": "3B is weaker overall but better at t ≥ 20 (48.1% vs 37.0%).", "bullet": True, "after": 4},
-    {"runs": "Screen index on the first 85 cases: 49.4% vs 65.9% with full OCR; a preference-trained writer "
-             "reaches 45.9%.", "bullet": True, "after": 4},
-    {"runs": "BM25: 10.6% with the task as query, 92.9% with the hidden answer.", "bullet": True},
-], size=12, color=GREY)
-filters = [("Filter 1: credit any valid screen",
-            "40 of the first 85 cases have several valid screens. Earliest-only scoring understates the screen "
-            "index by 15.3 pts and the full-history prompt by 11.8 pts.", "−15.3 pts", "if earliest-only"),
-           ("Filter 2: remove current-screen leakage",
-            "Unfiltered long batch (127 cases): a recent-screen rule led the full-history prompt. After removing 74 "
-            "leaked cases, it trailed on the remaining 53. Finding withdrawn.", "+17.3\n→ −22.7",
-            "points, before vs after")]
-for k, (head, body, big, lab) in enumerate(filters):
-    y = 88 + k * 146
-    card(s, 368, y, 316, 138, fill=ROSE if k else PALE, name=f"Filter {k + 1}")
-    text(s, 382, y + 10, 288, 20, head, size=14, color=DARK, bold=True)
-    text(s, 382, y + 34, 190, 98, body, size=12, color=GREY)
-    text(s, 578, y + 34, 100, 48, big, size=18 if k else 20, color=RED, bold=True, align=PP_ALIGN.CENTER,
-         anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 578, y + 86, 100, 30, lab, size=10, color=MUTED, align=PP_ALIGN.CENTER)
-notes(s, "[8:10-8:45] Ablations show the scorer is insensitive to its settings: removing the distance header or the "
-         "class weight barely changes localization, and a 3B scorer is a bit weaker overall but better at very late "
-         "steps. The screen index stays well below full OCR even with a preference-trained writer, and BM25 shows the "
-         "difficulty is not knowing what to search for. Two evaluation filters matter more. First, credit any valid "
-         "screen: scoring only the earliest one understates the index by 15 points. Second, remove cases whose answer "
-         "is still on the current screen: before filtering, a recent-screen rule looked 17 points better than the "
-         "full-history prompt; after filtering, it was 23 points worse, and we withdrew that finding.")
 
-# ---------------------------------------------------------------- 14 related work
-s = new_slide("Related work")
-grid = [("GUI agents and datasets",
-         "AITW · AndroidControl · AITZ · AMEX · GUI-Odyssey · AndroidWorld · Auto-GUI · "
-         "CogAgent · SeeClick · OS-Atlas · UI-TARS",
-         "Mostly decide where to act on the current screen; we localize an earlier screen in the history."),
-        ("History and memory",
-         "OdysseyAgent · Mobile-Agent-v2 · Mobile-Agent-E · GUI-Rise · AppAgent · Synapse · "
-         "AWM · PAL-UI",
-         "Keep information before the need is known, or learn from teacher-made labels; we label from the typed "
-         "text."),
-        ("Long-context retrieval",
-         "Lost in the Middle · RULER · Visual Haystacks · ReadAgent · MemGPT",
-         "Long inputs are used unevenly; our histories are short but answers recur, so we report two distances."),
-        ("Distant supervision",
-         "Mintz et al. · DrQA · ORQA · DPR · monoT5 · RankGPT",
-         "Answer-string matches as labels; we keep every matching screen and compare pointwise vs listwise "
-         "selection.")]
-for k, (head, works, diff) in enumerate(grid):
-    x, y = 36 + (k % 2) * 332, 90 + (k // 2) * 144
-    card(s, x, y, 316, 134, name=f"Related {head}")
-    text(s, x + 14, y + 10, 288, 20, head, size=15, color=RED, bold=True)
-    text(s, x + 14, y + 34, 288, 44, works, size=11, color=MUTED)
-    text(s, x + 14, y + 80, 288, 50, diff, size=13, color=DARK)
-notes(s, "[8:45-9:05] Briefly on related work. GUI agent work mostly decides where to act on the current screen. "
-         "Memory methods decide what to keep before the need is known, or rely on teacher-made labels like PAL-UI. "
-         "Long-context work shows that long inputs are used unevenly. And our labeling is distant supervision in the "
-         "spirit of DrQA and DPR, applied to GUI trajectories.")
+def span(a, b, y, colr, label):
+    for x1, y1, x2, y2 in [(centers[a], y, centers[b], y), (centers[a], y - 5, centers[a], y + 5),
+                           (centers[b], y - 5, centers[b], y + 5)]:
+        ln = s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Pt(x1), Pt(y1), Pt(x2), Pt(y2))
+        ln.line.color.rgb = colr
+        ln.line.width = Pt(1.75)
+    text(s, centers[a], y + 6, centers[b] - centers[a], 16, label, size=12, color=colr, bold=True,
+         align=PP_ALIGN.CENTER)
+
+
+span(4, 11, 158, DARK, "earliest copy: 7 screens back")
+span(6, 11, 192, RED, "latest copy: 5 screens back")
+text(s, 36, 222, 648, 18, [[("This happens in ", {}), ("111 of 188", {"bold": True, "color": DARK}),
+                            (" cases, so we measure “how far back” both ways.", {})]], size=13, color=GREY,
+     align=PP_ALIGN.CENTER)
+for k, (head, sub, res, verdict, vcol) in enumerate([
+        ("Counting the earliest copy", "8–12 screens back · 55 cases", "scorer 78% vs full history 56%",
+         "clear difference (p = 0.003)", DEEP),
+        ("Counting the latest copy", "8–12 screens back · only 23 cases", "scorer 70% vs full history 48%",
+         "not significant (p = 0.13)", MUTED)]):
+    x = 36 + k * 332
+    card(s, x, 248, 316, 88, name=f"Distance result {k + 1}")
+    text(s, x + 14, 254, 288, 18, head, size=14, color=DARK, bold=True)
+    text(s, x + 14, 274, 288, 14, sub, size=11, color=MUTED)
+    text(s, x + 14, 292, 288, 20, res, size=15, color=RED, bold=True)
+    text(s, x + 14, 314, 288, 16, verdict, size=12, color=vcol, bold=True)
+card(s, 36, 344, 648, 30, fill=ROSE, name="Distance takeaway")
+text(s, 50, 346, 620, 26, "Which copy you count changes the conclusion, so we report both and claim no exact cutoff.",
+     size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "How far back does the model need to look? The answer often appears on several screens, in 111 of 188 cases. "
+         "In our example it is on screens 4, 5 and 6, so the distance is 7 screens if we count the earliest copy and 5 "
+         "if we count the latest. Counting the earliest copy, the scorer clearly beats the full-history selector at 8 to "
+         "12 screens back, 78 versus 56 percent. Counting the latest copy, that band has only 23 cases and the "
+         "difference is not significant. So we report both and do not claim a precise cutoff.")
+
+# ---------------------------------------------------------------- 15 robustness + pitfalls
+s = new_slide("Robust settings and two evaluation pitfalls")
+card(s, 36, 90, 264, 284, name="Robustness")
+text(s, 50, 100, 236, 20, "Changing settings barely matters", size=14, color=DARK, bold=True)
+text(s, 50, 122, 236, 14, "localization on the 188 development cases", size=11, color=MUTED)
+for k, (lab, val) in enumerate([("Default (7B scorer)", 72.3), ("No distance information", 70.7),
+                                ("Equal class weights", 72.3), ("Smaller 3B model", 68.1)]):
+    y = 146 + k * 44
+    text(s, 50, y, 236, 16, lab, size=12, color=DARK)
+    wbar = val / 80 * 176
+    rect(s, 50, y + 19, wbar, 13, RED if k == 0 else BAR, name=f"Robust bar {k + 1}")
+    text(s, 50 + wbar + 6, y + 17, 48, 16, f"{val:.1f}%", size=12, color=DARK, bold=True)
+text(s, 50, 330, 236, 40, "The 3B scorer is weaker overall but better at the latest steps (48% vs 37% at t ≥ 20).",
+     size=11, color=MUTED)
+for k, (head, fix, effect, fill, hcol) in enumerate([
+        ("Pitfall 1: the answer is on several screens",
+         "Fix: count any screen that shows the answer as correct.",
+         [("Counting only the first one makes methods look ", {}), ("12–15 points worse", {"bold": True, "color": RED}),
+          (".", {})], PALE, DARK),
+        ("Pitfall 2: the answer is still on the current screen",
+         "Fix: remove these cases; they need no look-back.",
+         [("A “read recent screens” rule looked ", {}), ("17.3 points better", {"bold": True, "color": RED}),
+          (" before removal and ", {}), ("22.7 points worse", {"bold": True, "color": RED}), (" after.", {})],
+         ROSE, DEEP)]):
+    y = 90 + k * 148
+    card(s, 316, y, 368, 136, fill=fill, name=f"Pitfall {k + 1}")
+    text(s, 330, y + 10, 340, 20, head, size=14, color=hcol, bold=True)
+    text(s, 330, y + 38, 340, 36, fix, size=13, color=DARK, bold=True)
+    text(s, 330, y + 76, 340, 52, [effect], size=13, color=GREY)
+notes(s, "Two quick robustness points. First, changing the scorer's settings barely matters: removing the distance "
+         "information, using equal class weights, or switching to a smaller 3B model all stay close to 72 percent. "
+         "Second, two evaluation pitfalls. When the answer is on several screens, we count any of them as correct; "
+         "counting only the first would make methods look 12 to 15 points worse. And we remove cases where the answer "
+         "is still on the current screen: before removing them, a simple rule that reads recent screens looked 17 points "
+         "better than the full-history prompt; after removing them, it was 23 points worse, so we withdrew that "
+         "finding.")
+
+# ---------------------------------------------------------------- 16 related work
+s = new_slide("Related work: how we differ")
+for x, w, lab in [(50, 180, "Line of work"), (246, 208, "What they do"), (470, 200, "What we do")]:
+    text(s, x, 88, w, 14, lab, size=11, color=MUTED, bold=True)
+rows = [
+    ("GUI agents", "SeeClick, OS-Atlas, UI-TARS",
+     "Decide where to act on the current screen.", "Find which earlier screen holds the answer."),
+    ("Memory for GUI agents", "Mobile-Agent-v2, GUI-Rise, PAL-UI",
+     "Save notes before knowing what is needed; PAL-UI learns from a teacher model.",
+     "Search the history once we know what to type; labels come free from the log."),
+    ("Long-context models", "Lost in the Middle, RULER",
+     "Use long inputs unevenly.", "Pick one screen instead of reading everything at once."),
+    ("Distant supervision", "DrQA, DPR",
+     "Text that contains a known answer becomes a training label.", "The same idea, applied to phone screens."),
+]
+for k, (name, ex, they, we) in enumerate(rows):
+    y = 106 + k * 67
+    card(s, 36, y, 648, 61, name=f"Related row {k + 1}")
+    text(s, 50, y + 8, 186, 46, [{"runs": name, "bold": True, "color": DARK, "size": 13, "after": 2},
+                                 {"runs": ex, "color": MUTED, "size": 10}], size=13, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 246, y + 8, 208, 46, they, size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 470, y + 8, 200, 46, we, size=12, color=DEEP, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Briefly, how we differ from related work. GUI agents mostly decide where to act on the current screen; we "
+         "find which earlier screen holds the answer. Memory methods save notes before they know what will be needed, "
+         "and PAL-UI learns look-back from a teacher model; we search the history once we know what to type, with "
+         "labels from the log. Long-context models use long inputs unevenly, so we select one screen. And our labeling "
+         "is distant supervision, like DrQA and DPR, applied to phone screens.")
 
 # ---------------------------------------------------------------- 15 conclusion + limitations
 s = new_slide("Conclusion and limitations")
