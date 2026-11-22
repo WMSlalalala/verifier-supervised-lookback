@@ -244,7 +244,7 @@ keys at 188.
 | [`data/`](data/) | Derived inputs: EasyOCR records for 19,330 sampled screenshots (`parse_odyssey.jsonl`; `parse_more.jsonl` repeats the 4,802 held-out-batch screens), model-written screen-index entries (`directory_*.jsonl`), and `screenshot_index.json`, which maps all 118,791 GUI-Odyssey screenshot names to their release folders. |
 | [`results/`](results/) | 112 JSON files: sample manifests, case lists, valid-screen sets, case–screen pairs with fold assignments, per-fold selector scores, reader outcomes and earlier comparisons. |
 | [`doc/Final-Report.pdf`](doc/Final-Report.pdf) | Final report (9 pages). |
-| [`doc/Slides.pdf`](doc/Slides.pdf), [`doc/Slides.pptx`](doc/Slides.pptx) | Final presentation (20 slides). |
+| [`doc/Slides.pdf`](doc/Slides.pdf), [`doc/Slides.pptx`](doc/Slides.pptx) | Final presentation (15 slides). |
 | [`doc/report-src/`](doc/report-src/) | LaTeX source of the report (`main.tex`, which inputs `results.tex` and `closing.tex`) and `build.sh`. Figure scripts: `doc/report-src/figures/draw_figures.py` draws Figures 1 and 2 from one episode's screenshots and annotation in `doc/report-src/figures/assets/`, and `doc/report-src/figures/plot_distance.py` draws Figure 3 from `results/`. |
 | [`doc/slides-src/`](doc/slides-src/) | `build_slides.py` builds the deck from `ncsu_template.pptx` and the images in `doc/slides-src/assets/` (figures, the example episode's screenshots and the repository QR code); `export_pdf.ps1` exports the PDF through PowerPoint. |
 | [`media/readme/`](media/readme/) | The two figures in this README. |

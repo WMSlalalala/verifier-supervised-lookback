@@ -157,9 +157,8 @@ def picture(slide, path, x, y, w, h, name=None):
     return pic
 
 
-TIMES = ["0:00-0:10", "0:10-0:50", "0:50-1:35", "1:35-2:00", "2:00-2:30", "2:30-2:50", "2:50-3:20",
-         "3:20-3:50", "3:50-4:15", "4:15-4:55", "4:55-5:25", "5:25-6:15", "6:15-6:50", "6:50-7:25", "7:25-8:00",
-         "8:00-8:20", "8:20-8:50", "8:50-9:10", "9:10-9:15", None]
+TIMES = ["0:00-0:10", "0:10-1:00", "1:00-1:50", "1:50-2:50", "2:50-3:30", "3:30-4:10", "4:10-5:05",
+         "5:05-5:45", "5:45-6:50", "6:50-7:45", "7:45-8:15", "8:15-9:05", "9:05-9:30", "9:30-9:35", None]
 
 
 def notes(slide, body):
@@ -332,132 +331,52 @@ notes(s, "[1:00-1:50] There are three existing ways to handle this. First, put t
          "whole trajectory per decision. Bottom line: prompting alone does not reliably find the source screen, and "
          "later steps are much harder.")
 
-# ---------------------------------------------------------------- 4-6 our observation
+# ---------------------------------------------------------------- 4 our observation
 SHOT = 1344 / 2992  # width / height of a GUI-Odyssey screenshot
-s = new_slide("Our observation 1: the log records the answer")
-card(s, 36, 88, 336, 286, name="Demonstration log")
-text(s, 50, 96, 310, 18, [[("Demonstration log", {"bold": True, "color": DARK}),
-                           ("   episode 4671561041722435", {"color": MUTED, "size": 10})]], size=12)
-log = [("0", "CLICK"), ("1", "CLICK"), ("2", "CLICK"), ("3", "TYPE “Electronic”"), ("4", "CLICK"),
-       ("5", "CLICK"), ("6", "HOME"), ("7", "CLICK"), ("8", "CLICK"), ("9", "CLICK"), ("10", "CLICK"),
-       ("11", "TYPE “Electronic Study”"), ("12", "CLICK"), ("13", "COMPLETE")]
+s = new_slide("Our observation: the log tells us where the answer is")
+for k, (n, head) in enumerate([("1", "The log records what was typed"), ("2", "It is gone from the current screen"),
+                               ("3", "Earlier screens still show it")]):
+    x = 36 + k * 222
+    card(s, x, 88, 204, 240, name=f"Observation panel {n}")
+    number_badge(s, x + 12, 99, n, d=24)
+    text(s, x + 44, 96, 152, 30, head, size=13, color=DARK, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+# panel 1: the real action log around step 11
+log = [("", "..."), ("9", "CLICK"), ("10", "CLICK"), ("11", "TYPE “Electronic Study”"), ("12", "CLICK"),
+       ("13", "COMPLETE")]
 for i, (stp, act) in enumerate(log):
-    y = 120 + i * 17.6
-    if stp == "11":
-        rect(s, 44, y - 2, 320, 18, ROSE, line=RED, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3,
-             name="Step 11 row")
-    text(s, 48, y, 26, 15, stp, size=11, color=MUTED, align=PP_ALIGN.RIGHT, font=MONO)
-    text(s, 86, y, 190, 15, act, size=11, color=DEEP if stp == "11" else DARK, bold=stp == "11", font=MONO)
-text(s, 214, 120 + 3 * 17.6 + 1, 146, 14, "(word from the task)", size=10, color=MUTED)
-text(s, 262, 120 + 11 * 17.6 + 1, 98, 14, "← the answer", size=10, color=RED, bold=True,
-     align=PP_ALIGN.RIGHT)
-sh = 284
+    y = 140 + i * 21
+    hot = stp == "11"
+    if hot:
+        rect(s, 42, y - 3, 192, 20, ROSE, line=RED, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3, name="Step 11 row")
+    text(s, 46, y, 20, 15, stp, size=11, color=MUTED, align=PP_ALIGN.RIGHT, font=MONO)
+    text(s, 72, y, 160, 15, act, size=11, color=DEEP if hot else DARK, bold=hot, font=MONO)
+text(s, 48, 274, 180, 48, "At step 11 the user typed the title; the log keeps the exact text.", size=12, color=GREY)
+# panel 2: the current screen, where the title is absent
+sh = 168
 sw = sh * SHOT
-picture(s, ASSETS / "shot11.png", 390, 88, sw, sh, name="Screen 11")
-hl = rect(s, 390 + 0.02 * sw, 88 + 0.568 * sh, 0.96 * sw, 0.056 * sh, None, line=RED,
+px = 258 + (204 - sw) / 2
+picture(s, ASSETS / "shot11.png", px, 132, sw, sh, name="Screen 11")
+hl = rect(s, px + 0.02 * sw, 132 + 0.568 * sh, 0.96 * sw, 0.056 * sh, None, line=RED,
           shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.3, name="Message box highlight")
 hl.line.width = Pt(2)
-text(s, 534, 92, 150, 18, "Screen 11 (current)", size=12, color=DARK, bold=True)
-text(s, 534, 116, 150, 66, [[("Step 11: ", {"bold": True, "color": DARK}),
-                             ("the user types into this message box.", {})]], size=13, color=GREY)
-text(s, 534, 186, 150, 60, "The title itself is nowhere on this screen.", size=13, color=GREY)
-card(s, 534, 262, 150, 112, fill=ROSE, name="Observation 1")
-text(s, 546, 270, 126, 96, "The answer is in the log, not on the screen.", size=15, color=DEEP, bold=True,
+text(s, 270, 304, 180, 18, "Screen 11: the title is not here", size=12, color=GREY, align=PP_ALIGN.CENTER)
+# panel 3: an earlier screen that shows the title
+card(s, 488, 136, 192, 60, fill=WHITE, name="Zoom frame")
+picture(s, ASSETS / "crop6_row.png", 492, 140, 184, 52, name="Screen 6 row")
+text(s, 492, 200, 184, 14, "Screen 6 · Pandora search results", size=10, color=MUTED, align=PP_ALIGN.CENTER)
+text(s, 492, 226, 184, 40, "Found on screens 4, 5 and 6", size=15, color=RED, bold=True, align=PP_ALIGN.CENTER,
      anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "Here is what we observed. This is the actual action log of the example episode: mostly clicks, plus two "
-         "typing actions. At step 11 the log records TYPE Electronic Study, but on the screen at step 11, the Tumblr "
-         "message box, the title is nowhere to be seen. So the answer is in the log, even though it is no longer on "
-         "the screen. Step 3 also types a word, Electronic, but that word comes from the task, so it needs no "
-         "look-back.")
-
-s = new_slide("Our observation 2: earlier screens show where it was")
-text(s, 36, 84, 648, 18, [[("We search the OCR text of every earlier screen for ", {}),
-                           ("“Electronic Study”", {"bold": True, "color": DARK}), (".", {})]],
-     size=13, color=GREY)
-sh2 = 180
-sw2 = sh2 * SHOT
-for n, lab, state, x in [(6, "Screen 6 · Pandora", "found", 36), (8, "Screen 8 · Tumblr", "not found", 386),
-                         (9, "Screen 9 · Tumblr", "not found", 486), (11, "Screen 11 · now", "gone now", 600)]:
-    hit = state == "found"
-    text(s, x - 12, 108, sw2 + 24, 14, lab, size=10, color=DEEP if hit else DARK, bold=True, align=PP_ALIGN.CENTER)
-    picture(s, ASSETS / f"shot{n}.png", x, 126, sw2, sh2, name=f"Screen {n}")
-    frame = rect(s, x, 126, sw2, sh2, None, line=RED if hit else LINE, name=f"Screen {n} frame")
-    frame.line.width = Pt(2 if hit else 0.75)
-    chip = rect(s, x + (sw2 - 74) / 2, 312, 74, 20, RED if hit else WHITE, line=None if hit else LINE,
-                shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.45, name=f"Screen {n} result")
-    label_shape(chip, state, 11, WHITE if hit else MUTED)
-row = rect(s, 37, 126 + 0.535 * sh2, sw2 - 2, 0.093 * sh2, None, line=RED, name="Row highlight")
-row.line.width = Pt(2)
-link_line = s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Pt(36 + sw2), Pt(126 + 0.58 * sh2), Pt(134), Pt(204))
-link_line.line.color.rgb = RED
-link_line.line.width = Pt(1.25)
-card(s, 134, 146, 228, 140, name="Zoom")
-picture(s, ASSETS / "crop6_row.png", 144, 154, 208, 60, name="Zoomed row on screen 6")
-text(s, 146, 222, 206, 58, "The OCR of screen 6 contains the typed text.", size=13, color=DARK, bold=True)
-card(s, 36, 340, 648, 34, fill=ROSE, name="Observation 2")
-text(s, 50, 343, 620, 28, [[("Screens 4 and 5 (not shown) also contain it ", {}),
-                            ("→ the answer screens are 4, 5 and 6.", {"bold": True, "color": DEEP})]],
-     size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "Next, we search the OCR text of the earlier screens for that string. Screen 6, the Pandora search results, "
-         "contains Electronic Study. Screens 8 and 9 in Tumblr do not, and neither does the current screen. Screens "
-         "4 and 5 also contain it. So the log tells us exactly where the answer was: screens 4, 5 and 6.")
-
-s = new_slide("Our observation 3: so the labels come for free")
-for k, (head, body, tag) in enumerate([
-        ("Human annotation", "Read the whole trajectory to label a single decision.", "slow and costly"),
-        ("Teacher model", "PAL-UI has a stronger model synthesize 8.6K step-level examples.",
-         "only as good as the teacher"),
-        ("Ours: match the log", "Search earlier screens for the text the user typed.",
-         "free · exact · every entry")]):
-    x = 36 + k * 222
-    ours = k == 2
-    card(s, x, 90, 204, 196, fill=ROSE if ours else PALE, name=f"Label source {k + 1}")
-    text(s, x + 14, 102, 176, 40, head, size=16, color=DEEP if ours else DARK, bold=True)
-    text(s, x + 14, 146, 176, 80, body, size=14, color=GREY)
-    text(s, x + 14, 238, 176, 40, tag, size=13, color=RED if ours else MUTED, bold=True)
-card(s, 36, 296, 648, 78, name="Observation summary")
-text(s, 50, 302, 620, 66, [
-    {"runs": [("Typed text from the log", {"bold": True, "color": DARK}), ("  +  ", {}),
-              ("OCR of earlier screens", {"bold": True, "color": DARK}), ("  →  ", {}),
-              ("answer screens (4, 5, 6 here)", {"bold": True, "color": RED})], "after": 5, "size": 14},
-    {"runs": "At test time the typed text is hidden, so the model must find the screen on its own.", "size": 12,
-     "color": GREY},
-], size=14, color=GREY, anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
-notes(s, "This is how we get labels for free. Human annotation would mean reading the whole trajectory for every "
-         "decision, and PAL-UI uses a stronger teacher model to synthesize examples, which is only as good as the "
-         "teacher. Matching the log is free, exact, and available for every logged text entry. At test time the "
-         "typed text is hidden, so the model has to find the screen on its own.")
-
-# ---------------------------------------------------------------- 5 contributions
-s = new_slide("Contributions")
-rows = [
-    ("1", "We verify that prompting alone often misses the source screen",
-     "On 188 GUI-Odyssey typing steps: untrained 7B per-screen 50.0%, 14B full-history prompt 54.8%, screen "
-     "index 41.0%. Later steps are harder: 68.0% at t ≤ 15 vs 46.0% at t ≥ 16.",
-     "≤ 54.8%", "prompted localization"),
-    ("2", "We solve the missing labels: derive them from demonstrations",
-     "Typed text matched against earlier OCR gives 2,861 case–screen labels from 188 entries with zero "
-     "human labels; two 7B selectors are trained on them.",
-     "50.0 → 72.3%", "localization, same model, prompt and reader"),
-    ("3", "We evaluate extensively",
-     "93 held-out cases from disjoint trajectories, two definitions of look-back distance, and selector and "
-     "reader ablations validate supervision that needs no human annotation.",
-     "41.9 → 79.6%", "held-out localization"),
-]
-for k, (n, head, body, big, lab) in enumerate(rows):
-    y = 92 + k * 94
-    card(s, 36, y, 648, 84, name=f"Contribution {n}")
-    number_badge(s, 50, y + 12, n, d=30)
-    text(s, 94, y + 10, 440, 20, head, size=14, color=DARK, bold=True)
-    text(s, 94, y + 33, 440, 48, body, size=13, color=GREY)
-    text(s, 540, y + 14, 136, 32, big, size=21, color=RED, bold=True, align=PP_ALIGN.CENTER,
-         anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 540, y + 48, 136, 28, lab, size=10, color=MUTED, align=PP_ALIGN.CENTER)
-notes(s, "[2:40-3:15] This gives three contributions. First, we verify the problem: prompting alone tops out "
-         "around 55 percent localization and gets worse late in a trajectory. Second, we solve the missing-label "
-         "problem: from 188 logged entries we derive 2,861 case-screen labels with zero human labels, and training "
-         "lifts a 7B per-screen model from 50.0 to 72.3 percent with the same prompt and reader. Third, we evaluate "
-         "extensively, including 93 held-out cases where localization goes from 41.9 to 79.6 percent.")
+text(s, 492, 272, 184, 40, "and on no other earlier screen", size=12, color=GREY, align=PP_ALIGN.CENTER)
+card(s, 36, 336, 648, 38, fill=ROSE, name="Observation takeaway")
+text(s, 50, 339, 620, 32, [[("Observation: ", {"bold": True, "color": DEEP}),
+                            ("the typed text in the log marks which earlier screens hold the answer, so the labels "
+                             "come for free.", {})]], size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Here is our key observation, on the real example. First, the demonstration log records every action; at "
+         "step 11 it says the user typed Electronic Study. Second, on the screen at step 11, the Tumblr message box, "
+         "the title is nowhere to be seen. Third, when we search the OCR of the earlier screens for that text, we find "
+         "it on screen 6, the Pandora search results, and also on screens 4 and 5, but on no other screen. So the typed "
+         "text in the log tells us exactly which earlier screens hold the answer. That gives us labels for free, without "
+         "human annotation or a teacher model.")
 
 # ---------------------------------------------------------------- 6 method overview
 s = new_slide("Method: labels from the log, two selectors, one reader")
@@ -590,189 +509,77 @@ notes(s, "[5:25-6:00] Experimental setup. We use the first public release of GUI
          "typed-text accuracy checks whether the output contains the reference; all comparisons use paired McNemar "
          "tests.")
 
-# ---------------------------------------------------------------- 10 main results
-s = new_slide("Main results: derived labels improve selection")
-rows = [["", "Development (n = 188)", "", "Held-out (n = 93)", ""],
-        ["Selector", "Loc.", "Text", "Loc.", "Text"],
+# ---------------------------------------------------------------- result 1: main table
+s = new_slide("Result 1: the free labels work")
+rows = [["", "Development (188 cases)", "", "Held-out (93 cases)", ""],
+        ["Selector", "Finds screen", "Types text", "Finds screen", "Types text"],
         ["Prompted screen index (14B)", "41.0", "23.9", "37.6", "18.3"],
         ["Prompted full history (14B)", "54.8", "31.4", "59.1", "23.7"],
         ["Untrained per-screen (7B)", "50.0", "35.1", "41.9", "–"],
         ["Trained full history (7B)", "65.4", "42.6", "76.3", "51.6"],
         ["Trained per-screen (7B)", "72.3", "44.7", "79.6", "49.5"]]
-table(s, 36, 90, [180, 66, 66, 66, 66], [22, 22] + [24] * 5, rows, size=12, focus=(5, 6),
+table(s, 36, 90, [228, 105, 105, 105, 105], [24, 24] + [30] * 5, rows, size=14, focus=(5, 6),
       strong={(6, 1), (6, 2), (6, 3), (5, 4)}, name="Main results table", header_rows=2,
       merges=(((0, 1), (0, 2)), ((0, 3), (0, 4))))
-text(s, 36, 258, 444, 12, "Localization and typed-text accuracy, % of cases; development uses 5-fold CV.",
-     size=10, color=MUTED)
-text(s, 36, 276, 444, 100, [
-    {"runs": [("Same model, prompt and reader: ", {"bold": True, "color": DARK}),
-              ("+22.3 pts localization (52 wins, 10 losses, p < 0.001); typed text 66 → 84 cases (p = 0.0013).",
-               {})], "bullet": True, "after": 5},
-    {"runs": [("Training beats a larger prompt: ", {"bold": True, "color": DARK}),
-              ("trained full history 123 vs 103 of 188 for the 14B prompt (p = 0.019).", {})],
-     "bullet": True, "after": 5},
-    {"runs": [("Trained selectors are close: ", {"bold": True, "color": DARK}),
-              ("scorer +13 sources (p = 0.086), +4 texts (p = 0.45).", {})], "bullet": True},
-], size=13, color=GREY)
-for k, (big, lab) in enumerate([("72.3%", "development localization\n(untrained: 50.0%)"),
-                                ("79.6%", "held-out localization\n(untrained: 41.9%)")]):
-    y = 90 + k * 144
-    card(s, 500, y, 184, 134, fill=ROSE if k == 0 else PALE, name=f"Callout {big}")
-    text(s, 512, y + 18, 160, 50, big, size=40, color=RED, bold=True, align=PP_ALIGN.CENTER,
-         anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 512, y + 76, 160, 44, lab, size=12, color=DARK, align=PP_ALIGN.CENTER)
-notes(s, "[6:00-6:50] Main results. With the base model, prompt and reader fixed, training raises the per-screen "
-         "model from 50.0 to 72.3 percent localization: 52 cases flip to correct and 10 flip back, p below 0.001. "
-         "Typed-text accuracy rises from 35.1 to 44.7 percent. On the held-out set, localization goes from 41.9 to "
-         "79.6 percent. The trained full-history selector also beats the larger 14B prompt, 123 versus 103 of 188. "
-         "The two trained selectors are statistically close: both architectures benefit from the same labels, and "
-         "the remaining difference between them is not reliable.")
+text(s, 36, 296, 648, 14, "Percent of cases. Development uses 5-fold cross-validation; held-out trajectories are "
+                          "never seen in training.", size=10, color=MUTED)
+card(s, 36, 318, 648, 56, fill=ROSE, name="Result 1 proves")
+text(s, 50, 322, 620, 48, [[("What it proves: ", {"bold": True, "color": DEEP}),
+                            ("training on labels from the log makes a 7B model find the right screen far more often "
+                             "(50.0% → 72.3%; held-out 41.9% → 79.6%), beating every prompted baseline, "
+                             "even at 14B.", {})]], size=14, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Result one: the free labels work. The table compares the trained selectors with three prompted ones. With the "
+         "same base model, prompt and reader, training lifts the per-screen model from 50.0 to 72.3 percent of right "
+         "screens, with 52 cases fixed and 10 broken, p below 0.001; typed text goes from 35.1 to 44.7 percent. On "
+         "held-out trajectories it goes from 41.9 to 79.6 percent. Both trained 7B selectors beat the 14B prompts, and "
+         "the two trained selectors are statistically close to each other.")
 
-# ---------------------------------------------------------------- 13 finding vs reading
-s = new_slide("Finding the screen is not typing the text")
-flow = [("188", "typing steps", PALE, DARK), ("136", "the scorer finds a right screen", PALE, RED),
-        ("74", "the reader also types the right text", ROSE, RED)]
-for k, (big, lab, fill, col) in enumerate(flow):
-    x = 36 + k * 234
-    card(s, x, 90, 180, 92, fill=fill, name=f"Flow {big}")
-    text(s, x + 10, 96, 160, 40, big, size=30, color=col, bold=True, align=PP_ALIGN.CENTER)
-    text(s, x + 10, 138, 160, 38, lab, size=13, color=DARK, align=PP_ALIGN.CENTER)
-    if k < 2:
-        arrow = rect(s, x + 190, 124, 34, 22, BAR, shape=MSO_SHAPE.RIGHT_ARROW, name=f"Flow arrow {k + 1}")
-text(s, 404, 186, 166, 16, "62 right screens, wrong text", size=11, color=RED, bold=True, align=PP_ALIGN.CENTER)
-text(s, 36, 212, 380, 18, "What if the reader gets a screen we know is correct?", size=13, color=DARK, bold=True)
+# ---------------------------------------------------------------- result 2: finding vs reading
+s = new_slide("Result 2: finding the screen is no longer the hard part")
+text(s, 36, 86, 648, 16, "Trained per-screen scorer with the 14B reader, 188 development cases (% of cases)",
+     size=12, color=MUTED)
 cd = CategoryChartData()
-cd.categories = ["Random earlier screen", "Known correct screen", "Scorer's choice"]
-cd.add_series("Typed-text accuracy (%)", [36.7, 45.2, 44.7])
-gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Pt(36), Pt(232), Pt(380), Pt(140), cd)
-gf.name = "Reader marking chart"
+cd.categories = ["Types the right text, if handed a correct screen", "Types the right text", "Finds a right screen"]
+cd.add_series("Percent of cases", [45.2, 44.7, 72.3])
+gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Pt(36), Pt(106), Pt(648), Pt(200), cd)
+gf.name = "Finding versus reading chart"
 ch = gf.chart
 ch.has_title = False
 ch.has_legend = False
-ch.font.size = Pt(12)
+ch.font.size = Pt(13)
 ch.font.name = FONT
 plot = ch.plots[0]
-plot.gap_width = 45
+plot.gap_width = 40
 plot.has_data_labels = True
 dl = plot.data_labels
 dl.number_format = '0.0"%"'
 dl.number_format_is_linked = False
 dl.position = XL_LABEL_POSITION.OUTSIDE_END
-dl.font.size = Pt(12)
+dl.font.size = Pt(14)
 dl.font.bold = True
 dl.font.color.rgb = DARK
-for i, colr in enumerate([BAR, DARK, RED]):
+for i, colr in enumerate([DARK, BAR, RED]):
     pt = plot.series[0].points[i]
     pt.format.fill.solid()
     pt.format.fill.fore_color.rgb = colr
 va = ch.value_axis
-va.minimum_scale, va.maximum_scale, va.major_unit = 0, 60, 20
+va.minimum_scale, va.maximum_scale = 0, 85
 va.has_major_gridlines = False
 va.visible = False
 ca = ch.category_axis
 ca.format.line.color.rgb = LINE
-ca.tick_labels.font.size = Pt(12)
+ca.tick_labels.font.size = Pt(13)
 ca.tick_labels.font.color.rgb = DARK
-card(s, 432, 212, 252, 162, fill=ROSE, name="Reading takeaway")
-text(s, 446, 222, 224, 22, "Reading is the bottleneck", size=16, color=DEEP, bold=True)
-text(s, 446, 250, 224, 118, [
-    {"runs": "Knowing the right screen adds only one correct answer (85 vs 84).", "after": 8},
-    {"runs": "The reader must pick the right string on that screen and copy it exactly."},
-], size=13, color=DARK)
-notes(s, "Finding the screen is not the same as typing the text. Of 188 typing steps, the trained scorer finds a right "
-         "screen in 136, but the reader types the right text in only 74 of those, so 62 are lost at the reading step. "
-         "Even if we hand the reader a screen we know is correct, accuracy rises only from 44.7 to 45.2 percent, while "
-         "a random earlier screen drops it to 36.7. So reading, not finding, is now the bottleneck: the reader must "
-         "pick the right string on the screen and copy it exactly.")
-
-# ---------------------------------------------------------------- 14 distance
-s = new_slide("How far back? The answer often repeats")
-text(s, 36, 84, 648, 18, "In our example the title is on screens 4, 5 and 6, and the agent types it at step 11.",
-     size=13, color=GREY)
-bw, gap = 44, 6
-x0 = 36 + (648 - (12 * bw + 11 * gap)) / 2
-centers = {}
-for i in range(12):
-    x = x0 + i * (bw + gap)
-    hit, cur = i in (4, 5, 6), i == 11
-    b = rect(s, x, 110, bw, 34, ROSE if hit else WHITE, line=RED if hit else (DARK if cur else LINE),
-             shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.15, name=f"Screen {i}")
-    b.line.width = Pt(1.5 if (hit or cur) else 0.75)
-    label_shape(b, "now" if cur else str(i), 11, DEEP if hit else DARK, bold=hit or cur)
-    centers[i] = x + bw / 2
-
-
-def span(a, b, y, colr, label):
-    for x1, y1, x2, y2 in [(centers[a], y, centers[b], y), (centers[a], y - 5, centers[a], y + 5),
-                           (centers[b], y - 5, centers[b], y + 5)]:
-        ln = s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Pt(x1), Pt(y1), Pt(x2), Pt(y2))
-        ln.line.color.rgb = colr
-        ln.line.width = Pt(1.75)
-    text(s, centers[a], y + 6, centers[b] - centers[a], 16, label, size=12, color=colr, bold=True,
-         align=PP_ALIGN.CENTER)
-
-
-span(4, 11, 158, DARK, "earliest copy: 7 screens back")
-span(6, 11, 192, RED, "latest copy: 5 screens back")
-text(s, 36, 222, 648, 18, [[("This happens in ", {}), ("111 of 188", {"bold": True, "color": DARK}),
-                            (" cases, so we measure “how far back” both ways.", {})]], size=13, color=GREY,
-     align=PP_ALIGN.CENTER)
-for k, (head, sub, res, verdict, vcol) in enumerate([
-        ("Counting the earliest copy", "8–12 screens back · 55 cases", "scorer 78% vs full history 56%",
-         "clear difference (p = 0.003)", DEEP),
-        ("Counting the latest copy", "8–12 screens back · only 23 cases", "scorer 70% vs full history 48%",
-         "not significant (p = 0.13)", MUTED)]):
-    x = 36 + k * 332
-    card(s, x, 248, 316, 88, name=f"Distance result {k + 1}")
-    text(s, x + 14, 254, 288, 18, head, size=14, color=DARK, bold=True)
-    text(s, x + 14, 274, 288, 14, sub, size=11, color=MUTED)
-    text(s, x + 14, 292, 288, 20, res, size=15, color=RED, bold=True)
-    text(s, x + 14, 314, 288, 16, verdict, size=12, color=vcol, bold=True)
-card(s, 36, 344, 648, 30, fill=ROSE, name="Distance takeaway")
-text(s, 50, 346, 620, 26, "Which copy you count changes the conclusion, so we report both and claim no exact cutoff.",
-     size=13, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "How far back does the model need to look? The answer often appears on several screens, in 111 of 188 cases. "
-         "In our example it is on screens 4, 5 and 6, so the distance is 7 screens if we count the earliest copy and 5 "
-         "if we count the latest. Counting the earliest copy, the scorer clearly beats the full-history selector at 8 to "
-         "12 screens back, 78 versus 56 percent. Counting the latest copy, that band has only 23 cases and the "
-         "difference is not significant. So we report both and do not claim a precise cutoff.")
-
-# ---------------------------------------------------------------- 15 robustness + pitfalls
-s = new_slide("Robust settings and two evaluation pitfalls")
-card(s, 36, 90, 264, 284, name="Robustness")
-text(s, 50, 100, 236, 20, "Changing settings barely matters", size=14, color=DARK, bold=True)
-text(s, 50, 122, 236, 14, "localization on the 188 development cases", size=11, color=MUTED)
-for k, (lab, val) in enumerate([("Default (7B scorer)", 72.3), ("No distance information", 70.7),
-                                ("Equal class weights", 72.3), ("Smaller 3B model", 68.1)]):
-    y = 146 + k * 44
-    text(s, 50, y, 236, 16, lab, size=12, color=DARK)
-    wbar = val / 80 * 176
-    rect(s, 50, y + 19, wbar, 13, RED if k == 0 else BAR, name=f"Robust bar {k + 1}")
-    text(s, 50 + wbar + 6, y + 17, 48, 16, f"{val:.1f}%", size=12, color=DARK, bold=True)
-text(s, 50, 330, 236, 40, "The 3B scorer is weaker overall but better at the latest steps (48% vs 37% at t ≥ 20).",
-     size=11, color=MUTED)
-for k, (head, fix, effect, fill, hcol) in enumerate([
-        ("Pitfall 1: the answer is on several screens",
-         "Fix: count any screen that shows the answer as correct.",
-         [("Counting only the first one makes methods look ", {}), ("12–15 points worse", {"bold": True, "color": RED}),
-          (".", {})], PALE, DARK),
-        ("Pitfall 2: the answer is still on the current screen",
-         "Fix: remove these cases; they need no look-back.",
-         [("A “read recent screens” rule looked ", {}), ("17.3 points better", {"bold": True, "color": RED}),
-          (" before removal and ", {}), ("22.7 points worse", {"bold": True, "color": RED}), (" after.", {})],
-         ROSE, DEEP)]):
-    y = 90 + k * 148
-    card(s, 316, y, 368, 136, fill=fill, name=f"Pitfall {k + 1}")
-    text(s, 330, y + 10, 340, 20, head, size=14, color=hcol, bold=True)
-    text(s, 330, y + 38, 340, 36, fix, size=13, color=DARK, bold=True)
-    text(s, 330, y + 76, 340, 52, [effect], size=13, color=GREY)
-notes(s, "Two quick robustness points. First, changing the scorer's settings barely matters: removing the distance "
-         "information, using equal class weights, or switching to a smaller 3B model all stay close to 72 percent. "
-         "Second, two evaluation pitfalls. When the answer is on several screens, we count any of them as correct; "
-         "counting only the first would make methods look 12 to 15 points worse. And we remove cases where the answer "
-         "is still on the current screen: before removing them, a simple rule that reads recent screens looked 17 points "
-         "better than the full-history prompt; after removing them, it was 23 points worse, so we withdrew that "
-         "finding.")
+card(s, 36, 318, 648, 56, fill=ROSE, name="Result 2 proves")
+text(s, 50, 322, 620, 48, [[("What it proves: ", {"bold": True, "color": DEEP}),
+                            ("the selector now finds the screen, but reading is the bottleneck: even a screen known to "
+                             "be correct lifts typed-text accuracy only from 44.7% to 45.2%.", {})]],
+     size=14, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Result two: finding the screen is no longer the hard part. The trained scorer finds a right screen in 72.3 "
+         "percent of cases, but the reader types the right text in only 44.7 percent; of the 136 right screens, 62 still "
+         "give the wrong text. And when we hand the reader a screen we know is correct, accuracy rises only to 45.2 "
+         "percent. So the remaining bottleneck is reading: picking the right string on the screen and copying it "
+         "exactly. The report also covers look-back distance, ablations and two evaluation pitfalls.")
 
 # ---------------------------------------------------------------- 16 related work
 s = new_slide("Related work: how we differ")
@@ -802,38 +609,40 @@ notes(s, "Briefly, how we differ from related work. GUI agents mostly decide whe
          "labels from the log. Long-context models use long inputs unevenly, so we select one screen. And our labeling "
          "is distant supervision, like DrQA and DPR, applied to phone screens.")
 
-# ---------------------------------------------------------------- 15 conclusion + limitations
-s = new_slide("Conclusion and limitations")
-card(s, 36, 90, 316, 284, fill=ROSE, name="Conclusion")
-text(s, 50, 100, 288, 22, "Conclusion", size=16, color=DEEP, bold=True)
-text(s, 50, 130, 290, 236, [
-    {"runs": "A recorded text entry already tells us which earlier screens hold the answer.", "bullet": True,
-     "after": 10},
-    {"runs": [("Zero-human labels lift localization ", {}), ("50.0 → 72.3%", {"bold": True, "color": RED}),
-              (" (development) and ", {}), ("41.9 → 79.6%", {"bold": True, "color": RED}),
-              (" (held-out).", {})], "bullet": True, "after": 10},
-    {"runs": "Reading is the remaining bottleneck: 62 of 136 correct selections still give the wrong text.",
-     "bullet": True, "after": 10},
-    {"runs": [("Next: ", {"bold": True, "color": DEEP}),
-              ("improve reading, and let a live agent decide when to look back (e.g., on AndroidWorld).", {})],
-     "bullet": True},
-], size=14, color=DARK)
-card(s, 368, 90, 316, 284, name="Limitations")
-text(s, 382, 100, 288, 22, "Limitations", size=16, color=DARK, bold=True)
-text(s, 382, 130, 290, 236, [
-    {"runs": "One corpus (GUI-Odyssey) and one OCR engine.", "bullet": True, "after": 8},
-    {"runs": "Substring matches can be coincidental; OCR errors or paraphrases can hide true matches.",
-     "bullet": True, "after": 8},
-    {"runs": "A 20-case spot check confirms visible evidence (5 typed earlier), not that users needed memory.",
-     "bullet": True, "after": 8},
-    {"runs": "Localization reuses the labeling criterion, text credit allows substrings, and neither metric measures "
-             "whole-task success.", "bullet": True},
-], size=13, color=GREY)
-notes(s, "[9:05-9:35] To conclude: a recorded text entry already tells us which earlier screens hold the answer. "
-         "Training on these zero-human labels lifts localization from 50 to 72 percent on development and from 42 to "
-         "80 percent on held-out cases, and reading is now the bottleneck. Limitations: one corpus and one OCR "
-         "engine; substring matches can be coincidental or missed; our spot check confirms visible evidence, not that "
-         "users needed memory; and our metrics measure one typing decision, not whole-task success.")
+# ---------------------------------------------------------------- conclusion: the three contributions
+s = new_slide("Conclusion: our three contributions")
+rows = [
+    ("1", "We verify that prompting alone often misses the source screen",
+     "On 188 GUI-Odyssey typing steps: untrained 7B per-screen 50.0%, 14B full-history prompt 54.8%, screen "
+     "index 41.0%. Later steps are harder: 68.0% at t ≤ 15 vs 46.0% at t ≥ 16.",
+     "≤ 54.8%", "prompted localization"),
+    ("2", "We solve the missing labels: derive them from demonstrations",
+     "Typed text matched against earlier OCR gives 2,861 case–screen labels from 188 entries with zero "
+     "human labels; two 7B selectors are trained on them.",
+     "50.0 → 72.3%", "localization, same model, prompt and reader"),
+    ("3", "We evaluate extensively",
+     "93 held-out cases from disjoint trajectories, two definitions of look-back distance, and selector and "
+     "reader ablations validate supervision that needs no human annotation.",
+     "41.9 → 79.6%", "held-out localization"),
+]
+for k, (n, head, body, big, lab) in enumerate(rows):
+    y = 88 + k * 84
+    card(s, 36, y, 648, 78, name=f"Contribution {n}")
+    number_badge(s, 50, y + 10, n, d=30)
+    text(s, 94, y + 8, 440, 20, head, size=14, color=DARK, bold=True)
+    text(s, 94, y + 29, 440, 48, body, size=13, color=GREY)
+    text(s, 540, y + 10, 136, 32, big, size=21, color=RED, bold=True, align=PP_ALIGN.CENTER,
+         anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 540, y + 44, 136, 28, lab, size=10, color=MUTED, align=PP_ALIGN.CENTER)
+text(s, 36, 344, 648, 30, [[("Limitations: ", {"bold": True, "color": DARK}),
+                            ("one corpus and one OCR engine; substring matches can be coincidental; we test one typing "
+                             "decision, not whole tasks.", {})]], size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "To conclude, our three contributions. First, we verified the problem: prompting alone finds the right screen "
+         "only about half the time, and less often late in a task. Second, we solved the missing-label problem: the "
+         "typed text in the log gives 2,861 labels with zero human labels, and training lifts a 7B model from 50.0 to "
+         "72.3 percent. Third, we evaluated extensively, including 93 held-out cases where it goes from 41.9 to 79.6 "
+         "percent. The main limits are one corpus and one OCR engine, possible coincidental matches, and no whole-task "
+         "test yet.")
 
 # ---------------------------------------------------------------- 16 code
 s = new_slide("Code and running snippets")
