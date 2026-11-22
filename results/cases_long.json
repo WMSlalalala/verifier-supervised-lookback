@@ -1,0 +1,891 @@
+[
+ {
+  "ep": "0951866684329284",
+  "t": 22,
+  "src": 20,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 2
+ },
+ {
+  "ep": "3851609531117125",
+  "t": 16,
+  "src": 10,
+  "ans": "Vegan chickpea curry jacket potatoes",
+  "gap": 6
+ },
+ {
+  "ep": "4810609625240028",
+  "t": 21,
+  "src": 20,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 1
+ },
+ {
+  "ep": "0080420605470053",
+  "t": 21,
+  "src": 1,
+  "ans": "vanilla extract",
+  "gap": 20
+ },
+ {
+  "ep": "0080420605470053",
+  "t": 29,
+  "src": 8,
+  "ans": "plain chocolate chips",
+  "gap": 21
+ },
+ {
+  "ep": "2367368013676228",
+  "t": 21,
+  "src": 19,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 2
+ },
+ {
+  "ep": "4122397051914182",
+  "t": 17,
+  "src": 8,
+  "ans": "vagabonding book",
+  "gap": 9
+ },
+ {
+  "ep": "4840897821243893",
+  "t": 19,
+  "src": 11,
+  "ans": "vanilla extract",
+  "gap": 8
+ },
+ {
+  "ep": "4840897821243893",
+  "t": 30,
+  "src": 11,
+  "ans": "egg",
+  "gap": 19
+ },
+ {
+  "ep": "4840897821243893",
+  "t": 38,
+  "src": 11,
+  "ans": "plain chocolate chips",
+  "gap": 27
+ },
+ {
+  "ep": "6657726931464897",
+  "t": 18,
+  "src": 1,
+  "ans": "chocolate chips",
+  "gap": 17
+ },
+ {
+  "ep": "7947814708068022",
+  "t": 16,
+  "src": 1,
+  "ans": "plain chocolate chips",
+  "gap": 15
+ },
+ {
+  "ep": "5357239815403468",
+  "t": 19,
+  "src": 18,
+  "ans": "Do you want to go to a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "8957142988864119",
+  "t": 17,
+  "src": 4,
+  "ans": "2015 nobel prize winners in physics",
+  "gap": 13
+ },
+ {
+  "ep": "5470582263659204",
+  "t": 17,
+  "src": 4,
+  "ans": "Miracle",
+  "gap": 13
+ },
+ {
+  "ep": "0807121185004422",
+  "t": 21,
+  "src": 18,
+  "ans": "Shanghai Disney",
+  "gap": 3
+ },
+ {
+  "ep": "6827443757198902",
+  "t": 16,
+  "src": 8,
+  "ans": "outlander book",
+  "gap": 8
+ },
+ {
+  "ep": "2251402339753986",
+  "t": 23,
+  "src": 22,
+  "ans": "Do you want to go for a hiking trail with me this Saturday?",
+  "gap": 1
+ },
+ {
+  "ep": "0478381539258540",
+  "t": 19,
+  "src": 6,
+  "ans": "Opinion: In Trump's Immunity case, John Roberts has quite a mess in front of him",
+  "gap": 13
+ },
+ {
+  "ep": "3698756325443243",
+  "t": 22,
+  "src": 14,
+  "ans": "Rising Hindu nationalism leaves Muslims fearful in India's holu city",
+  "gap": 8
+ },
+ {
+  "ep": "8899513111799518",
+  "t": 16,
+  "src": 6,
+  "ans": "chocolate chips",
+  "gap": 10
+ },
+ {
+  "ep": "4830438586367541",
+  "t": 17,
+  "src": 9,
+  "ans": "gone girl book",
+  "gap": 8
+ },
+ {
+  "ep": "8061853891917434",
+  "t": 17,
+  "src": 13,
+  "ans": "Hotel Dress Code",
+  "gap": 4
+ },
+ {
+  "ep": "9346213140833550",
+  "t": 17,
+  "src": 4,
+  "ans": "Mount Everest Base Camp, Nepal itinerary",
+  "gap": 13
+ },
+ {
+  "ep": "5936532130501188",
+  "t": 17,
+  "src": 8,
+  "ans": "Goddess Bowls",
+  "gap": 9
+ },
+ {
+  "ep": "6108630596641067",
+  "t": 17,
+  "src": 5,
+  "ans": "California",
+  "gap": 12
+ },
+ {
+  "ep": "6108630596641067",
+  "t": 25,
+  "src": 23,
+  "ans": "Do you want to go to California with me for a hiking trail next Sunday?",
+  "gap": 2
+ },
+ {
+  "ep": "1220835281316085",
+  "t": 17,
+  "src": 4,
+  "ans": "the beach boys",
+  "gap": 13
+ },
+ {
+  "ep": "1695842265624990",
+  "t": 22,
+  "src": 21,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "4476640035356412",
+  "t": 25,
+  "src": 24,
+  "ans": "Do you want to go for a hiking trail with me this Saturday?",
+  "gap": 1
+ },
+ {
+  "ep": "0799731295566283",
+  "t": 18,
+  "src": 7,
+  "ans": "plain chocolate chips",
+  "gap": 11
+ },
+ {
+  "ep": "5263891581687207",
+  "t": 16,
+  "src": 2,
+  "ans": "Day 8 of Trump New York hush money trial",
+  "gap": 14
+ },
+ {
+  "ep": "1078033464574864",
+  "t": 17,
+  "src": 1,
+  "ans": "Retirees Left Stunned As Biden Announces Overhaul For Seniors Over 62 Years In Social Security",
+  "gap": 16
+ },
+ {
+  "ep": "0561754402898761",
+  "t": 19,
+  "src": 13,
+  "ans": "shantaram book",
+  "gap": 6
+ },
+ {
+  "ep": "0862390513696314",
+  "t": 23,
+  "src": 4,
+  "ans": "vanilla extract",
+  "gap": 19
+ },
+ {
+  "ep": "7951399823831350",
+  "t": 25,
+  "src": 0,
+  "ans": "News 7",
+  "gap": 25
+ },
+ {
+  "ep": "7172477494807384",
+  "t": 17,
+  "src": 3,
+  "ans": "plain chocolate chips",
+  "gap": 14
+ },
+ {
+  "ep": "3924993626966329",
+  "t": 16,
+  "src": 11,
+  "ans": "the body keeps the score book",
+  "gap": 5
+ },
+ {
+  "ep": "2294345517190657",
+  "t": 18,
+  "src": 12,
+  "ans": "permission to come home book",
+  "gap": 6
+ },
+ {
+  "ep": "4049007472117089",
+  "t": 18,
+  "src": 2,
+  "ans": "125",
+  "gap": 16
+ },
+ {
+  "ep": "6020790209387512",
+  "t": 19,
+  "src": 7,
+  "ans": "chocolate chips",
+  "gap": 12
+ },
+ {
+  "ep": "2246864987502274",
+  "t": 17,
+  "src": 12,
+  "ans": "the blazing world book",
+  "gap": 5
+ },
+ {
+  "ep": "3013594227125380",
+  "t": 29,
+  "src": 28,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 1
+ },
+ {
+  "ep": "3726867032721864",
+  "t": 18,
+  "src": 1,
+  "ans": "chocolate chips",
+  "gap": 17
+ },
+ {
+  "ep": "5513193329991307",
+  "t": 19,
+  "src": 1,
+  "ans": "News 12",
+  "gap": 18
+ },
+ {
+  "ep": "1045871067678860",
+  "t": 17,
+  "src": 9,
+  "ans": "3-Ingredient Creamy Rotisserie Chicken Salad",
+  "gap": 8
+ },
+ {
+  "ep": "8117457502154272",
+  "t": 17,
+  "src": 16,
+  "ans": "Do you want to go to a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "3422037695396227",
+  "t": 18,
+  "src": 3,
+  "ans": "Michael Cohen resumes testimony in Trump hush money trial",
+  "gap": 15
+ },
+ {
+  "ep": "6538459324155276",
+  "t": 17,
+  "src": 8,
+  "ans": "Metal Bitch",
+  "gap": 9
+ },
+ {
+  "ep": "1677025106763460",
+  "t": 17,
+  "src": 12,
+  "ans": "batman book",
+  "gap": 5
+ },
+ {
+  "ep": "6824660419213045",
+  "t": 21,
+  "src": 19,
+  "ans": "Do you want to go to a movie night with me this Sunday night?",
+  "gap": 2
+ },
+ {
+  "ep": "2156344324753248",
+  "t": 23,
+  "src": 17,
+  "ans": "vanilla extract",
+  "gap": 6
+ },
+ {
+  "ep": "2156344324753248",
+  "t": 31,
+  "src": 13,
+  "ans": "chocolate chips",
+  "gap": 18
+ },
+ {
+  "ep": "0427190330335954",
+  "t": 26,
+  "src": 25,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "3064606205558801",
+  "t": 21,
+  "src": 20,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 1
+ },
+ {
+  "ep": "7350612177744542",
+  "t": 21,
+  "src": 20,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 1
+ },
+ {
+  "ep": "3693145808707217",
+  "t": 21,
+  "src": 9,
+  "ans": "Steve Jobs book",
+  "gap": 12
+ },
+ {
+  "ep": "2053798211257412",
+  "t": 20,
+  "src": 8,
+  "ans": "The Family Table",
+  "gap": 12
+ },
+ {
+  "ep": "5086655597427325",
+  "t": 20,
+  "src": 18,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 2
+ },
+ {
+  "ep": "5911072897115329",
+  "t": 17,
+  "src": 16,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "1084842650932925",
+  "t": 36,
+  "src": 5,
+  "ans": "tofu ingredients",
+  "gap": 31
+ },
+ {
+  "ep": "0907617461459108",
+  "t": 17,
+  "src": 16,
+  "ans": "Do you want to go to a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "4169552971968055",
+  "t": 21,
+  "src": 1,
+  "ans": "tagram",
+  "gap": 20
+ },
+ {
+  "ep": "5162109897577889",
+  "t": 16,
+  "src": 3,
+  "ans": "plain chocolate chips",
+  "gap": 13
+ },
+ {
+  "ep": "4290116794255005",
+  "t": 24,
+  "src": 9,
+  "ans": "MGRAJAN(IMGR)",
+  "gap": 15
+ },
+ {
+  "ep": "8082206935193971",
+  "t": 16,
+  "src": 1,
+  "ans": "plain chocolate chips",
+  "gap": 15
+ },
+ {
+  "ep": "0707056937277675",
+  "t": 18,
+  "src": 12,
+  "ans": "Chickpea & Roasted Red Pepper Lettuce Wraps with Tahini Dressing",
+  "gap": 6
+ },
+ {
+  "ep": "3348799379352947",
+  "t": 23,
+  "src": 22,
+  "ans": "Do you want to go to California with me for a hiking trail next Sunday?",
+  "gap": 1
+ },
+ {
+  "ep": "4845872883561817",
+  "t": 21,
+  "src": 16,
+  "ans": "3-Ingredient Chickpea with Kale & Sun-Dried Tomatoes",
+  "gap": 5
+ },
+ {
+  "ep": "9189867814520225",
+  "t": 16,
+  "src": 10,
+  "ans": "Seagate One Touch",
+  "gap": 6
+ },
+ {
+  "ep": "3763983740740444",
+  "t": 17,
+  "src": 6,
+  "ans": "the french laundry cookbook",
+  "gap": 11
+ },
+ {
+  "ep": "4197352222778463",
+  "t": 20,
+  "src": 19,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 1
+ },
+ {
+  "ep": "2956632148165617",
+  "t": 28,
+  "src": 21,
+  "ans": "Cucumber-Tuna Salad Sandwich",
+  "gap": 7
+ },
+ {
+  "ep": "0759690525878634",
+  "t": 19,
+  "src": 18,
+  "ans": "Do you want to watch a movie this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "9564029938850542",
+  "t": 17,
+  "src": 15,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 2
+ },
+ {
+  "ep": "4403860559128869",
+  "t": 20,
+  "src": 1,
+  "ans": "chocolate chips",
+  "gap": 19
+ },
+ {
+  "ep": "8752533940405526",
+  "t": 18,
+  "src": 1,
+  "ans": "egg",
+  "gap": 17
+ },
+ {
+  "ep": "8752533940405526",
+  "t": 27,
+  "src": 10,
+  "ans": "plain chocolate chips",
+  "gap": 17
+ },
+ {
+  "ep": "7359165672610537",
+  "t": 25,
+  "src": 24,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "2295630087694168",
+  "t": 17,
+  "src": 1,
+  "ans": "plain chocolate chips",
+  "gap": 16
+ },
+ {
+  "ep": "7975070092110270",
+  "t": 16,
+  "src": 6,
+  "ans": "chocolate chips",
+  "gap": 10
+ },
+ {
+  "ep": "0865597016566875",
+  "t": 16,
+  "src": 4,
+  "ans": "Bottega Louie",
+  "gap": 12
+ },
+ {
+  "ep": "2910818438156082",
+  "t": 16,
+  "src": 4,
+  "ans": "a travel guide to Louvre Museum",
+  "gap": 12
+ },
+ {
+  "ep": "1694780222663274",
+  "t": 22,
+  "src": 13,
+  "ans": "125",
+  "gap": 9
+ },
+ {
+  "ep": "4246514841246115",
+  "t": 26,
+  "src": 25,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "5784324835158708",
+  "t": 16,
+  "src": 4,
+  "ans": "BTS",
+  "gap": 12
+ },
+ {
+  "ep": "9627607244239789",
+  "t": 18,
+  "src": 6,
+  "ans": "plain chocolate chips",
+  "gap": 12
+ },
+ {
+  "ep": "6543479041051564",
+  "t": 20,
+  "src": 12,
+  "ans": "vanilla extract",
+  "gap": 8
+ },
+ {
+  "ep": "6543479041051564",
+  "t": 28,
+  "src": 16,
+  "ans": "plain chocolate chips",
+  "gap": 12
+ },
+ {
+  "ep": "2832280595779642",
+  "t": 17,
+  "src": 16,
+  "ans": "Do you want to go for a hiking trail with me this Saturday?",
+  "gap": 1
+ },
+ {
+  "ep": "7520509303474688",
+  "t": 16,
+  "src": 8,
+  "ans": "3 for Africa",
+  "gap": 8
+ },
+ {
+  "ep": "3404667230767182",
+  "t": 20,
+  "src": 19,
+  "ans": "Do you want to watch a movie this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "1443556204814476",
+  "t": 17,
+  "src": 10,
+  "ans": "222",
+  "gap": 7
+ },
+ {
+  "ep": "7169159562965209",
+  "t": 16,
+  "src": 11,
+  "ans": "the arabian nights book",
+  "gap": 5
+ },
+ {
+  "ep": "2086198117828030",
+  "t": 21,
+  "src": 19,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 2
+ },
+ {
+  "ep": "3868623941386303",
+  "t": 26,
+  "src": 22,
+  "ans": "vanilla extract",
+  "gap": 4
+ },
+ {
+  "ep": "3868623941386303",
+  "t": 34,
+  "src": 22,
+  "ans": "plain chocolate chips",
+  "gap": 12
+ },
+ {
+  "ep": "8575996886815689",
+  "t": 17,
+  "src": 1,
+  "ans": "chocolate chips",
+  "gap": 16
+ },
+ {
+  "ep": "1061013841071298",
+  "t": 30,
+  "src": 29,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 1
+ },
+ {
+  "ep": "6693147082625165",
+  "t": 25,
+  "src": 24,
+  "ans": "Do you want to watch a movie this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "4502094804421903",
+  "t": 19,
+  "src": 18,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 1
+ },
+ {
+  "ep": "8738042434639132",
+  "t": 20,
+  "src": 13,
+  "ans": "notorious RGB book",
+  "gap": 7
+ },
+ {
+  "ep": "1805956871494065",
+  "t": 21,
+  "src": 17,
+  "ans": "Central Park",
+  "gap": 4
+ },
+ {
+  "ep": "6962145187322815",
+  "t": 21,
+  "src": 20,
+  "ans": "Do you want to watch a movie this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "9852152720147674",
+  "t": 18,
+  "src": 10,
+  "ans": "What Hurts The Most",
+  "gap": 8
+ },
+ {
+  "ep": "0925509378783825",
+  "t": 16,
+  "src": 10,
+  "ans": "how to win friends and influence people book",
+  "gap": 6
+ },
+ {
+  "ep": "9567715144786705",
+  "t": 16,
+  "src": 11,
+  "ans": "125",
+  "gap": 5
+ },
+ {
+  "ep": "4914446078700179",
+  "t": 16,
+  "src": 11,
+  "ans": "the body keeps the score book",
+  "gap": 5
+ },
+ {
+  "ep": "1668284502656108",
+  "t": 18,
+  "src": 16,
+  "ans": "Do you want to go for a hiking trail with me?",
+  "gap": 2
+ },
+ {
+  "ep": "1084880108783314",
+  "t": 17,
+  "src": 5,
+  "ans": "plain chocolate chips",
+  "gap": 12
+ },
+ {
+  "ep": "2572630558387334",
+  "t": 16,
+  "src": 10,
+  "ans": "a court of thorns and roses book",
+  "gap": 6
+ },
+ {
+  "ep": "1453005277289942",
+  "t": 17,
+  "src": 4,
+  "ans": "Imagine Dragons",
+  "gap": 13
+ },
+ {
+  "ep": "5171647423287403",
+  "t": 23,
+  "src": 22,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "3862443174629255",
+  "t": 17,
+  "src": 10,
+  "ans": "J's Ice Cream Parlor",
+  "gap": 7
+ },
+ {
+  "ep": "5282204457574359",
+  "t": 21,
+  "src": 19,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 2
+ },
+ {
+  "ep": "7577288951213675",
+  "t": 22,
+  "src": 21,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "7003321985159450",
+  "t": 20,
+  "src": 18,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 2
+ },
+ {
+  "ep": "1177930630437411",
+  "t": 18,
+  "src": 8,
+  "ans": "the french laundry cookbook",
+  "gap": 10
+ },
+ {
+  "ep": "1111305490053752",
+  "t": 25,
+  "src": 24,
+  "ans": "Do you want to go for a movie night with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "0000912578932237",
+  "t": 20,
+  "src": 11,
+  "ans": "chocolate chips",
+  "gap": 9
+ },
+ {
+  "ep": "8756720557997999",
+  "t": 16,
+  "src": 13,
+  "ans": "Thai Chicken Lunch Bowls(Meal Prep)",
+  "gap": 3
+ },
+ {
+  "ep": "2932869774462906",
+  "t": 19,
+  "src": 17,
+  "ans": "Do you want to watch a movie this Sunday night?",
+  "gap": 2
+ },
+ {
+  "ep": "4736925687442379",
+  "t": 40,
+  "src": 39,
+  "ans": "Do you want to see a movie with me this Sunday night?",
+  "gap": 1
+ },
+ {
+  "ep": "1747240178620910",
+  "t": 17,
+  "src": 11,
+  "ans": "the blazing world book",
+  "gap": 6
+ },
+ {
+  "ep": "3422884658698996",
+  "t": 27,
+  "src": 26,
+  "ans": "Do you want to go for a hiking trail with me this Sunday?",
+  "gap": 1
+ },
+ {
+  "ep": "1550095384067503",
+  "t": 16,
+  "src": 10,
+  "ans": "Veggie & Hummus Sandwich",
+  "gap": 6
+ },
+ {
+  "ep": "8515396296234203",
+  "t": 21,
+  "src": 18,
+  "ans": "Big Oven",
+  "gap": 3
+ }
+]
