@@ -1,0 +1,13 @@
+\section{Conclusion}
+The verifier that defines a delayed information need also labels which earlier screens answer it, so
+look-back trains on any corpus of agent trajectories without a person labeling anything. That
+supervision is the lever: it lifts a one-call full-history reader by 10.6 localization points and a
+per-screen scorer by 22.3, and it reverses which of the two architectures is better. The
+decomposition buys a further 6.9 points of localization and 2.1 end-to-end, neither of which a paired
+test separates, and 21.8 points at gaps of 8--12 screens, where one call must weigh many
+undifferentiated candidates. On a fourth sample held out from every design decision, both trained
+variants keep a 17--20 point localization margin over prompting and reach 49.5\% and 51.6\%
+end-to-end against 23.7\%, remaining indistinguishable from each other. Gaps of 13 or more screens
+stay open: both trained variants fall below prompting there, and a 3B scorer is the only variant that
+improves the latest needs. We also report two evaluation filters without which these measurements are
+not meaningful, one of which forced us to retract an earlier result of our own.
