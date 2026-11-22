@@ -1,0 +1,2716 @@
+[
+ {
+  "ep": "4671561041722435",
+  "t": 11,
+  "src": 4,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone Screen;name,url,playlist,station,album",
+   "Android Music Screen: Offers radio stations, playlists, and modes for electronic music genres and activities.",
+   "Android Music Player Screen: Offers radio stations, playlists, podcasts, curated modes for electronic music genres.",
+   "Music player screen with electronic music modes, stations, playlists, and curated mixes.",
+   "Android music player screen; contains radio stations, playlists, podcasts, curated modes for electronic music."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "6487767820341039",
+  "t": 9,
+  "src": 1,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities and method for chocolate chip cookies.",
+   "Cookie Recipe Screen: Contains ingredient quantities and method overview for baking cookies.",
+   "Cookies Recipe Screen: Contains ingredient quantities and method overview for baking cookies.",
+   "Cookie Recipe Screen: Contains ingredient quantities and method overview for chocolate chip cookies."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "6487767820341039",
+  "t": 16,
+  "src": 8,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Grocery & Electronics; name, price, department",
+   "Product search results screen: contains chocolate chips, vanilla extract, eggs, iPhone models inventory.",
+   "Product search screen with variants for chocolate chips, vanilla extract, eggs, and iPhone models.",
+   "Product search results screen containing chocolate chips, vanilla extract, eggs, and iPhone models.",
+   "Product search results screen: chocolate chips, vanilla extract, eggs, iPhone models by storage."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "6549063559400734",
+  "t": 9,
+  "src": 6,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Chinese Learning App; name, date, time, duration, category",
+   "Android Home Screen: Quick access to LTE status, date, app updates, and inbox summary.",
+   "Android learning app screen showing progress and inbox notifications",
+   "Android learning app screen with daily progress, inbox status, and navigation options.",
+   "Android App Screen: Daily Progress and Notifications for Language Learning and Messaging"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4718643165315556",
+  "t": 11,
+  "src": 6,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Home page; url, name, date, title",
+   "Android Search Results Screen: Contains sales data for Ford's top-selling vehicles and related query info.",
+   "Android Search Results Screen: Contains sales rankings and popularity data for Ford vehicles.",
+   "Android Search Screen: Contains sales data for Ford's best-selling vehicles over time.",
+   "Android Search Results Screen: Contains sales data for Ford's top-selling vehicles over time."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "6883498169028679",
+  "t": 14,
+  "src": 2,
+  "gap": 12,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   true,
+   false
+  ],
+  "cands": [
+   "Music screen; name, url, playlist, album, artist, song count",
+   "Music Library Screen: Contains rock playlists, albums, podcasts, and songs by various artists.",
+   "Rock Music Screen: Contains playlists, albums, podcasts with various rock music themes.",
+   "Rock Music Screen: Contains playlists, albums, podcasts, and songs with various artists.",
+   "Music Library Screen: Contains rock playlists, albums, songs, and podcasts for浏览隐藏内容需要消耗1点券，您确定要继续吗？用户请求中并未提及需要隐藏内容或额外"
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "5626012480565819",
+  "t": 11,
+  "src": 8,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Romance quiz screen; title, author, url, price",
+   "Romance Book Recommendation Screen: Quiz, Classics List, Purchase Links",
+   "Romance Reading Screen: Quiz for Book Recommendations, Classic Novels Info",
+   "Romance Book Screen: Offers quiz for personalized book recommendations, features classic novels details.",
+   "Romance Novels Screen: Book Recommendations, Quiz Access, Classic Titles Listing"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "8030620017268269",
+  "t": 9,
+  "src": 4,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Music Apps;name,station,curated_modes",
+   "Android music app screen; contains classical radio stations, modes, and study/relaxation options.",
+   "Classical Music Screen: Contains curated radio stations for work, studying, and relaxation modes.",
+   "Classical Music Screen: Offers curated radio stations for work, studying, and relaxation modes.",
+   "Classical Music Screen: Offers curated radio stations for work, studying, and relaxation modes."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "8707992413749285",
+  "t": 16,
+  "src": 7,
+  "gap": 9,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Task list; date, name, url, task",
+   "Recipe Screen with ingredient quantities and tasks due tomorrow",
+   "Recipe Screen: Contains ingredient quantities for baking chocolate chip cookies and task reminders.",
+   "Recipe Details Screen: Contains ingredient quantities for baking chocolate chip cookies and tasks due tomorrow.",
+   "Recipe List Screen: Contains ingredient quantities and task reminders for baking chocolate chip cookies."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "5111068661252078",
+  "t": 10,
+  "src": 2,
+  "gap": 8,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   true,
+   false,
+   false
+  ],
+  "cands": [
+   "Meeting screen;pmi,meeting id,contact,schedule",
+   "Meeting Controls Screen: Contains PMI, meeting start, video options, team chat, schedule functions.",
+   "Android meeting app screen; contains personal meeting IDs, start options, and meeting schedules.",
+   "Meeting Controls Screen: Contains PMI, meeting start, video options, schedule, contacts, team chat",
+   "Android Meeting Screen: Contains PMI, schedule options, team chat, and meeting controls."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "8711601764652643",
+  "t": 7,
+  "src": 4,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search query;url,name,category,description",
+   "Android search results screen for video editing apps - contains app names and brief descriptions.",
+   "Android search results screen: Video editing apps directory",
+   "Android search results screen: video editing apps names and brief descriptions",
+   "Android search results screen: video editing apps names and brief descriptions"
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "3422420998969112",
+  "t": 11,
+  "src": 4,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Job Listings; name, location, salary, position, company",
+   "Job Listings Screen: Contains salaries, locations, and job titles for Digital Marketing Specialist roles in Atlanta.",
+   "Job Listings Screen: Contains salaries, locations, and job titles for Digital Marketing Specialists in Atlanta.",
+   "Job Listings Screen: Contains salary ranges and locations for Digital Marketing Specialist roles in Atlanta",
+   "Job Listings Screen: Contains salaries, locations, and job titles for Digital Marketing Specialist roles in Atlanta"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "6597019043443007",
+  "t": 10,
+  "src": 2,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "YouTube search screen; name, url, location, category",
+   "Android Search Screen: Locations, activities, and videos related to Los Angeles and Spanish learning.",
+   "Android search screen: Locations, videos, and content related to Los Angeles and Spanish learning.",
+   "Screen: Search Results Type; Contains location-based best lists and language learning videos",
+   "Android Search Screen: Locations, videos, and topics related to best spots in Los Angeles and beyond."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8716047928602373",
+  "t": 11,
+  "src": 5,
+  "gap": 6,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Job application screen; name, title, location, skills, education",
+   "Android job listing screen for customer support role with education and experience requirements.",
+   "Android job listing screen for Customer Support with sales and education requirements.",
+   "Android job listing screen for customer support role with qualification requirements",
+   "Job Posting with Qualifications and Education Requirements for Customer Support Role"
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "5867525955320435",
+  "t": 10,
+  "src": 7,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Smartwatch recommendation;name,posts,replies",
+   "Android Discussion Screen - Smartwatch Health Detection Capabilities Mentions",
+   "Android Discussion Screen - Smartwatch Health Features and Diagnostics Capabilities Mentioned",
+   "Android Discussion Screen: Smartwatch Health Monitoring Capabilities and Diagnostic Tests Mentioned",
+   "Android Discussion Screen - Smartwatch Health Detection Capabilities and Diagnostics_mentions"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "0287429305729902",
+  "t": 7,
+  "src": 4,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Shopping; name, address, url, phone, rating, hours, type",
+   "Screen Type: Search Results Directory; Contains: Store Names, Ratings, Locations, Reviews, Operating Hours",
+   "Directory Screen: Contains names, ratings, locations of vintage clothing stores and shopping areas in Los Angeles.",
+   "Directory Screen: Contains names, ratings, locations of vintage clothing stores in Los Angeles",
+   "Screen Type: Search Results Directory; Contains: Store Names, Ratings, Categories, Locations, Operating Status"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "5007929631346729",
+  "t": 13,
+  "src": 10,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Music list;name, artist, rank, genre, url",
+   "Screen: Music Playlist Overview; Contains: Top Reggae Songs Rankings, Artists, Song Titles",
+   "Reggae Songs Screen: 2023 Top Reggae Tracks, Artists, and Spotify Rankings Directory",
+   "Screen Type: Music List; Values: Top Reggae Songs 2023, Artists, Song Titles",
+   "ReggaeSongsListScreen: Contains top 100 2023 reggae tracks rankings and artist previews"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "8237912005687977",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone Screen;url,description,timecodes,appreviews",
+   "Android Exercise App Review Screen: Contains time-coded app name listings and brief descriptions.",
+   "Screen: App Overview; Contains: Timecodes, App Names, Brief Descriptions",
+   "Exercise app review timescreen; contains timecodes for various fitness app segments.",
+   "Exercise app review timescreen; contains timecodes for various fitness app segments"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "4308015212259487",
+  "t": 9,
+  "src": 8,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Getting Started; name, features, calendar, eisenhower_matrix",
+   "TickTick App Screen: Task Management Features and Language Learning Options Directory",
+   "Android App Screen: Task Manager & Language Learning Options Menu",
+   "Android Task Management Screen: Contains app ratings, language learning options, and task management features.",
+   "Android App Screen: Task Management and Language Learning Options Information"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "0117550419342475",
+  "t": 22,
+  "src": 21,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Message; name, date, url",
+   "Messages Screen: Contains invitation requests for activities like hiking and看电影(注：看电影意为“看電影”或“see a movie”的中文翻译，此处可以调整为英文保持一致)",
+   "Chat history screen containing multiple invitation messages for activities",
+   "Chat History Screen: Contains invitation messages for hiking and movie plans.",
+   "Android chat screen containing invitation messages for hiking and movie plans."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3966052144604723",
+  "t": 8,
+  "src": 4,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Jobs; name, location, company, date, description",
+   "Job listing screen for remote copywriter positions with applicant counts and location details.",
+   "Job Listings Screen: Contains remote copywriter positions and recent activity updates.",
+   "Job listings screen for remote copywriter positions with application status and location details.",
+   "Jobs Screen: Remote Copywriter Positions, Application Status, Location"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "0206048389903107",
+  "t": 9,
+  "src": 5,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Work;url, date, tasks, calendar",
+   "Android Task List Screen: Contains dates, tasks, links to audio content, and personal notes.",
+   "Android Task List Screen: Contains dates, tasks, personal links, and reminders.",
+   "Android Reminder Screen: Dates, Tasks, Links to Media Podcasts, Yoga, Swimming Training",
+   "Android Notes Screen: Contains dates, tasks, links to media episodes, and a personal wishlist."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "5314124109651318",
+  "t": 7,
+  "src": 4,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Search results;url,name,date,definition,ingredients,recipe,rating",
+   "Android Search Results Screen: Tofu definition, ingredients, preparation method, and related recipes links.",
+   "Android search results screen; contains tofu definition, ingredients, and制作步骤信息(Android搜索结果屏幕；包含豆腐定义、成分和制作步骤信息)",
+   "Android search screen with tofu definition, ingredients, and制作过程信息英文版安卓搜索页面含豆腐定义、原料和制作过程信息",
+   "Android search results screen; tofu definition, ingredients, and制作过程可能略长于要求，但核心信息已包含：提供豆腐定义、成分和制作方法的相关链接和概述。为了符合"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "5484338176888185",
+  "t": 11,
+  "src": 5,
+  "gap": 6,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Web page; url, name, text, date",
+   "Android Search Results Screen: Car Models, Sales Rankings, Related Links Directory",
+   "Android search results screen: car models, sales rankings, image, shopping, video, news links.",
+   "Android Search Results Screen: Vehicle Models, Sales Rankings, Related Websites Links",
+   "Android search results screen: car models, sales rankings, related searches"
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "3919166053620135",
+  "t": 12,
+  "src": 8,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe list;url,name,duration,cuisine,ratings",
+   "Recipe List Screen: Contains meal names, preparation times, dietary types, rating counts",
+   "Recipe Screen: Contains cooking time, dietary type, rating, and dish description values.",
+   "Recipe Screen: Contains meal names, time required, dietary tags, and rating counts.",
+   "Recipe Screen: Contains cooking times, dietary tags, rating counts for vegetarian, vegan meals."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8959209827921433",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "News screen; title, category, source, summary, poll, video, opinion",
+   "CNN App Screen: Recent U.S. Politics and Trial Related News Updates and Polls Summary",
+   "Android News Feed Screen: Contains Top News, Polls, and Opinion Pieces on Politics and Business.",
+   "CNN App Screen: Latest U.S. Politics and World News Polls Opinions",
+   "CNN App Screen: Recent U.S. Politics and Trial Related News Polls and Opinions"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "8959209827921433",
+  "t": 11,
+  "src": 1,
+  "gap": 10,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "News screen; title, category, source, summary, poll, video, opinion",
+   "Android News Screen: Recent US politics and trial coverage, poll results, opinions.",
+   "News Feed Screen: Contains Top News, CNN Updates, Polls, Videos, and Opinions.",
+   "News Feed Screen: Top Stories, Polls, Videos, Opinions on Politics and Trials",
+   "NewsFeedScreen: Contains top news, politics updates, business headlines, and poll results."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8959209827921433",
+  "t": 18,
+  "src": 16,
+  "gap": 2,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Inbox;date,name",
+   "Android Docs Screen: Contains timestamps, document names, and open dates for various files.",
+   "Document history screen showing dates and versions of \"Healthy Lunch Plan\" documents.",
+   "Android Docs Screen: Contains timestamps, document names, and open dates for various documents.",
+   "Document history screen showing dates and versions of \"Healthy Lunch Plan\" documents."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "6600542294803171",
+  "t": 8,
+  "src": 5,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   false,
+   true
+  ],
+  "cands": [
+   "Cocktail bar listings;name,address,phone,rating,closing time,reviews",
+   "Android Cocktail Bars Directory: Contains names, ratings, prices, addresses, and operating hours.",
+   "Screen Type: Nightlife Directory Contains: Locations, Ratings, Price Ranges, Reviews",
+   "Screen Type: Bar Directory Contains Location, Rating, Price Range, and Operating Hours",
+   "Screen Type: Bar Directory Contains Location, Rating, Price Range, Opening Hours"
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "3483217410809009",
+  "t": 8,
+  "src": 4,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone Screen;name,address,price,rating,location",
+   "Android Fitness Locations Screen: Contains ratings, names, statuses of gyms and fitness centers in Los Angeles area.",
+   "Screen Type: Location Ratings; Contains: Places, Ratings, Status (Open/Closed), Distance",
+   "Screen Type: Location Rating Directory; Contains: Locations, Ratings, StatusesModule\tOutput ONLY the line.: Screen Type: Location Rating Directory; Contains: Lo",
+   "Screen Type: Location Rating Directory; Contains: Place Names, Ratings, Statuses"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3481361571073755",
+  "t": 37,
+  "src": 10,
+  "gap": 27,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone screen; name, price, features, interior, technology",
+   "Car Specs Screen: Nissan Kicks pricing, seating, features information.",
+   "Car Specs Screen: Price, Features, and Capacity of Nissan Kicks SUV",
+   "Nissan Kicks Specifications Screen: Price, Features, and Capacity Details",
+   "Car Details Screen: Prices, Features, and Specifications for Nissan Kicks SUV"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "6173632556380220",
+  "t": 25,
+  "src": 24,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   false,
+   true
+  ],
+  "cands": [
+   "Message; name, date, time",
+   "Chat thread with message invitations; includes date, time, and activity proposals.",
+   "Conversation Screen: Invitation Dates and Times for Hiking and Movie Offers",
+   "Chat thread with Victor James; date proposals and responses; times mentioned",
+   "Chat Screen: Invitation Dates and Times for Hiking and Movie Plans"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "6896538743586612",
+  "t": 16,
+  "src": 11,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calculator screen; name, buttons, operation",
+   "Calculator Screen with Basic Arithmetic and Memory Functions - Ideal for Quick Math Calculations",
+   "Calculator Screen with Basic Math Functions and Memory Options - Ideal for Quick Math Solutions",
+   "Calculator screen with basic arithmetic operations and memory functions for numerical calculations.",
+   "Calculator Screen with Basic Arithmetic Functions and Memory Options"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "1513107208050270",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Workout Screen; name, url",
+   "Android video timeline: fitness app reviews and timecodes for Nike, Adidas, Home Workout, others.",
+   "Directory: Android Fitness App Comparison Screen - Contains app reviews and timecodes for various fitness apps.",
+   "Android Video Timestamps Screen: Exercise App Reviews and Descriptions.timestamps",
+   "Android video playlist screen with timecodes for fitness app reviews and descriptions."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "4796743595270034",
+  "t": 9,
+  "src": 6,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone screen; url, name, date",
+   "Morning Exercise Links Screen: Yoga, Tai Chi resources and healthy diet podcast links.",
+   "Morning Exercise Links Screen: Contains yoga, tai chi links and healthy diet preparation guide.",
+   "Yoga and Tai Chi Resources Screen: Links to podcasts, music, and articles for morning yoga and healthy diets.",
+   "Yoga Resources Screen: Links to Yoga Podcasts, Music, and Healthy Diet Information"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4156326371078458",
+  "t": 7,
+  "src": 4,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone screen; address, price, url",
+   "Apartment Details Screen: Includes price, bedrooms, size, address, contact options.",
+   "Apartment Listing Screen: Includes price, bedrooms, bathrooms, size, address, contact options.",
+   "Apartment Details Screen: Includes rent, bedroom count, size, address, contact actions.",
+   "Screen: Rental Listing Details; Contains: Price, Bed Bath, Sqft, Address, Contact Actions"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "3821716758508999",
+  "t": 9,
+  "src": 4,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Job Listings; name, location, position, salary, benefits",
+   "Job listings screen for Content Writers in Atlanta, GA with salary ranges and benefits information.",
+   "Content Writer Job List Screen: Salary Ranges, Benefits for Atlanta GA Positions",
+   "Job listings screen for Content Writers in Atlanta; includes salary ranges and benefits information.",
+   "Content Job Listings Screen: Salary Ranges and Company Benefits for Content Writer Positions in Atlanta, GA"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "1393355388421096",
+  "t": 9,
+  "src": 4,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Google screen; name, url, location, rating, reviews, category",
+   "Hiking Trails Screen: Contains trail ratings, locations, and distances for hikes in California",
+   "Hiking Trails Screen: Contains trail ratings, locations, and distances for California hikes.",
+   "Hiking Trails Screen: Contains trail ratings, locations, and distances for hikes in California.",
+   "Hiking Trails Directory: Popular trails, ratings, reviews, locations in California"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "6936549805091771",
+  "t": 9,
+  "src": 5,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone screen; name, address, url, rating, hours, category",
+   "Android Bookstore Search Screen: Contains names, ratings, addresses, opening times of bookstores in Los Angeles.",
+   "Screen Type: Bookstore Directory; Contains: Ratings, Reviews, Location, Opening Hours for Top Bookstores in Los Angeles",
+   "Bookstores in Los Angeles Directory: ratings, names, addresses, opening hours for independent bookstores",
+   "Android Bookstores Directory Screen: Lists independent bookstores in Los Angeles with ratings and hours."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "2846375729187115",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Fitness apps; name, description, trainer, training_plan, instruction",
+   "Fitness Apps Directory: Reviews and Timecodes for Workout, Running Apps",
+   "Fitness App Directory: Reviews and Timecodes for Workout Apps and Running Apps Videos",
+   "Fitness Apps Directory: Reviews and Comparisons of Top Workout Apps - Timecode Reference",
+   "Fitness Apps Directory: Reviews and Timecodes for Exercise Apps Including Peloton and Apple Fitness Plus"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "6988035676925616",
+  "t": 9,
+  "src": 4,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Job;name, location, salary, date posted",
+   "Project Manager Job Listings Screen: Contains location, salary range, job type, and date posted information.",
+   "Job listings screen with project manager roles, salaries, locations, and application details for Atlanta, GA area.",
+   "Project Manager job listings; includes location, salary range, and application details.",
+   "Project Manager Job Listings Screen: Contains location, salary range, job type, and posting age information."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "8474915663527913",
+  "t": 8,
+  "src": 6,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   false,
+   true
+  ],
+  "cands": [
+   "Tasks; url, name, date",
+   "Tasks List Screen: Contains yoga links and a recipe start point for tomorrow",
+   "Task List Screen: Contains links for yoga and a recipe preparation guide.",
+   "Android Task List Screen: Contains links to yoga videos and a recipe start point.",
+   "Android Task List Screen: Contains links to yoga episodes and a recipe start point."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "0889483286020719",
+  "t": 9,
+  "src": 5,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Lunch Suggestions;name,description,category,recommendation",
+   "Lunch Ideas Screen: Healthy meal options and nutrition advice for lunch planning",
+   "Lunch Ideas Screen: Offers healthy meal options with nutritional benefits for dietary planning.",
+   "Lunch Ideas Screen: Contains healthy meal options and diet recommendations for lunch meals.",
+   "Lunch Ideas Screen: Contains healthy meal options and dietary recommendations for lunch."
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "2267808813013499",
+  "t": 9,
+  "src": 8,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search history; name, url, product",
+   "Product List Screen: Contains prices, quantities, and popular item categories for electronics, fitness, and office supplies.",
+   "Product listing screen with electronics, fitness equipment, and office supplies(categories and quantities)",
+   "Shopping Screen:电子产品、家电、办公用品价格与库存查询",
+   "Product List Screen: Electronics, Appliances, Sports Gear, Office Supplies Prices, Quantities Available"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3995783186884713",
+  "t": 11,
+  "src": 4,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   false,
+   true
+  ],
+  "cands": [
+   "Job listings; name, location, company, salary, benefits",
+   "Android Job Search Screen: Customer Service Representative Positions with Location, Salary, and Application Info",
+   "Customer Service Job Listings Screen: Contains remote job positions, companies, locations, and application statuses.",
+   "Job Listings Screen: Customer Service Positions with Location, Salary, and Application Details",
+   "Job listings screen containing remote and hybrid Customer Service Representative positions with various benefits."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "0426411358647049",
+  "t": 11,
+  "src": 1,
+  "gap": 10,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search screen; url, name, text, date",
+   "Android search results screen containing news, shopping, and entertainment links",
+   "Android Browser Screen: News articles, shopping sites, social media quick links",
+   "Android Home Screen: Quick access to apps, news, and online shopping links.",
+   "Android home screen: Quick access to search, social media, shopping, news articles."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "0426411358647049",
+  "t": 18,
+  "src": 16,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Direct Messages;message,link",
+   "Chat Screen: Contains direct messages, timestamps, and action prompts.",
+   "Android Messaging Screen: Contains direct messages, timestamps, and sent links",
+   "Android Messaging Screen: Contains direct messages, timestamps, and sent links",
+   "Android Messaging Screen: Contains direct message notifications and time stamps"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3043755105684893",
+  "t": 8,
+  "src": 1,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Welcome screen; name, url, description, video count",
+   "Android VR Course Screen: Contains video titles and metadata for Oculus Quest development tutorials.",
+   "Android YouTube Screen: VR Development Course Videos and Subscription Info",
+   "Android YouTube Video List: VR Development Course - Oculus Quest Videos",
+   "Oculus Quest VR Development Course Video Directory: Introductions, Tutorials, AI Basics"
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "4952142890535262",
+  "t": 12,
+  "src": 5,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   false,
+   true
+  ],
+  "cands": [
+   "Playlist; name, url, artist, genre, date",
+   "Music Playlist Screen: Contains funk music titles, artists, and playlist names",
+   "Music playlist screen with funk genres and artist names - 2024 updated playlist",
+   "Screen: Music Playlist Directory - Contains genres, mixes, artist tags, and playlist names",
+   "Music Playlist Screen: Contains funk music titles, artists, and playlist names"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "1221334750816089",
+  "t": 18,
+  "src": 5,
+  "gap": 13,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Hiking trail;name,location,rating,review_count",
+   "Hiking Trails Screen: Contains ratings, reviews for local trails, definitions, and popular queries.",
+   "Screen: Hiking Trails Directory - Contains ratings, reviews, locations for trails in Mountain View, CA",
+   "Hiking Trails Directory: Contains ratings, descriptions, activities for trails in Mountain View, CA",
+   "Hiking Trails Screen: Contains ratings, reviews, and information on trails in Mountain View, CA"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "1077645421818188",
+  "t": 3,
+  "src": 1,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Podcast;url",
+   "Android Reminder Screen: Yoga Schedule and Podcast Links for Wellness",
+   "Morning Yoga Schedule and Healthy Podcast Links Screen",
+   "Morning Yoga Schedule and Health Podcast Links Screen",
+   "Morning Yoga Reminders and Health Podcast Links Screen"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4725077848702404",
+  "t": 16,
+  "src": 7,
+  "gap": 9,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Opera song; title, artist, composer, duration, price, genre, lyrics",
+   "Opera song screen with lyrics preview; includes song title, artist, and time indicator.",
+   "Opera song lyrics preview screen for \"Think of Me\" with time and volume controls",
+   "Opera song screen with lyrics preview; contains song title, artist, and partial lyrics.",
+   "Opera lyrics screen for \"Think of Me\" with song timer and lyrics preview options."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "4377594271498031",
+  "t": 14,
+  "src": 7,
+  "gap": 7,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   false,
+   true,
+   true
+  ],
+  "cands": [
+   "Lyrics preview; lyrics",
+   "Music player screen with song details, timer, and option to view lyrics.",
+   "Music Player Screen with Song Metadata and Playback Time",
+   "Music player screen with song title, duration, and option to view lyrics.",
+   "Music player screen with song details, lyrics preview option, and current time stamp."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "4032045617232742",
+  "t": 10,
+  "src": 7,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Music venues;name,location",
+   "Screen Type: Venue List; Values: Location, Name, Description, Image Source",
+   "Screen Type: Entertainment Venue List; Contains: Location (Los Angeles), Category (Live Music Venues), Specific Venue (Hollywood Bowl)",
+   "Screen Type: Venue List; Values: Location, Name, Image Source, Description Snippet",
+   "Screen Type: Entertainment List; Contains Venue Names, Locations, Photos, Network Status"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8833338931421551",
+  "t": 14,
+  "src": 7,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search screen; name, url,Popular reels",
+   "Android Search Screen: Recent searches, popular content, temperature-based GIF suggestions",
+   "Android Book App Screen: Search, Recent Searches, Popular Reels, Temperature GIF References",
+   "Android search screen with recent searches, popular content, and temperature-related GIFs.",
+   "Android search results screen with recent searches, popular content, and temperature-related GIF information."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "2639693155410295",
+  "t": 11,
+  "src": 3,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Music playlist;name,album,artist",
+   "Music Selection Screen: Contains recent album and genre search options across various music types.",
+   "Music Selection Screen: Recent album and genre searches for various music styles.",
+   "Music Selection Screen: Recent music album and genre searches for various artists",
+   "Music Selection Screen: Recent album and song search history across various genres."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3883696969470006",
+  "t": 4,
+  "src": 1,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Search page; url, name, date",
+   "Pop Music Screen: Contains directories of popular pop/rock bands and years active",
+   "Pop Music Bands Directory with Top Rock/Pop Lists Screen: Contains names of famous pop bands and top 100 rock/pop lists.",
+   "Pop Music Directory: Top Bands List Screen - Contains names of famous pop/rock bands ranked by popularity.",
+   "Screen: Web Search Results Type: Popular Pop Music Bands and Rock Groups List"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "5613646738300699",
+  "t": 14,
+  "src": 10,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Music playlist; title, artist, duration, genre",
+   "Screen Type: Music Rankings; Contains: Top Metal Songs, Artists Collaborations, Song Durations",
+   "Screen Type: Music Reviews; Contains: Song Titles, Artists, Durations, Genres",
+   "Screen Type: Music Reviews; Contains: Song Titles, Artists, Durations, Collaborations",
+   "Screen: Music Rankings 2023 - Lists top metal songs including track names, artists, and durations."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4136514712327151",
+  "t": 18,
+  "src": 16,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   false,
+   false
+  ],
+  "cands": [
+   "Messages; name, date, url",
+   "Android chat screen containing invitation messages and meeting links.",
+   "Chat screen containing user messages, event invitations, and meeting links.",
+   "Android chat screen containing invitation messages and meeting links.",
+   "Android Chat Screen: Contains user messages, event invitations, and meeting links."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "2320840713202919",
+  "t": 8,
+  "src": 3,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone Screen; Location, Amenities, Price, Contact, Commute",
+   "Apartment Listing Screen: Includes location, price, availability, and unit details.",
+   "Lease Screen: Location, Price, Unit Details, Availability, Contact Information",
+   "Apartment Listing Screen: Includes location, price, availability, and contact information.",
+   "Apartment Listing Screen: Includes location, price, availability, and unit details."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "1743404487634682",
+  "t": 6,
+  "src": 5,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone screen; name, keyword",
+   "Android search screen: External hard drive recommendations and contact keypads",
+   "Android search screen - external hard drive recommendations and user input values",
+   "Android search screen for external hard drive recommendations; contains user queries and keywords.",
+   "Android search screen: External hard drive recommendations and general queries."
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "0134720948350318",
+  "t": 3,
+  "src": 1,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Phone screen; url, name, date",
+   "Yoga schedule and wellness links screen: yoga times, podcast URLs for health and gratitude.",
+   "Morning Yoga Schedule and Links to Health Podcasts and Music Screen",
+   "Yoga reminders and links to health podcasts; Screen Type: Mixed Content Reminder",
+   "Yoga schedule and links to health podcasts; Potential interests: wellness, diet, gratitude."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "0611471100546331",
+  "t": 18,
+  "src": 7,
+  "gap": 11,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Lyrics; text",
+   "Lyrics Screen: Contains partial lyrics for \"The Sound of Silence\" by Simon & Garfunkel.",
+   "Lyrics Screen: Partial lyrics of \"The Sound of Silence\" by Simon & Garfunkel",
+   "Lyrics Screen: Partial song lyrics for \"The Sound of Silence\" by Simon & Garfunkel.",
+   "Lyrics Screen: Partial song lyrics for \"The Sound of Silence\" by Simon & Garfunkel."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "5397176217782835",
+  "t": 14,
+  "src": 7,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Itinerary; date, location, name, comment",
+   "Android Travel Itinerary Screen: NYC Attractions and Activities Schedule",
+   "Itinerary Screen: NYC travel plan with daily attractions and activities list",
+   "Itinerary Screen: NYC travel plan with daily sightseeing locations and attractions.",
+   "Itinerary Screen: New York City travel plan with attractions and activities for two days"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8739039035705949",
+  "t": 12,
+  "src": 7,
+  "gap": 5,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   true,
+   true
+  ],
+  "cands": [
+   "Phone Screen;url,name,date,ranked,feedback,popular_car",
+   "Android Search Results Screen: Vehicle Sales Info, Popularity Rankings, Specific Model Details",
+   "Search Results Screen: Vehicle Sales Info, Popularity Rankings, Model Details",
+   "Android Search Results Screen: Vehicle Sales Data and Popularity Rankings for Ford Cars",
+   "Search Results Screen: Vehicle sales info, popularity rankings, and model details for Ford cars."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "8866329876734101",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone Screen;name, address, price, beds, baths, move-in-date, filters, amenities",
+   "Apartments Screen: Prices, Locations, Bed/Bath Counts, Move-In Dates, Availability",
+   "Apartments Screen: Location, Price, Beds, Baths, Move-In Date, Availability",
+   "Apartment Listing Screen: Includes price, location, availability, room count, pet policy.",
+   "Apartment Listing Screen: Includes price, location, bed/bath count, availability, and contact options."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8692971210185110",
+  "t": 11,
+  "src": 4,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Job listings; name, location, company, position, date",
+   "Job Listings Screen: Contains recent product management positions with remote options and benefits information.",
+   "Job listings screen with remote positions for product management roles and application statuses.",
+   "Job listings screen for remote Product Manager roles with easy apply options and company benefits information",
+   "Job listings screen for product management roles with remote options and application statuses"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "6562237976111081",
+  "t": 7,
+  "src": 6,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calendar; date, event, day",
+   "Schedule Screen with dates, weekly layout, and event reminder for an NBA game",
+   "Calendar Screen with Date Range and Special Event Reminder: NBA Game",
+   "Schedule Screen with Date, Weekday, and Event Reminders for Planning",
+   "Schedule Screen: Date, Weekdays, Special Events如需更符合要求的答案，请参考：\"Schedule Screen: Dates, weekdays, upcoming events提醒：答案需要优化以符合20字以内及"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "5537854707869610",
+  "t": 9,
+  "src": 1,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone home screens;name,url,price",
+   "Android Search Screen: Contains search suggestions, app links, and recent news snippets.",
+   "Android search screen with web links to news, shopping, and entertainment sites; recent article on consumer behavior.",
+   "Android search screen; contains app links, websites, and news snippets.",
+   "Android search screen; offers app links, website shortcuts, news snippets."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "7284396075383084",
+  "t": 8,
+  "src": 5,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Restaurant; name, address, url, price, cuisine, rating, opening_hours",
+   "Screen Type: Restaurant Directory; Contains Names, Ratings, Prices, Addresses, Open Times",
+   "Screen Type: Restaurant Directory Contains: Names, Ratings, Prices, Addresses, Open Times",
+   "Directory line: Android dining screen containing restaurant names, ratings, prices, addresses, and operating hours.",
+   "Restaurant Directory Screen: Contains names, ratings, prices, addresses, and operating times."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "7110040512633841",
+  "t": 11,
+  "src": 8,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Coffee guide;name,location,description,url",
+   "Coffee shop recommendations screen containing names, locations, and brief descriptions of cafes in Los Angeles.",
+   "Coffee shop directory screen with names, locations, and brief descriptions of top cafes in Los Angeles.",
+   "Coffee Shop Directory Screen with names, locations, and brief descriptions of LA cafes",
+   "Coffee shop directory screen with names, locations, and descriptions of top cafes in Los Angeles."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "8779407391914932",
+  "t": 12,
+  "src": 8,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   true
+  ],
+  "cands": [
+   "Phone screen; name, date, url, price, specification, comment",
+   "Laptop Recommendations Screen: Contains user budgets, brands, models, and component specifications.",
+   "Laptop Recommendation Thread: User Budget, Brand Model, Price Range, Specifications Discussion",
+   "Laptop Recommendation Thread: Budget, Brand, Model, Specifications Discussed",
+   "Laptop Discussion Screen: User Recommendations and Budget Considerations Under 30k"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "1478415680025399",
+  "t": 9,
+  "src": 4,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Sports schedule; date, team, score, odds, time",
+   "Upcoming Baseball Games Screen: Contains odds, scores, dates, times for MLB matches.",
+   "Upcoming MLB games schedule with odds; scores watchable; sportsbook betting options.",
+   "Upcoming MLB Games Screen: Odds, scores, schedules for baseball teams",
+   "Upcoming MLB games schedule with odds and scores screen for decision-making"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "3176340760198423",
+  "t": 20,
+  "src": 6,
+  "gap": 14,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Song metadata; title, artist, duration, album",
+   "Music player screen with song time and progress details",
+   "Android Music Player Screen: Song time, lyrics, and album info displayed",
+   "Music player screen showing song title, artist, time, and progress.",
+   "Music player screen with song title, artist, time, and progress details."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3727649232699259",
+  "t": 15,
+  "src": 2,
+  "gap": 13,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calculator screen; name, mode, functions, values",
+   "Scientific Calculator Screen: Features math functions, constants, and conversions for numerical calculations.",
+   "Calculator Screen with Math, Statistical, and Scientific Function Values",
+   "Calculator Screen with Math Functions, Constants, and Conversion Tools",
+   "Scientific Calculator Screen: Contains math constants, operations for calculations, trigonometric functions, and more."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "6567858634781199",
+  "t": 18,
+  "src": 9,
+  "gap": 9,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Famous Horror Book Screen; title, meta_task",
+   "Android Search Screen: Contains date, numbers, task notes, and book search prompt.",
+   "Android Note Screen: Contains dates, codes, task notes, and book references.",
+   "Android Search Screen: Contains date, code, task note fragments, and likely book search info.",
+   "Android Search Screen: Contains date, task notes, and book search prompt values."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3253966921244183",
+  "t": 11,
+  "src": 6,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "The Most Popular Chevrolet Car; StrawPoll, URL",
+   "Android Search Screen: Contains info on Chevrolet's popularity and best-selling models statistics.",
+   "Chevrolet popularity info - Screen: Rankings and Features - Contains model rankings, sales data, and features descriptions.",
+   "Chevrolet Popularity Screen: Contains rankings and information on popular Chevrolet models and sales data.",
+   "Android search results screen: Chevrolet car popularity rankings and sales information"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "5918648463409447",
+  "t": 8,
+  "src": 4,
+  "gap": 4,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Job Listing; title, location, company, date, contact",
+   "Android Job Search Screen: Lists Data Analyst positions in Atlanta, GA with salary ranges and application instructions.",
+   "Android Job Search Screen: Contains salaries, locations, and job types for Data Analyst positions in Atlanta, GA.",
+   "Android Job Search Screen: Contains Data Analyst positions, locations, salary ranges, and application instructions.",
+   "Android Job Search Screen: Contains salaries, locations, and job types for Data Analyst positions in Atlanta, GA."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "2685896943368180",
+  "t": 13,
+  "src": 7,
+  "gap": 6,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calculator screen;name,upgrade,advertising",
+   "Calculator Screen with Numeric Keypad and Math Functions for Business Calculations",
+   "Calculator Screen with Math Functions and Logarithmic Values for Business Use",
+   "Calculator Screen with Basic Arithmetic and Trigonometric Functions for Business Use",
+   "Calculator Screen with Numeric, Financial, and Trigonometric Functions for Business Use"
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "2685896943368180",
+  "t": 15,
+  "src": 12,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Google Keep; cost, date",
+   "Android app details screen; contains version number, app name, date, and cost.",
+   "Android app details screen; contains version number, app name, date, and cost.",
+   "Android App Details Screen: Contains version number, app name, cost, and date.",
+   "Android App Details Screen: Contains version number, app name, cost, and date."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "6776324845377520",
+  "t": 8,
+  "src": 4,
+  "gap": 4,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Hiking Trails;name,address,location,country,trail,trails,trailer",
+   "Hiking Trails Directory: Contains international hiking trail locations and names.",
+   "Hiking Trails Directory: International locations for hiking trails - global destinations.",
+   "Hiking Trails Directory: International hiking trail locations and names",
+   "Hiking Trails Directory: Contains international hiking trail locations and basic contact information."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "6016952965903971",
+  "t": 18,
+  "src": 11,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calculator screen; operations, functions, numbers",
+   "Calculator Screen with Trigonometric, Logarithmic, and Basic Arithmetic Functions",
+   "Math Calculator Screen with Trigonometric, Logarithmic, and Exponential Functions",
+   "Calculator Screen with Trigonometric, Logarithmic, and Basic Arithmetic Functions",
+   "Calculator Screen with Trigonometric, Logarithmic, and Basic Arithmetic Functions"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "7275957887616445",
+  "t": 11,
+  "src": 5,
+  "gap": 6,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Search results;url,name,date,songs",
+   "Disco Songs List Screen: Contains 2023 Disco Songs Titles and Artists - Top Hits Directory",
+   "Disco Songs List Screen: Top Disco Hits 2023-2025; Artist Tracks Recommendations",
+   "Disco Songs List Screen: Top Disco Hits 2023-2025, Artist Tracks",
+   "Disco Songs List Screen: Top Disco Hits 2023-2025; Artist and Song Titles"
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "4217411784050721",
+  "t": 10,
+  "src": 1,
+  "gap": 9,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   false,
+   false,
+   true
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Android Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Recipe Screen: Contains ingredient quantities, nutritional info, and method steps for a dessert recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe."
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "4217411784050721",
+  "t": 16,
+  "src": 1,
+  "gap": 15,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Android Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Recipe Screen: Contains ingredient quantities, ratings, and method steps for a baked good recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8615505575540182",
+  "t": 8,
+  "src": 1,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities and method steps for a chocolate chip cookie recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a chocolate chip cookie recipe.",
+   "Recipe Screen: Contains ingredient quantities and cooking method details for a chocolate chip cookie recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a sweet treat."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8615505575540182",
+  "t": 15,
+  "src": 1,
+  "gap": 14,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Details Screen: Contains ingredient quantities and method steps for a chocolate chip cookie recipe.",
+   "Recipe Screen: Contains ingredient quantities and cooking method for a chocolate chip cookie recipe.",
+   "Recipe Ingredients Screen: Contains quantities and types for ingredients and method steps.",
+   "Recipe Screen: Contains ingredient quantities and method steps for chocolate chip cookie recipe."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3451207857612053",
+  "t": 3,
+  "src": 1,
+  "gap": 2,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Yoga schedule;name",
+   "Screen: Reminder Type: Repetitive Yoga Prompt Directory: Contains yoga morning routine reminder prompts.",
+   "Morning Yoga Reminders Screen: Contains重复的提示信息鼓励早晨瑜伽练习。",
+   "Screen: Reminder Type: Repetitive Affirmation Values: Yoga Morning Routine Reminder",
+   "Morning Yoga Reminders Screen: Contains repeated affirmations鼓励提出具体问题或提供更多背景信息以便更好地协助您。这里只出现了重复的关于早晨瑜伽的提示，没有列出具体的值本身。"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "2065183596554466",
+  "t": 11,
+  "src": 6,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Bookstore screen; name, address, rating, hours, category, price",
+   "Bookstores Directory Screen: names, ratings, statuses, locations, opening hours",
+   "Bookstores Directory Screen: names, ratings, statuses, locations, opening times",
+   "Screen Type: Bookstore Directory; Contains: Names, Ratings, Status, Locations",
+   "Android Bookstore Directory Screen: Contains names, ratings, statuses, locations of bookstores."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "7232405176473877",
+  "t": 8,
+  "src": 2,
+  "gap": 6,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   true,
+   true
+  ],
+  "cands": [
+   "Course; name, date, url",
+   "Screen: Online Course Info - Contains course name, instructor, video count, start date",
+   "Android Course Screen: Contains course name, instructor, video count, start date",
+   "Android course screen: Contains dates, course names, video counts for 3D printing tutorials.",
+   "Android Course Screen: Contains printing course details, instructor info, video count, start date"
+  ],
+  "oracle_ok": true,
+  "n_hit": 3
+ },
+ {
+  "ep": "1680207890431987",
+  "t": 13,
+  "src": 1,
+  "gap": 12,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search screen; name, url, date, reward",
+   "Android dashboard screen containing app shortcuts, daily points, and AI features status.",
+   "Android app dashboard showing search, camera, image creation tools, rewards, and daily points.",
+   "Android dashboard showing daily points, app actions, and search engine options.",
+   "Android app dashboard showing AI features, daily points, rewards, and search options."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4401989512760545",
+  "t": 5,
+  "src": 3,
+  "gap": 2,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Tasks; date, name, reminder",
+   "Android To-Do Screen: Contains task plans and reminder settings status for tomorrow.",
+   "Android ToDo Screen: Reminder settings, tasks for tomorrow, yoga reminder status",
+   "Tomorrow's Tasks Screen: Contains planned tasks and reminder settings status.",
+   "Android To-Do Screen: Contains task plans, reminder settings, and notification statuses."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "2649432426767603",
+  "t": 15,
+  "src": 6,
+  "gap": 9,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   true,
+   false,
+   false
+  ],
+  "cands": [
+   "Song info; title, artist, duration, price, lyrics, about artist",
+   "Android Music Player Screen: Song Time, Artist, Album, and Lyric Preview Information",
+   "Song Playback Screen with Time, Artist, Album, and Lyrics Preview Information",
+   "Music player screen with song title, artist, time, and lyrics preview options",
+   "Music player screen with song details, time, rating, and lyrics preview options."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "7038634058796493",
+  "t": 9,
+  "src": 8,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Phone screen; name, price, delivery, promotions, shipping, category",
+   "Android Shopping Screen: Discounts, Shipping Info, Return Policy, Coin Offers",
+   "AliExpress Promotion Screen: Discounts, Shipping, Return Policies, Coin Offers",
+   "Android Shopping Screen: Discounts, Shipping Info, Payment Policies, Coin Offers",
+   "AliExpress Deals Screen: Discounts, Shipping Info, Return Policy, Coins Offers"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "0373678795030779",
+  "t": 8,
+  "src": 1,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "3D Printing Course; name, date, url, video count",
+   "Android video playlist screen; contains course intro, class videos on 3D printing basics by Kelly Crittenden.",
+   "Android video playlist screen; contains course titles, view counts, and upload dates for 3D printing tutorials.",
+   "Android video playlist screen: 3D printing course videos by Kelly Crittenden for beginners",
+   "Android video playlist screen; contains course intro, video titles, views, and upload dates for 3D printing tutorials."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "4928594299510412",
+  "t": 9,
+  "src": 1,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Search screen; url, name",
+   "Android Browser Screen: News Articles, Social Media, Shopping Sites Directory",
+   "Android Browser Screen: News articles, social media links, online shopping sites recent searches.",
+   "Android Browser Screen: News Articles, Links to Websites, Recent Searches",
+   "Android Browser Screen: News Articles, Links to Websites, Recent Searches"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "9387519061118810",
+  "t": 11,
+  "src": 6,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "News article; title, date, location, text, keywords",
+   "Android News Screen: Contains headlines, locations, and event descriptions from news articles.",
+   "Android News Screen: Contains headline, location, and brief incident description values.",
+   "News Feed Screen: Contains headlines, locations, and numeric values related to news stories.",
+   "Android News Screen: Contains headlines, locations, measurements, and scrambled text."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "2195224081720901",
+  "t": 10,
+  "src": 1,
+  "gap": 9,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Overview screen; name, location, rating, contact, description, opening_hours",
+   "Hiking Trails Screen: Contains trail name, rating, reviews, location, and opening hours information.",
+   "Hiking Trails Screen: Contains trail name, rating, reviews, location, and opening hours information.",
+   "Hiking Trails Screen: Contains trail info, ratings, reviews, photos, directions for outdoors activities in Hong Kong.",
+   "Hiking Trails Screen: Contains trail name, rating, reviews, location, and opening hours information."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3117262897123969",
+  "t": 12,
+  "src": 4,
+  "gap": 8,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Book review screen; title, author, url, review, recommendations",
+   "Book Reviews Screen: Contains reviews for \"Normal People\" by Sally Rooney and related book information.",
+   "Screen: Book Reviews Type: Sally Rooney Books Reviews and Recommendations Directory",
+   "Screen: Book Review Search; Contains: Sally Rooney book reviews, titles, ranking comparisons",
+   "Book reviews and related content screen - Contains Sally Rooney book reviews and reader recommendations."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "0756539981770679",
+  "t": 13,
+  "src": 11,
+  "gap": 2,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calendar; date, event, url",
+   "Android Calendar Screen: Upcoming Events, Subscriptions, Yoga Classes Links",
+   "Android Calendar Screen: Upcoming Events, Subscriptions, Yoga Classes Links",
+   "Android Calendar Screen: Event schedule, subscription options, yoga links",
+   "Android Calendar Screen: Upcoming Events, Subscriptions, Yoga Classes Links"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "5012855904324824",
+  "t": 9,
+  "src": 6,
+  "gap": 3,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "News article; date, title, author, publication_date, section, url",
+   "News Screen: Contains trial information and publication details for political figures.",
+   "News Article: Contains trial information, author, publication time, and date for Bob Menendez trial update.",
+   "News Article: Political Trial Info - Bob Menendez Senate Trial Details",
+   "News Article: Political Trial Details - Menendez Trial Information"
+  ],
+  "oracle_ok": true,
+  "n_hit": 4
+ },
+ {
+  "ep": "5012855904324824",
+  "t": 17,
+  "src": 6,
+  "gap": 11,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "News article; date, title, author, publication_date, section, url",
+   "News Article: Contains trial information, author, publication time, and date for Bob Menendez trial coverage.",
+   "News Screen: Contains political trial information and publication details.",
+   "News Screen: Contains political trial updates, publication time, and author information.",
+   "News Article: Provides updates on political trials; Contains timing, author, and publication details."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "7603894366987639",
+  "t": 13,
+  "src": 6,
+  "gap": 7,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Hiking trail; address, location, city, country",
+   "Hiking Trails Directory: International and Domestic Locations SCREEN TYPE: Reference List VALUES: Locations",
+   "Hiking Trails Directory: International Locations - Cities, Regions, Countries",
+   "Hiking Trails Directory: International locations for hiking enthusiasts",
+   "Hiking Trails Directory: International locations for hiking enthusiasts"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "7603894366987639",
+  "t": 31,
+  "src": 30,
+  "gap": 1,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Message; date, name, time",
+   "Message Screen: Invitation Dates and Times for Hiking Activity",
+   "Hiking Invite Screen: Contains date options and contact information for outdoor plans.",
+   "Hiking Invitation Screen: Contains date options and contact information for Victor James",
+   "Hiking Invite Screen: Contains date options and contact information for Victor James"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "9708635261544397",
+  "t": 14,
+  "src": 6,
+  "gap": 8,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "News screen; title, date, topic, video, radio",
+   "Android News Screen: Contains recent news, top stories, topics, and multimedia options.",
+   "Android News Screen: Contains weather records, movie openings, top stories, video links.",
+   "Android News Screen: Contains latest news, movie openings, and weather updates.",
+   "Android News Screen: Recent headlines, movie openings, top stories, video links"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "7520962187724300",
+  "t": 11,
+  "src": 1,
+  "gap": 10,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "App store screen; name, category, rating, downloads, source, event, sponsor, recent searches",
+   "Android app store screen with ratings, download counts, and event end dates for apps and events.",
+   "Android app store screen with ratings, download counts, and event end dates for apps and events.",
+   "Android app store screen; includes ratings, installs, event end dates, and search terms.",
+   "Android app store screen; displays ratings, installs, event timings for apps and events."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "3485959306383319",
+  "t": 8,
+  "src": 4,
+  "gap": 4,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Jobs; name, location, company, date",
+   "Job Listings Screen: Administrative Assistant Positions, Locations, Application Status, Filters",
+   "Job listings screen for administrative assistant roles with details on location, application ease, and applicant count.",
+   "Job Listings Screen: Administrative Assistant Positions, Application Ease, Location, Applicants Count",
+   "Job Listings Screen: Administrative Assistant Positions with Application Details and Locations"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "7376254549752092",
+  "t": 5,
+  "src": 1,
+  "gap": 4,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cands": [
+   "Fitness app overview;name,url,description,timecodes",
+   "Android video timeline: reviews of fitness apps including training plans and features",
+   "Screen: App Overview List Contains: Running and Fitness App Descriptions, Features, and Timecodes",
+   "Screen: App Overview; Contains: Running and Workout Apps Features, Reviews Timecodes",
+   "Screen: App Overview Type - Contains timecodes and brief descriptions of top fitness and running apps."
+  ],
+  "oracle_ok": true,
+  "n_hit": 5
+ },
+ {
+  "ep": "9903610007370827",
+  "t": 27,
+  "src": 17,
+  "gap": 10,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities, equipment, and nutrition information for baked goods.",
+   "Recipe Screen: Contains ingredient quantities, equipment, and nutrition information for baked goods.",
+   "Screen: Recipe Details - Contains ingredient quantities, equipment, nutrition details for a dessert recipe.",
+   "Recipe Screen: Contains ingredients, equipment, and nutritional information for a baked good recipe."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "9903610007370827",
+  "t": 33,
+  "src": 17,
+  "gap": 16,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities, equipment, and nutritional values for a baked good recipe.",
+   "Recipe Details Screen: Contains ingredient quantities, equipment, and nutrition information.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a baked good recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a baked good recipe."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "8525595367845361",
+  "t": 30,
+  "src": 19,
+  "gap": 11,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Live chat session; messages, names, urls",
+   "Live Chat Screen: Contains user messages, song names, playlist titles, and player mentions.",
+   "Live Chat Screen: Contains user messages, music playlist mentions, and game tips.",
+   "Chat Screen with User Messages and Emojis Containing Music Recommendations and Support Messages",
+   "Live Chat Screen: Contains user messages, support thanks, music playlist recommendations, and gaming tips."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "2173279204180947",
+  "t": 7,
+  "src": 4,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Calendar apps; name, date",
+   "Android app store screen showing various calendar apps options and features",
+   "Android app store screen; lists popular calendar apps for download and comparison.",
+   "Android app store screen; lists popular calendar app options for download and comparison.",
+   "Android app store screen; lists popular calendar app options and sign-in instructions."
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "5492025549232293",
+  "t": 10,
+  "src": 2,
+  "gap": 8,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Course; name, date, url, video count",
+   "Android course playlist screen; contains video titles, views, and stream dates for 3D printing tutorials.",
+   "Android course playlist screen; contains video titles, views, and upload dates for 3D printing tutorials.",
+   "Android video playlist screen for beginner 3D printing course with video titles and view counts",
+   "Android course playlist screen; contains video titles, views, dates for 3D printing tutorials."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "4304068471793621",
+  "t": 10,
+  "src": 1,
+  "gap": 9,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Smart Cities course; name, url, description, videos",
+   "Android course playlist screen; contains smart city tech, video titles, and playback options.",
+   "Android course list screen: smart city tech, urban planning, video titles, playback options",
+   "Android Course List Screen: Contains smart city tech, urban planning, and AI course video titles and descriptions.",
+   "Android course playlist screen; smart city tech and planning video titles, durations��述来说，这条目录行描述了一个包含有关智能城市技术和规划视频的Android课程播放列表屏幕。由于需要控制"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ },
+ {
+  "ep": "5665020554274904",
+  "t": 5,
+  "src": 2,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   true,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Phone Screen;City,Address,School,Building,ZIP",
+   "Property Listings Screen: Contains unit numbers, prices, locations in Los Angeles",
+   "Property Listing Screen with Prices, Units, Locations in Los Angeles Area",
+   "Property Listing Screen: Displays rental prices, unit numbers, locations in Los Angeles.",
+   "Property Listings Screen: Contains unit numbers, locations, prices, and details for rental properties."
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "8561008091919694",
+  "t": 11,
+  "src": 1,
+  "gap": 10,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe screen; url, name, ingredients, method",
+   "Recipe Screen: Contains ingredient quantities, nutritional info, and cooking method details.",
+   "Android Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe.",
+   "Recipe Screen: Contains ingredient quantities and method steps for a dessert recipe."
+  ],
+  "oracle_ok": true,
+  "n_hit": 1
+ },
+ {
+  "ep": "1607308303490195",
+  "t": 11,
+  "src": 6,
+  "gap": 5,
+  "base_ok": true,
+  "cand_hits": [
+   true,
+   false,
+   false,
+   true,
+   false
+  ],
+  "cands": [
+   "Documentary Movies;url,genre,name,date",
+   "Documentary List Screen: Contains titles and years of top documentary movies and TV shows.",
+   "Documentary list screen; displays top documentary titles and years from IMDb.",
+   "Android Docs Screen: Lists top documentary titles from IMDb for selection.",
+   "Android doc list screen; shows top documentary titles, years, and platform links"
+  ],
+  "oracle_ok": true,
+  "n_hit": 2
+ },
+ {
+  "ep": "9104040590237688",
+  "t": 8,
+  "src": 5,
+  "gap": 3,
+  "base_ok": false,
+  "cand_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "cands": [
+   "Recipe list; title, description, url",
+   "Quick Lunch Recipes Screen: Contains fast meal ideas under 10 minutes preparation time.",
+   "Quick Lunch Recipes Screen: Contains fast meal ideas under 10 minutes preparation time.",
+   "Lunch Recipes Directory: Quick Meal Ideas Under 10 Minutes, Including Sandwich Options",
+   "Lunch Recipes Screen: Quick meal ideas, under 10 minutes preparation time, office and home suitable"
+  ],
+  "oracle_ok": false,
+  "n_hit": 0
+ }
+]

@@ -1,0 +1,41 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{booktabs,multirow,amsmath,graphicx,xcolor,microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\setlength{\bibsep}{1pt}
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}{-9pt plus -2pt minus -2pt}{3pt}{\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{-7pt plus -2pt minus -1pt}{2pt}{\normalfont\normalsize\bfseries}}
+\makeatother
+\setlength{\textfloatsep}{6pt}\setlength{\abovecaptionskip}{3pt}\setlength{\belowcaptionskip}{0pt}
+\setlength{\parskip}{0pt}\setlength{\tabcolsep}{4pt}
+
+\renewcommand{\paragraph}[1]{\par\vspace{2pt}\noindent\textbf{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{[#1]}}
+\newcommand{\pval}[1]{$p={#1}$}
+
+\title{Verifier-Supervised Look-Back: Label-Free Screen Retrieval for Delayed Information Needs in Mobile GUI Agents}
+\author{Anonymous authors}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/needs}
+\input{sections/method}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/related}
+\input{sections/lessons}
+
+{\footnotesize
+\bibliographystyle{plainnat}
+\bibliography{refs}}
+\end{document}

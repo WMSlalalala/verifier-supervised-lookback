@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Noto Serif CJK SC}[ItalicFont={Noto Serif CJK SC}, BoldItalicFont={Noto Serif CJK SC Bold}]
+\newfontfamily\engfont{DejaVu Serif}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\usepackage[kerning,spacing]{microtype}
+\usepackage{booktabs,multirow,amsmath,graphicx,xcolor,microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\setlength{\bibsep}{1pt}
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}{-9pt plus -2pt minus -2pt}{3pt}{\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{-7pt plus -2pt minus -1pt}{2pt}{\normalfont\normalsize\bfseries}}
+\makeatother
+\setlength{\textfloatsep}{6pt}\setlength{\abovecaptionskip}{3pt}\setlength{\belowcaptionskip}{0pt}
+\setlength{\parskip}{0pt}\linespread{1.02}\setlength{\tabcolsep}{4pt}
+\renewcommand{\paragraph}[1]{\par\vspace{2pt}\noindent\textbf{#1}}
+\newcommand{\pval}[1]{$p={#1}$}
+\newcommand{\en}[1]{{\engfont #1}}
+
+\title{验证器监督的回看：\\面向移动 GUI 智能体延迟信息需求的免标注屏幕检索\\[4pt]
+\large\en{Verifier-Supervised Look-Back: Label-Free Screen Retrieval for\\Delayed Information Needs in Mobile GUI Agents}}
+\author{匿名作者}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\input{sections_cn/abstract}
+\end{abstract}
+\input{sections_cn/intro}
+\input{sections_cn/needs}
+\input{sections_cn/method}
+\input{sections_cn/setup}
+\input{sections_cn/results}
+\input{sections_cn/related}
+\input{sections_cn/lessons}
+{\footnotesize
+\bibliographystyle{plainnat}
+\bibliography{refs}}
+\end{document}

@@ -1,0 +1,133 @@
+\section{实验结果}
+
+\subsection{验证器的标签同时抬升两种架构}
+\label{sec:main}
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm Localization and end-to-end accuracy (\%) on 188 verified cases, five folds with every trajectory in one fold. Training on the verifier's labels lifts both architectures on both metrics; the paired test separates neither trained variant from the other. $t$ is the step index at which the need arises; \emph{net} counts the cases the scorer gets right and the row's condition gets wrong, minus the reverse, with the two-sided McNemar $p$. Prompted full history and the screen index read in their own single call; both per-screen scorer rows and the trained full-history reader use read with history.}
+\label{tab:main}
+\begin{tabular}{llrrrrrr}
+\toprule
+ & & \multicolumn{3}{c}{localization} & \multicolumn{2}{c}{end-to-end} & scorer vs.\ row \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}
+ & condition & all & $t\le15$ & $t\ge16$ & all & $t\ge16$ & loc: net, $p$ \\
+ & & \multicolumn{3}{c}{$n$: 188 / 75 / 113} & 188 & 113 & \\
+\midrule
+\multirow{3}{*}{prompted} & full history & 54.8 & 68.0 & 46.0 & 31.4 & 20.4 & $+$33, $<$0.001 \\
+ & screen index & 41.0 & 48.0 & 36.3 & 23.9 & 25.7 & $+$59, $<$0.001 \\
+ & per-screen scorer & 50.0 & 68.0 & 38.1 & 35.1 & 30.1 & $+$42, $<$0.001 \\
+\midrule
+\multirow{2}{*}{trained} & full history & 65.4 & 76.0 & 58.4 & 42.6 & 39.8 & $+$13, 0.086 \\
+ & \textbf{per-screen scorer} & \textbf{72.3} & \textbf{80.0} & \textbf{67.3} & \textbf{44.7} & \textbf{42.5} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:main} 把我们方法改变的两件事分开。用验证器标签训练全历史读取器，定位从 54.8\% 升到 65.4\%（净 $+20$ 例，\pval{0.019}）；训练逐屏打分器则从 50.0\% 升到 72.3\%（净 $+42$ 例，$p<0.001$）。两处增益都来自每屏一次子串测试就能得到的标签。这一监督还逆转了两种架构的优劣顺序：在 prompt 下逐屏打分器落后全历史 4.8 个点，训练后反超 6.9 个点。在全部 188 个样例上，配对检验并不能区分两个训练变体（净 $+13$ 例，\pval{0.086}），因此我们不主张单凭分解就能取胜；\S\ref{sec:gap} 定位它究竟在哪里取胜。
+
+端到端准确率讲同一个故事，只是差距更小。训练后的全历史读取器在 42.6\% 的样例上输入了正确文字，其 prompt 对照为 31.4\%（净 $+21$ 例，\pval{0.003}）；训练后的打分器达到 44.7\%，而使用同一读取器的 prompt 对照为 35.1\%（净 $+18$ 例，\pval{0.001}）。配对检验同样不能区分两个训练变体（净 $+4$ 例，\pval{0.45}）。监督对两种架构的端到端价值分别为 9.6 与 11.2 个点，分解再贡献 2.1 个点。在 $t\ge20$ 上（$n=27$，未列入表中）训练后的全历史读取器在两个指标上都领先，44.4\% 与 33.3\%，而打分器为 37.0\% 与 29.6\%。
+
+训练给打分器带来的提升是给全历史读取器的两倍（$+22.3$ 对 $+10.6$），一个可能的原因是标签数量：逐屏格式把 188 个样例变成了 2,861 个带标签的决策。
+
+\paragraph{小结。} 起作用的是验证器的标签：它把全历史读取器的定位抬高 10.6 个点、把逐屏打分器抬高 22.3 个点，而两个训练变体的端到端最终相差不到 2.1 个点。
+
+\subsection{分解的收益落在 8--12 屏的距离区间}
+\label{sec:gap}
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm Localization (\%) by gap, 188 cases. The trained variants are level except at gaps of 8--12 screens, where the per-screen scorer leads by 21.8 points. At gaps of 13 or more both fall below prompted full history.}
+\label{tab:gap}
+\begin{tabular}{lrrrrr}
+\toprule
+gap (screens) & $n$ & full history, prompted & full history, trained & \textbf{per-screen scorer} & scorer vs.\ trained full history \\
+\midrule
+1--2 & 7 & 14.3 & 28.6 & 28.6 & $+$0, 0.48 \\
+3--4 & 38 & 44.7 & \textbf{81.6} & 76.3 & $-$2, 0.72 \\
+5--7 & 57 & 61.4 & 80.7 & \textbf{80.7} & $+$0, 0.77 \\
+8--12 & 55 & 54.5 & 56.4 & \textbf{78.2} & $+$12, \textbf{0.003} \\
+13$+$ & 31 & \textbf{64.5} & 41.9 & 51.6 & $+$3, 0.58 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:gap} 显示出唯一一个两种架构发生分化的区间。在 7 屏以内，训练后的全历史读取器与打分器持平，二者相对 prompt 的提升为：1--2 屏 14 个点（$n=7$，样本太少不作解读）、3--4 屏 32--37 个点、5--7 屏 19 个点。到 8--12 屏时，训练后的全历史读取器不再提升（56.4\%，与 prompt 相差不到 2 个点），而打分器达到 78.2\%（净 $+12$ 例，\pval{0.003}）。正是在这个区间里，一次调用需要同时权衡十余个任务描述无法区分的候选，而对每一屏只看其自身文本来打分的做法开始见效。
+
+超过 12 屏后，两个训练变体都跌到 prompt 全历史之下（41.9\% 与 51.6\%，对 64.5\%，$n=31$）。在距离中位数为 5 屏的 188 个样例上训练，会学到一个在尾部失效的距离先验，而打分器也继承了它：\S\ref{sec:ablation} 中去掉距离特征的消融同样无法修复该区间。我们把这记为本方法最明确的失败。
+
+\paragraph{小结。} 逐屏打分并非一致优于全历史读取器。它在候选集大且彼此难以区分时取胜，而在最长的距离上两个训练变体都输给 prompt。
+
+\subsection{外部样本确认了相对 prompt 的优势}
+\label{sec:ext}
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm External set: 93 cases from a fourth sample of 400 trajectories, mined after we fixed every design decision. We train each condition on all 188 cross-validated cases and evaluate once. $p$ is against the per-screen scorer.}
+\label{tab:ext}
+\begin{tabular}{lrrrr}
+\toprule
+condition & localization & $p$ & end-to-end (read with history) & $p$ \\
+\midrule
+full history, prompted & 59.1 & 0.003 & 23.7 & $<$0.001 \\
+screen index, prompted & 37.6 & $<$0.001 & -- & \\
+per-screen scorer, prompted & 41.9 & $<$0.001 & -- & \\
+full history, trained & 76.3 & 0.63 & 51.6 & 0.62 \\
+\textbf{per-screen scorer, trained} & \textbf{79.6} & & \textbf{49.5} & \\
+\quad scorer with single-screen read & & & 37.6 & 0.016 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:ext} 在任何设计决策都未见过的样例上重复了这组比较。打分器定位 79.6\%，而 prompt 全历史为 59.1\%（净 $+19$ 例，\pval{0.003}）、prompt 索引为 37.6\%（净 $+39$ 例，$p<0.001$）；未训练的打分器为 41.9\%。训练后的全历史读取器达到 76.3\%，配对检验再次无法把它与打分器区分开（\pval{0.63}），这在样本外复现了 \S\ref{sec:main}。端到端方面，带历史读取把准确率从 prompt 全历史的 23.7\% 提到训练后全历史读取器的 51.6\%（净 $+26$ 例，$p<0.001$）与打分器的 49.5\%，二者同样不可区分（净 $-2$ 例，\pval{0.62}）；打分器配单屏读取为 37.6\%。
+
+外部样例的需求位于第 12--15 步（72 例）、16--19 步（19 例）与 20 步及以后（2 例），因此这批样本检验的是中段距离。在 12--15 步上打分器定位正确 72 例中的 61 例，prompt 全历史为 42 例；在 16--19 步上两者相差不超过一例（19 例中分别为 12 与 13 例）。
+
+\paragraph{小结。} 在与所有设计决策隔离的数据上，验证器监督相对 prompt 保持约 20 个点的优势，而两个训练变体仍然不可区分。
+
+\subsection{消融与读取阶段变体}
+\label{sec:ablation}
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm Left: scorer ablations, localization (\%), 188 cases, $p$ against the full scorer. Right: read-stage variants, end-to-end (\%) on the same cases, $p$ against marking the scorer's choice.}
+\label{tab:abl}
+\begin{tabular}{lrr@{\hspace{1.5em}}lrr}
+\toprule
+scorer ablation & loc & $p$ & read stage (marked screen) & e2e & $p$ \\
+\midrule
+full scorer (7B, distance, weight 3) & \textbf{72.3} & & gold source screen marked & \textbf{45.2} & 1.00 \\
+no distance in the prompt & 70.7 & 0.61 & \textbf{scorer's choice} & \textbf{44.7} & \\
+positive weight 1 & 72.3 & 0.77 & scorer's top two & 45.2 & 1.00 \\
+3B base model & 68.1 & 0.22 & most recent screen & 38.8 & 0.10 \\
+\quad 3B at $t\ge20$ & \textbf{48.1} & & random earlier screen & 36.7 & 0.018 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:abl} 表明该设计对其 prompt 与损失设置不敏感。从 prompt 中去掉距离损失 1.6 个点（\pval{0.61}），且无法挽救 13 屏以上的区间；正例权重改为 1 后定位仍为 72.3\%。3B 基座整体下降 4.2 个点，但在 $t\ge20$ 上提升 11.1 个点（48.1\% 对 37.0\%）。读取阶段的对照界定了"标注"本身能买到多少。标注标准源屏给出 45.2\%，而打分器所选给出 44.7\%，说明打分器已经触到这个读取器的上界；标注其概率前二的两屏没有额外收益（45.2\%）。标注最近一屏给出 38.8\%，标注随机一个更早屏给出 36.7\%（\pval{0.018}）：也就是说，相对 prompt 全历史的 13 个点里，有 5--7 个点来自"重复任意一屏"，其余来自选对了哪一屏。
+
+\subsection{索引路线到此为止，以及两个必须施加的过滤条件}
+\label{sec:index}
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm Short set ($n=85$), localization (\%). The screen index's writer cannot pass full history, and an oracle that rewrites only the source screen's line reaches full-history level and no higher.}
+\label{tab:index}
+\begin{tabular}{lr@{\hspace{2em}}lr}
+\toprule
+condition & loc & writer variant / oracle & loc \\
+\midrule
+no history (end-to-end 2.4) & n/a & writer trained with DPO on the same 85 cases & 45.9 \\
+full history, prompted & 65.9 & writer forced to a two-field format & 47.1 \\
+per-screen summary & 23.5 & writer allowed to copy values & 49.4 \\
+screen index, prompt-only & 49.4 & writer: three lines per screen & 43.5 \\
+BM25, task $+$ current screen as query & 10.6 & writer: retrieval prompt with sampling, every screen & 44.7 \\
+BM25, gold text as query & 92.9 & oracle: source line replaced by one of five sampled lines & 58.8--65.9 \\
+\textbf{per-screen scorer, trained} & \textbf{77.6} & oracle: best of the five sampled lines per case & 76.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+我们最先搭建的是屏幕索引；表~\ref{tab:index} 记录了我们放弃它的原因。纯 prompt 的索引定位 49.4\%，而全历史为 65.9\%（\pval{0.035}）。我们用直接偏好优化~\citep{dpo} 在 224 个偏好对上训练它的 writer，这些偏好对恰恰来自我们给它打分的那同一批 85 个样例，这一设置对它有利；它定位 45.9\%，另有四个 prompt 变体停留在 43.5\% 与 49.4\% 之间。一个只把源屏那一行替换为温度 0.9 下采样的五行之一的 oracle 给出 58.8--65.9\%，与全历史持平（$p\ge0.36$）。按样例取五行中最优给出 76.5\%，但有 64\% 的样例对 oracle 用的是哪一行并不敏感，因此这部分收益是任何单一 writer 都无法实现的冗余。BM25 以标准答案作查询时定位 92.9\%、以智能体实际掌握的信息作查询时只有 10.6\%：真正困难的是决定该去找什么。
+
+\paragraph{两个过滤条件对结论的影响超过任何方法。} \textbf{最早源屏计分}只把最早含有该文字的屏幕判为正确，但短集中有 47\% 的样例含两屏或更多；改为任一合法源屏计分，索引提高 15.3 个点、全历史提高 11.8 个点。\textbf{当前屏泄漏}会放进答案同时出现在当前屏上的样例（短集候选的 28\%、长集候选的 58\%）。在未过滤的 127 个长集样例上，一个只读前两屏的规则比全历史高 17.3 个点（\pval{0.010}）；而在 53 个干净样例上它反而低 22.7 个点（\pval{0.019}）。
+
+\subsection{边界}
+\label{sec:limits}
+13 屏及以上的距离是本方法最明确的失败：两个训练变体都跌到 prompt 全历史之下，且没有任何消融能恢复该区间。在 $t\ge20$ 上（$n=27$）7B 打分器与 prompt 全历史持平（37.0\%），而训练后的全历史读取器达到 44.4\%、3B 打分器达到 48.1\%，因此在最长历史上，无论是我们偏好的变体还是它的规模都不是正确选择。我们只在一个数据集、一种 OCR 引擎上做交叉验证，外部集也来自同一语料。训练标签与定位指标是同一个子串检查，因此训练把打分器对准了我们用来给它打分的那个指标；对 20 个已验证样例的抽查表明，每个被标为正例的屏幕确实显示了所需文字，其中 5 例的文字是智能体自己更早输入的（一个搜索词或一个笔记标题），这使那 5 例的"需求"成色较弱。每个条件只训练了一次，因此我们的配对检验只刻画样例层面的方差。打分器的最大概率能以 0.768 的 ROC 曲线下面积预测其定位是否正确；当该概率低于 0.5 时回退到 prompt 全历史可把定位提到 75.0\%，我们报告这一点但并未采用。

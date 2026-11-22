@@ -1,0 +1,24 @@
+\section{一个字符串检查既能找到也能标注延迟信息需求}
+\label{sec:needs}
+当智能体在第 $t$ 步输入的文字逐字出现在某个更早屏 $i<t$（即\textbf{源屏}）的 OCR 文本中、且不出现在第 $t$ 屏上时，该步存在\textbf{延迟信息需求}。距离取最晚的这样一个 $i$ 所对应的 $t-i$。定义中的第二个条件很关键：当文字就在当前屏上时智能体根本不需要记忆，保留这类步骤会奖励任何只读最近几屏的方法（\S\ref{sec:limits}）。
+
+\paragraph{验证器一次完成挖掘与标注。} 候选是任何参数长度不少于三个字符、且不出现在任务描述中的 TYPE 动作；我们对字符串做小写化并去除空白与标点。我们对抽样轨迹的每一张截图运行 EasyOCR，检验该参数是否为某个更早屏 OCR 文本的子串、同时不在当前屏的文本中。在第一批 300 条 GUI-Odyssey 轨迹中，431 个候选里有 127 个通过 OCR 检验（269 个未通过，逐例检查多为 OCR 误识，另有 35 个缺少 OCR 输出）。去掉 36 个文字同时出现在当前屏的样例后剩 91 个已验证样例；再去掉 6 个文字出现在任务逐步指令字段中的样例后剩 85 个。把同一检验施加到每一屏而不是在首次命中处停止，就得到了含有该文字的全部屏幕的集合。该集合即标签：屏 $i$ 在集合内则为正例。需求数量是一个下界，且该规则只覆盖逐字重复输入这一类。
+
+\begin{table}[t]
+\centering\scriptsize\engfont
+\caption{\rm AITZ's 7.4-step tasks contain no delayed information need; GUI-Odyssey's 15.4-step tasks contain one in 31\% of sampled trajectories. We mine only the sampled trajectories.}
+\label{tab:prev}
+\begin{tabular}{lrrrl}
+\toprule
+ & trajectories & steps & mean length & verified delayed needs \\
+\midrule
+AITZ~\citep{aitz} & 2,504 & 18,643 & 7.4 & 0 \\
+GUI-Odyssey~\citep{guiodyssey} (full) & 7,735 & 118,791 & 15.4 & not mined \\
+\quad sampled, complete OCR & 273 & 4,338 & 15.9 & 89 steps (2.05\%); 31\% of trajectories hold at least one \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{这类需求常见、距离远、且不显眼。} 表~\ref{tab:prev} 给出的普遍程度基于指令字段过滤之前的 91 个已验证样例，其中 89 个落在 273 条 OCR 覆盖完整的抽样轨迹内。距离中位数为 5 屏、最大 27 屏，56\% 的距离不小于 5 屏；在源屏上，所需文字在 33 个 OCR 元素中的排名中位数是第 13 位，且从不排在首位。
+
+\paragraph{四批抽样给出 188 个训练样例与 93 个外部样例。} \textbf{短集}含上述 85 个样例（需求步号 $t$ 的中位数为 11）。\textbf{长集}含 53 个 $t\ge16$ 的样例，来自第二批 300 条长度不小于 20 步的轨迹（泄漏过滤前为 127 个，被去掉的 74 个全部是泄漏）。\textbf{后挖集}含 50 个 $t\ge16$ 的样例，来自第三批 200 条轨迹。这三批合计 188 个样例、分布在 170 条轨迹上，全部训练与交叉验证都在其上进行。\textbf{外部集}含 93 个样例，来自第四批 400 条长度不小于 16 步的轨迹；我们在冻结全部设计决策之后才挖掘它，并只评测一次（\S\ref{sec:ext}），其需求多数位于第 12--15 步（93 例中有 72 例）。

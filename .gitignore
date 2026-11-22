@@ -1,3 +1,14 @@
-__pycache__/
-*.pyc
+# third-party data (get from the GUI-Odyssey release)
+shots/
+annotations/
+# model weights (too large for git; src/ regenerates them)
+writer_lora/
+*.safetensors
+# build artifacts
+*.aux
 *.log
+*.out
+*.blg
+*.bbl
+*.synctex.gz
+__pycache__/

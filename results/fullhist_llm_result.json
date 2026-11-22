@@ -1,0 +1,116 @@
+{
+ "A": [
+  [
+   false,
+   7,
+   "Electronic Study",
+   "Do you want to listen to an album of Electronic style this Sunday?"
+  ],
+  [
+   true,
+   8,
+   "vanilla extract",
+   "vanilla extract"
+  ],
+  [
+   false,
+   8,
+   "plain chocolate chips",
+   "Search for chocolate chip cookies recipe"
+  ],
+  [
+   false,
+   3,
+   "10 mins per day",
+   "Attend to Arabic language lesson and set a learning plan"
+  ],
+  [
+   false,
+   5,
+   "escort",
+   "Ford"
+  ],
+  [
+   false,
+   12,
+   "Rock Classics",
+   "GIF 3 W E R T U' P 4 S D F G H K 7 C B N M ?123"
+  ]
+ ],
+ "B": [
+  [
+   false,
+   7,
+   "Electronic Study",
+   "Do you want to listen to an album of Electronic style?"
+  ],
+  [
+   false,
+   8,
+   "vanilla extract",
+   "plain chocolate chips"
+  ],
+  [
+   true,
+   8,
+   "plain chocolate chips",
+   "plain chocolate chips"
+  ],
+  [
+   false,
+   3,
+   "10 mins per day",
+   "Arabic Learning 30 mins per day"
+  ],
+  [
+   false,
+   5,
+   "escort",
+   "Ford"
+  ],
+  [
+   false,
+   12,
+   "Rock Classics",
+   "GIF 2 5 q W e y U p a S d g h k 2 C 0 n m ?123"
+  ]
+ ],
+ "C": [
+  [
+   false,
+   7,
+   "Electronic Study",
+   "Do you want to go to California with me for a hiking trail next Sunday?"
+  ],
+  [
+   false,
+   8,
+   "vanilla extract",
+   "plain chocolate chips"
+  ],
+  [
+   false,
+   8,
+   "plain chocolate chips",
+   "Chocolate chip cookies"
+  ],
+  [
+   false,
+   3,
+   "10 mins per day",
+   "Arabic Learning"
+  ],
+  [
+   false,
+   5,
+   "escort",
+   "Ford Mustang"
+  ],
+  [
+   false,
+   12,
+   "Rock Classics",
+   "ROCK"
+  ]
+ ]
+}

@@ -36,11 +36,28 @@ cross-validation splitter are all hand-written here rather than taken from a lib
 ## 2. Repository layout
 
 ```
-src/        every script; the pipeline below runs in this order
-results/    every JSON this project produced (cases, labels, per-fold predictions, eval outputs)
-figures/    the two report figures and the matplotlib scripts that draw them
-report/     the NeurIPS-format PDF
+src/             every script (87); the pipeline below runs in this order
+results/         every result JSON (112): cases, labels, per-fold predictions, eval outputs
+data/            derived data artifacts: OCR text of the screens, the written index lines,
+                 the screenshot manifest
+figures/         report figures + the matplotlib scripts that draw them
+report/          the NeurIPS-format final report (PDF + LaTeX sources)
+slides/          the presentation (PDF + LaTeX sources + its figure scripts)
+paper/           earlier 6-page workshop write-ups, English and Chinese
+docs/            all compiled PDFs in one place
+EXPERIMENT-LOG.md  the full running record: every experiment, including the ones
+                 that failed and the two results I had to retract
+configure.sh     rewrites the hardcoded paths in src/ to your machine
 ```
+
+**Not in this repository.** The GUI-Odyssey screenshots (15 GB) and annotations are the original
+authors' data, not mine to redistribute; get them from the GUI-Odyssey release. `data/` ships the
+OCR text I derived from those screenshots so the pipeline can be re-run without redoing OCR.
+The LoRA adapter weights from the writer experiment (155 MB) are omitted as well; `src/` has the
+training scripts that produce them.
+
+**Paths.** The scripts carry the absolute paths they actually ran with. Run
+`./configure.sh /your/data/dir /your/python` once to rewrite them.
 
 ## 3. Pipeline, in order
 

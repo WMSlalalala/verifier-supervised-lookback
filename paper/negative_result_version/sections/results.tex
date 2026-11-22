@@ -1,0 +1,104 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Full history beats the screen index}
+\label{sec:main}
+\begin{table}[t]
+\centering\footnotesize
+\caption{Short set ($n=85$). Full history (B) beats the screen index (E) at both stages. Net: cases that flip against B; $p$: McNemar.}
+\label{tab:main}
+\begin{tabular}{llrrrr}
+\toprule
+ & condition & context (tok) & localization & end-to-end & net / $p$ vs.\ B (loc; e2e) \\
+\midrule
+A & no history & 0 & & 2.4 & \\
+B & full history & 1,241 & \textbf{65.9} & \textbf{44.7} & \\
+C & summary & 250 & 23.5 & 35.3 & $-$36, $<$0.001; $-$8, 0.08 \\
+D & directory-only & 353 & 49.4 & 4.7 & $-$14, 0.035; $-$34, $<$0.001 \\
+E & screen index & 353 & 49.4 & 21.2 & $-$14, 0.035; $-$20, $<$0.001 \\
+F & gold-screen read & 59 & & 30.6 & \\
+\midrule
+ & BM25 (task + current screen as query) & & 10.6 & & \\
+ & BM25, gold query & & 92.9 & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:main} shows that the screen index loses at the localization stage it exists for. Localization from index lines reaches 49.4\% against 65.9\% from full history (net $-$14 cases, \pval{0.035}). The loss carries through to end-to-end accuracy, 21.2\% against 44.7\% (\pval{<0.001}). The reading stage explains none of it: given the gold screen the reader answers 30.6\% (F). The loss concentrates at gaps of 5--7, where index lines from different screens of one app list the same field names. Full history localizes 89\% there and the index 41\% ($n=27$); at gaps of 3--4 the two are within 7 points ($n=31$), and at gaps of 8 or more full history leads 70\% to 57\% ($n=23$). The cases do require memory: without history the reader types the right text in 2.4\% of cases (A).
+
+Summary and directory-only fail in opposite ways: the summary keeps content and loses the address (23.5\% localization, 35.3\% end-to-end), the directory the reverse (49.4\%, 4.7\%). BM25 localizes 92.9\% with the gold text as query and 10.6\% with what the agent knows at step $t$: the difficulty is deciding what to look for, and the index moves that decision onto 32-token lines without easing it. Full history also beats the single gold screen end-to-end (44.7\% vs.\ 30.6\%), which suggests earlier screens carry task state; at these lengths more history helps, so a lost-in-the-middle argument~\citep{lostmiddle} cannot motivate the index.
+
+\paragraph{Takeaway.} The screen index uses 28\% of the context tokens of full history and loses 16.5 points of localization and 23.5 points of end-to-end accuracy on the short set.
+
+\subsection{Training the writer does not close the gap; its ceiling is full history}
+\label{sec:writer}
+\begin{table}[t]
+\centering\footnotesize
+\caption{Short set ($n=85$), localization. One training round and four prompt variants leave the index where it started. Oracle candidates replace the source screen's line only; each sampled candidate alone reaches full-history level, and the any-of-five gain is redundancy.}
+\label{tab:writer}
+\begin{tabular}{lrr@{\hspace{1em}}lrr}
+\toprule
+writer round & loc. & $p$ vs.\ r0 & oracle index (source line replaced) & loc. & $p$ vs.\ B \\
+\midrule
+r0 prompt-only & 49.4 & & candidate 0 (the r0 line) & 49.4 & 0.035 \\
+r1 DPO from reader feedback & 45.9 & 0.71 & candidates 1--4 (sampled) & 62.4 / 61.2 / 58.8 / 65.9 & 0.69 / 0.54 / 0.36 / 0.83 \\
+r2 forced two-field format & 47.1 & 0.85 & any of candidates 1--4 & 71.8 & \\
+r3 values allowed in line & 49.4 & 0.87 & any of the five & \textbf{76.5} & \\
+mv3 three lines per screen & 43.5 & 0.49 & cases hit by all five / by none & 34 (40\%) / 20 (24\%) & \\
+rp retrieval prompt, every screen & 44.7 & 0.62 & & & \\
+full history (B) & 65.9 & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:writer} shows why. Preference optimization from the reader's own localization success, the signal that document expansion~\citep{doc2query} and tool self-supervision~\citep{toolformer} rely on, moves localization from 49.4\% to 45.9\% (\pval{0.71}). The format, value, multi-view, and retrieval-prompt variants stay within 6 points. The oracle index explains the ceiling. Replacing the source screen's line with one sampled retrieval-prompt candidate, an oracle that knows which screen to rewrite, lifts localization to 58.8--65.9\%, level with full history's 65.9\% ($p\ge0.36$). Rewriting every screen's line with the same prompt and sampling is the realizable version (rp), and it localizes 44.7\% (\pval{0.003} against full history): the reader must then choose among many lines that all advertise their screens. The any-of-five oracle reaches 76.5\%, but 64\% of cases are insensitive to the candidate; the gain comes from the remaining 36\%, where candidates disagree.
+
+\paragraph{Takeaway.} One index line at the source screen has the same ceiling as full history, and a writer that rewrites every line the same way does not reach it. The oracle's advantage is redundancy across candidates, and no single writer produces it.
+
+\subsection{Late needs degrade both; the lead shrinks to noise}
+\label{sec:length}
+\begin{table}[t]
+\centering\footnotesize
+\caption{Clean cases by the need's step index $t$ and by reader. Full history (B) leads in localization at every $t$; on needs at step 16 or later full history loses 20 points and the index 8, the localization lead is within noise, and end-to-end accuracy has no winner; the held-out set agrees.}
+\label{tab:length}
+\begin{tabular}{llrrrrrr}
+\toprule
+reader & subset & $n$ & B loc & index loc & $p$ & B e2e & index e2e \\
+\midrule
+14B & $t\le15$ & 75 & \textbf{68.0} & 48.0 & 0.012 & \textbf{48.0} & 21.3 \\
+14B & $t\ge16$ & 63 & 47.6 & 39.7 & 0.38 & 17.5 & 19.0 \\
+14B & all & 138 & \textbf{58.7} & 44.2 & 0.008 & \textbf{34.1} & 20.3 \\
+14B & long set only & 53 & 47.2 & 35.8 & 0.18 & 17.0 & 18.9 \\
+7B & long set only & 53 & 35.8 & 22.6 & 0.21 & 13.2 & 15.1 \\
+14B & held-out, $t\ge16$ & 50 & \textbf{44.0} & 32.0 & 0.26 & 24.0 & 34.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:length} pools the short and long sets and splits them at $t=16$ (10 short-set cases fall in the upper half). Full history leads by 20 points up to $t=15$ (\pval{0.012}) and by 8 points beyond (\pval{0.38}, $n=63$); over all 138 cases the lead is 14.5 points (\pval{0.008}) and 13.8 end-to-end (\pval{0.002}). Late needs hurt both: on the long set full history localizes 47.2\% and the index 35.8\%, and end-to-end accuracy converges below 20\% with the index 2 points ahead. The 7B reader reproduces the localization ordering on the long set (35.8\% vs.\ 22.6\%, \pval{0.21}) without reaching significance. The held-out set holds 50 needs at step 16 or later (median 18), mined with the final filter and evaluated once with every setting fixed. It matches the long regime: full history leads localization by 12 points (\pval{0.26}) and trails end-to-end by 10 (\pval{0.18}), neither below $p=0.05$ at $n=50$. The gating rule of \S\ref{sec:pitfalls} localizes 18.0\% there, 26 points below full history (\pval{0.009}).
+
+\paragraph{Takeaway.} The index degrades as fast as the context it replaces. The negative result is secure on short needs and on the pooled set; on late needs, in the long and held-out sets alike, the two methods are within noise.
+
+\subsection{Two pitfalls each exceed every writer effect}
+\label{sec:pitfalls}
+\begin{table}[t]
+\centering\footnotesize
+\caption{Earliest-source scoring on the short set ($n=85$, percentage points) and current-screen leakage on the long set before and after the filter.}
+\label{tab:pitfalls}
+\begin{tabular}{lrr@{\hspace{2em}}lrr}
+\toprule
+scoring (short set) & earliest-source & any-valid & leakage (long set) & unfiltered, $n=127$ & clean, $n=53$ \\
+\midrule
+full history (B) & 54.1 & 65.9 & full history (B) & 32.3 & 47.2 \\
+screen index (E) & 34.1 & 49.4 & screen index (E) & 33.9 & 35.8 \\
+summary (C) & 12.9 & 23.5 & gating rule & \textbf{49.6} & 24.5 \\
+B $-$ E (points) & 20.0 & 16.5 & gating rule $-$ B (points) & $+$17.3 (\pval{0.010}) & $-$22.7 (\pval{0.019}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Earliest-source scoring.} A mined gold label names the earliest screen that contains the text, but 47\% of cases have two or more such screens (22 with two, 18 with three or more): a value typed once reappears in confirmation pages and lists. Scoring only the earliest screen counts a reader that names a later valid screen as wrong. The index suffers most, which suggests it tends to name a later matching screen. Any-valid scoring lifts it 15.3 points and full history 11.8 (Table~\ref{tab:pitfalls}). The bias exceeds every writer effect in Table~\ref{tab:writer}.
+
+\paragraph{Current-screen leakage.} A mining rule that checks only earlier screens admits cases whose answer is also on the current screen: 28\% of short-set and 58\% of long-set candidates, and 38 of the 39 long-set candidates with gaps of 1--2. An agent still in the same page flow sees the value on screen. Such cases need no memory and reward any method that reads recent screens, and they produced a false positive. On the unfiltered long set full history localized 0 of the 39 gap-1--2 cases, consistent with a reader that sees the value on the current screen and names no earlier one. The gating rule raised localization there from 32.3\% to 49.6\% (\pval{0.010}), while its end-to-end accuracy stayed at 28\%, level with full history's 26\%; the mismatch exposed the leak. On the 53 clean cases the rule loses to full history by 22.7 points (\pval{0.019}), and the gap-1--2 stratum that motivated it holds one case.
+
+\paragraph{Takeaway.} Two filter conditions remove both pitfalls: \texttt{answer not in OCR(screen t)} at mining time, and \texttt{named screen in \{i : answer in OCR(screen i)\}} at scoring time. Omitting either produces effects larger than any writer effect in Table~\ref{tab:writer}.

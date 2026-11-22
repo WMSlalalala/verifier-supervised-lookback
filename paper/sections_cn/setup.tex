@@ -1,0 +1,4 @@
+\section{实验条件与指标}
+每个条件在第 $t$ 步回答同一个问题：智能体现在该输入什么文字？\textbf{全历史（prompt）}看到每个更早屏的 OCR 文本，并在 14B 读取器的一次调用中同时给出屏号与文字；其上下文在短集上平均 1,241 token，在 GUI-Odyssey 最长轨迹上为 4,584 token。\textbf{屏幕索引（prompt）}看到由 Qwen2.5-7B-Instruct 为每屏写的一行 32 token 的摘要，先指定一屏再回读其全文，即 ReadAgent 的要点索引式检索~\citep{readagent} 在屏幕上的实现。\textbf{逐屏打分器（prompt）}在不加适配器的同一 7B 模型上运行我们打分器的 prompt。\textbf{全历史（训练后）}与\textbf{逐屏打分器（训练后）}是 \S\ref{sec:method} 的两个实现。\S\ref{sec:index} 另外给出索引的各个 writer 变体、无历史条件、逐屏摘要、词法检索（BM25）以及在采样索引行上的 oracle。
+
+\textbf{定位}正确的判据是：所指定的屏幕是任何一个 OCR 文本含有标准答案的屏幕（\textbf{任一合法源屏计分}）；\textbf{端到端}正确的判据是：产生的文字按挖掘时的同一规范化方式包含标准答案。所有比较都在同一批样例上配对，用 McNemar 检验，报告翻转样例的净数与双侧 $p$。
