@@ -36,19 +36,21 @@ cross-validation splitter are all hand-written here rather than taken from a lib
 ## 2. Repository layout
 
 ```
-src/             every script (87); the pipeline below runs in this order
-results/         every result JSON (112): cases, labels, per-fold predictions, eval outputs
-data/            derived data artifacts: OCR text of the screens, the written index lines,
-                 the screenshot manifest
-figures/         report figures + the matplotlib scripts that draw them
-report/          the NeurIPS-format final report (PDF + LaTeX sources)
-slides/          the presentation (PDF + LaTeX sources + its figure scripts)
-paper/           earlier 6-page workshop write-ups, English and Chinese
-docs/            all compiled PDFs in one place
-EXPERIMENT-LOG.md  the full running record: every experiment, including the ones
-                 that failed and the two results I had to retract
-configure.sh     rewrites the hardcoded paths in src/ to your machine
+doc/                 the two deliverables, latest versions only
+  Final-Report.pdf     NeurIPS-format final report (10 pages)
+  Slides.pptx          the talk (35 slides); Slides.pdf is the same deck exported
+  report-src/          LaTeX sources + the matplotlib scripts for its two figures
+  slides-src/          python-pptx generator + the figure scripts it uses
+
+src/                 every script (87); the pipeline below runs in this order
+results/             every result JSON (112): cases, labels, per-fold predictions, eval outputs
+data/                derived data: OCR text of the screens, the written index lines, the manifest
+EXPERIMENT-LOG.md    the full running record, including the retracted results
+configure.sh         rewrites the hardcoded paths in src/ to your machine
 ```
+
+Both deliverables rebuild from inside the repository: `cd doc/report-src && ./build.sh`, and
+`cd doc/slides-src && python build_all.py`.
 
 **Not in this repository.** The GUI-Odyssey screenshots (15 GB) and annotations are the original
 authors' data, not mine to redistribute; get them from the GUI-Odyssey release. `data/` ships the

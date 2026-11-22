@@ -1,6 +1,0 @@
-\section{相关工作}
-\paragraph{GUI 智能体的记忆。} AutoDroid~\citep{autodroid}、AppAgent~\citep{appagent}、Agent Workflow Memory~\citep{awm}、Synapse~\citep{synapse}，以及 Mobile-Agent-E~\citep{mobileagente} 的 tips 与 shortcuts，存储的是可在不同 episode 之间迁移的知识。Mobile-Agent-E 的 note-taker 与 GUI-Rise 的滚动摘要~\citep{guirise} 在观测时刻就写下笔记，而那时智能体还不知道自己将需要什么。PAL-UI~\citep{palui} 用 8.6K 条人工整理的逐步指令训练一个视觉智能体去回看选定的帧。我们的验证器替代了那份监督：它的标签来自对 OCR 文本的子串测试，因此训练集会随任何记录了输入文字的轨迹语料一同增长。
-
-\paragraph{要点索引式检索与学习式检索。} ReadAgent~\citep{readagent}、MemGPT~\citep{memgpt} 与 Generative Agents~\citep{generativeagents} 从逐项短行或打分流中检索；文档扩展~\citep{doc2query} 用下游成功率训练这些短行的 writer，工具自监督~\citep{toolformer} 则按"是否降低后续 loss"筛选工具调用。我们训练的是检索器而非 writer——因为我们发现 writer 的上界就是屏幕本身（\S\ref{sec:index}）——并且用一个精确的子串检查替代了 loss 代理。
-
-\paragraph{长上下文评测。} Lost-in-the-middle~\citep{lostmiddle} 与 RULER~\citep{ruler} 表明模型对长上下文的利用并不均匀；我们的任务是真实屏幕上的"大海捞针"，而 \S\ref{sec:index} 中的过滤条件专门针对从轨迹里挖掘出来的针。
