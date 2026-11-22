@@ -1,0 +1,106 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Hsieh et~al.(2024)Hsieh, Sun, Kriman, Acharya, Rekesh, Jia, Zhang, and Ginsburg]{ruler}
+Cheng-Ping Hsieh, Simeng Sun, Samuel Kriman, Shantanu Acharya, Dima Rekesh, Fei Jia, Yang Zhang, and Boris Ginsburg.
+\newblock Ruler: What's the real context size of your long-context language models?
+\newblock \emph{arXiv:2404.06654}, 2024.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen]{lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu~Wang, and Weizhu Chen.
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock In \emph{ICLR}, 2022.
+
+\bibitem[Lee et~al.(2024)Lee, Chen, Furuta, Canny, and Fischer]{readagent}
+Kuang-Huei Lee, Xinyun Chen, Hiroki Furuta, John Canny, and Ian Fischer.
+\newblock A human-inspired reading agent with gist memory of very long contexts.
+\newblock In \emph{ICML}, 2024.
+\newblock arXiv:2402.09727.
+
+\bibitem[Liu et~al.(2024)Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, and Liang]{lostmiddle}
+Nelson~F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, and Percy Liang.
+\newblock Lost in the middle: How language models use long contexts.
+\newblock \emph{TACL}, 2024.
+
+\bibitem[Liu et~al.(2025{\natexlab{a}})Liu, Wang, Li, Yu, He, and Song]{guirise}
+Tao Liu, Chongyu Wang, Rongjie Li, Yingchen Yu, Xuming He, and Bai Song.
+\newblock Gui-rise: Structured reasoning and history summarization for gui navigation.
+\newblock In \emph{NeurIPS}, 2025{\natexlab{a}}.
+\newblock arXiv:2510.27210.
+
+\bibitem[Liu et~al.(2025{\natexlab{b}})Liu, Li, Zhao, Gao, Li, and Wen]{palui}
+Zikang Liu, Junyi Li, Wayne~Xin Zhao, Dawei Gao, Yaliang Li, and Ji-Rong Wen.
+\newblock Pal-ui: Planning with active look-back for vision-based gui agents.
+\newblock \emph{arXiv:2510.00413}, 2025{\natexlab{b}}.
+
+\bibitem[Lu et~al.(2024)Lu, Shao, Liu, Meng, Li, Chen, Huang, Zhang, Qiao, and Luo]{guiodyssey}
+Quanfeng Lu, Wenqi Shao, Zitao Liu, Fanqing Meng, Boxuan Li, Botong Chen, Siyuan Huang, Kaipeng Zhang, Yu~Qiao, and Ping Luo.
+\newblock Gui odyssey: A comprehensive dataset for cross-app gui navigation on mobile devices.
+\newblock \emph{arXiv:2406.08451}, 2024.
+
+\bibitem[Nogueira et~al.(2019)Nogueira, Yang, Lin, and Cho]{doc2query}
+Rodrigo Nogueira, Wei Yang, Jimmy Lin, and Kyunghyun Cho.
+\newblock Document expansion by query prediction.
+\newblock \emph{arXiv:1904.08375}, 2019.
+
+\bibitem[Packer et~al.(2023)Packer, Wooders, Lin, Fang, Patil, Stoica, and Gonzalez]{memgpt}
+Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir~G. Patil, Ion Stoica, and Joseph~E. Gonzalez.
+\newblock Memgpt: Towards llms as operating systems.
+\newblock \emph{arXiv:2310.08560}, 2023.
+
+\bibitem[Park et~al.(2023)Park, O'Brien, Cai, Morris, Liang, and Bernstein]{generativeagents}
+Joon~Sung Park, Joseph~C. O'Brien, Carrie~J. Cai, Meredith~Ringel Morris, Percy Liang, and Michael~S. Bernstein.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In \emph{UIST}, 2023.
+
+\bibitem[{Qwen Team}(2024)]{qwen25}
+{Qwen Team}.
+\newblock Qwen2.5 technical report.
+\newblock \emph{arXiv:2412.15115}, 2024.
+
+\bibitem[Rafailov et~al.(2023)Rafailov, Sharma, Mitchell, Ermon, Manning, and Finn]{dpo}
+Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher~D. Manning, and Chelsea Finn.
+\newblock Direct preference optimization: Your language model is secretly a reward model.
+\newblock In \emph{NeurIPS}, 2023.
+
+\bibitem[Schick et~al.(2023)Schick, Dwivedi-Yu, Dess{\`\i}, Raileanu, Lomeli, Zettlemoyer, Cancedda, and Scialom]{toolformer}
+Timo Schick, Jane Dwivedi-Yu, Roberto Dess{\`\i}, Roberta Raileanu, Maria Lomeli, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock In \emph{NeurIPS}, 2023.
+
+\bibitem[Wang et~al.(2025)Wang, Xu, Wang, Zhang, Yan, Zhang, Huang, and Ji]{mobileagente}
+Zhenhailong Wang, Haiyang Xu, Junyang Wang, Xi~Zhang, Ming Yan, Ji~Zhang, Fei Huang, and Heng Ji.
+\newblock Mobile-agent-e: Self-evolving mobile assistant for complex tasks.
+\newblock \emph{arXiv:2501.11733}, 2025.
+
+\bibitem[Wang et~al.(2024)Wang, Mao, Fried, and Neubig]{awm}
+Zora~Zhiruo Wang, Jiayuan Mao, Daniel Fried, and Graham Neubig.
+\newblock Agent workflow memory.
+\newblock \emph{arXiv:2409.07429}, 2024.
+
+\bibitem[Wen et~al.(2024)Wen, Li, Liu, Zhao, Yu, Li, Jiang, Liu, Zhang, and Liu]{autodroid}
+Hao Wen, Yuanchun Li, Guohong Liu, Shanhui Zhao, Tao Yu, Toby Jia-Jun Li, Shiqi Jiang, Yunhao Liu, Yaqin Zhang, and Yunxin Liu.
+\newblock Autodroid: Llm-powered task automation in android.
+\newblock In \emph{MobiCom}, 2024.
+
+\bibitem[Zhang et~al.(2023)Zhang, Yang, Liu, Han, Chen, Huang, Fu, and Yu]{appagent}
+Chi Zhang, Zhao Yang, Jiaxuan Liu, Yucheng Han, Xin Chen, Zebiao Huang, Bin Fu, and Gang Yu.
+\newblock Appagent: Multimodal agents as smartphone users.
+\newblock \emph{arXiv:2312.13771}, 2023.
+
+\bibitem[Zhang et~al.(2024)Zhang, Wu, Teng, Liao, Xu, Xiao, Wei, and Tang]{aitz}
+Jiwen Zhang, Jihao Wu, Yihua Teng, Minghui Liao, Nuo Xu, Xiao Xiao, Zhongyu Wei, and Duyu Tang.
+\newblock Android in the zoo: Chain-of-action-thought for gui agents.
+\newblock In \emph{Findings of EMNLP}, 2024.
+\newblock arXiv:2403.02713.
+
+\bibitem[Zheng et~al.(2024)Zheng, Wang, Wang, and An]{synapse}
+Longtao Zheng, Rundong Wang, Xinrun Wang, and Bo~An.
+\newblock Synapse: Trajectory-as-exemplar prompting with memory for computer control.
+\newblock In \emph{ICLR}, 2024.
+
+\end{thebibliography}
