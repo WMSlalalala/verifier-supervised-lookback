@@ -96,9 +96,10 @@ training on the derived labels, with the same prompt and the same 14B reader.
 | Trained full history (7B) | 65.4 | 42.6 | 76.3 | **51.6** |
 | Trained per-screen (7B) | **72.3** | **44.7** | **79.6** | 49.5 |
 
-The three baselines are not trained. The screen index writes one short line (at
-most 32 tokens) per earlier screen and asks the 14B model to pick a screen from
-these lines. The full-history prompt gives the 14B model the numbered OCR
+The three baselines are not trained. For the screen index, Qwen2.5-7B writes a
+one-line note (at most 20 words) per earlier screen that names the kind of
+screen and the kinds of values on it but not the values; the 14B model then
+picks a screen from these notes. The full-history prompt gives the 14B model the numbered OCR
 history and asks for the source screen. The untrained per-screen row uses the
 scorer's base model and prompt without the adapter. The two per-screen rows
 share the base model, prompt and reader, so their difference is the effect of

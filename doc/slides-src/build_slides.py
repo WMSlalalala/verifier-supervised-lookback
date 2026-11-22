@@ -500,9 +500,9 @@ cards = [
      ["all earlier screens", "14B model", "screen #"],
      "Put the OCR text of every earlier screen into one prompt and ask a 14B model which screen holds the answer.",
      "54.8%"),
-    ("Screen index (14B)", "ReadAgent-style",
-     ["note per screen", "pick a note", "read that screen"],
-     "First write a short note (at most 32 tokens) for every screen, then pick a screen from the notes and read it.",
+    ("Screen index (7B + 14B)", "ReadAgent-style",
+     ["7B writes notes", "14B picks", "read that screen"],
+     "A 7B model writes a one-line note per screen (screen type, no values); a 14B model picks a screen from the notes.",
      "41.0%"),
     ("Untrained per-screen (7B)", "our scorer, no training",
      ["each screen alone", "yes-score", "highest score"],
@@ -529,8 +529,9 @@ text(s, 50, 321, 620, 50, [
 ], size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
 notes(s, "We compare against three baselines. All of them read the same OCR text as our selectors, and none is trained "
          "on our labels. First, the full-history prompt, the usual practice: put the OCR of all earlier screens into one "
-         "prompt and ask a 14B model which screen holds the answer. Second, a screen index in the style of ReadAgent: the "
-         "14B model first writes a short note for every screen, then picks a screen from the notes and reads it. Third, "
+         "prompt and ask a 14B model which screen holds the answer. Second, a screen index in the style of ReadAgent: a 7B "
+         "model writes a one-line note for every screen, saying what the screen is but not the values on it, and the 14B "
+         "model then picks a screen from these notes and reads it. Third, "
          "the untrained per-screen model: exactly our scorer's model and prompt, but without training, so it shows what "
          "the labels add. We use 188 development cases with five-fold cross-validation and 93 held-out cases, and we "
          "score whether the chosen screen contains the answer and whether the final text is right.")
