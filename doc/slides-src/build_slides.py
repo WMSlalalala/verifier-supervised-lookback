@@ -476,38 +476,64 @@ notes(s, "[4:35-5:25] Step two: we train a 7B model to pick the screen, in one o
          "trained on the same labels. Then a 14B reader, which we do not train, reads the chosen screen marked in the "
          "history and writes the text to type.")
 
-# ---------------------------------------------------------------- 9 setup
-s = new_slide("Experimental setup")
-cols = [("Data", [
-    ("GUI-Odyssey ", "first public release, 7,735 cross-app trajectories; OCR by EasyOCR"),
-    ("Development: ", "188 cases from 182 trajectories, 5-fold CV grouped by trajectory"),
-    ("Held-out: ", "93 cases from 90 disjoint trajectories; train once on all 188, test once")]),
-    ("Baselines", [
-        ("Untrained per-screen (7B): ", "same model and prompt, no adapter; isolates training"),
-        ("Full-history prompt (14B): ", "numbered history, asked for the source screen"),
-        ("Screen index (14B): ", "one line of ≤ 32 tokens per screen, then pick (ReadAgent-style)")]),
-    ("Metrics", [
-        ("Localization: ", "selected screen ∈ Vₜ, so any valid screen counts"),
-        ("Typed-text accuracy: ", "normalized output contains the reference text"),
-        ("Tests: ", "paired two-sided McNemar with continuity correction; one run per condition")])]
-for k, (head, items) in enumerate(cols):
+# ---------------------------------------------------------------- 8 baselines (setup)
+s = new_slide("Baselines: how the other methods pick a screen")
+text(s, 36, 84, 648, 18, "All three read the same OCR text as our selectors, and none is trained on our labels.",
+     size=13, color=GREY)
+
+
+def mini_flow(slide, x, y, labels, fill_last=ROSE):
+    """Three small chips joined by arrows, 180pt wide in total."""
+    cw, aw = 48, 12
+    for j, lab in enumerate(labels):
+        cx = x + j * (cw + aw + 6)
+        last = j == len(labels) - 1
+        chip = rect(slide, cx, y, cw, 32, fill_last if last else WHITE, line=RED if last else LINE,
+                    shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.2, name=f"Flow chip {lab}")
+        label_shape(chip, lab, 9, DEEP if last else DARK, bold=last)
+        if not last:
+            rect(slide, cx + cw + 3, y + 11, aw, 10, BAR, shape=MSO_SHAPE.RIGHT_ARROW, name="Flow arrow")
+
+
+cards = [
+    ("Full-history prompt (14B)", "the usual practice",
+     ["all earlier screens", "14B model", "screen #"],
+     "Put the OCR text of every earlier screen into one prompt and ask a 14B model which screen holds the answer.",
+     "54.8%"),
+    ("Screen index (14B)", "ReadAgent-style",
+     ["note per screen", "pick a note", "read that screen"],
+     "First write a short note (at most 32 tokens) for every screen, then pick a screen from the notes and read it.",
+     "41.0%"),
+    ("Untrained per-screen (7B)", "our scorer, no training",
+     ["each screen alone", "yes-score", "highest score"],
+     "Same model and prompt as our scorer but without training: it shows what the labels add.",
+     "50.0%"),
+]
+for k, (name, tag, flow, desc, found) in enumerate(cards):
     x = 36 + k * 222
-    card(s, x, 90, 204, 230, name=f"{head} card")
-    text(s, x + 14, 100, 176, 22, head, size=16, color=RED, bold=True)
-    text(s, x + 14, 128, 178, 188, [{"runs": [(a, {"bold": True, "color": DARK}), (b, {})], "after": 8}
-                                    for a, b in items], size=13, color=GREY)
-card(s, 36, 328, 648, 46, fill=ROSE, name="Case retention")
-text(s, 50, 332, 620, 38, [[("Case retention: ", {"bold": True, "color": DEEP}),
-                            ("800 sampled trajectories → 1,038 candidate entries → 188 development cases "
-                             "(batches of 85, 53 and 50); 400 more trajectories → 438 candidates → 93 held-out "
-                             "cases.", {})]], size=12, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "[5:25-6:00] Experimental setup. We use the first public release of GUI-Odyssey with EasyOCR. The "
-         "development pool has 188 cases from 182 trajectories, evaluated with five-fold cross-validation grouped by "
-         "trajectory. The held-out set has 93 cases from 90 disjoint trajectories; we train once on all development "
-         "cases and test once. Baselines: the untrained per-screen model isolates the effect of training, plus a 14B "
-         "full-history prompt and a ReadAgent-style screen index. Localization counts any valid screen as correct; "
-         "typed-text accuracy checks whether the output contains the reference; all comparisons use paired McNemar "
-         "tests.")
+    card(s, x, 108, 204, 200, name=f"Baseline {k + 1}")
+    text(s, x + 12, 116, 180, 20, name, size=14, color=DARK, bold=True)
+    text(s, x + 12, 138, 180, 14, tag, size=11, color=RED, bold=True)
+    mini_flow(s, x + 12, 160, flow)
+    text(s, x + 12, 204, 180, 72, desc, size=12, color=GREY)
+    text(s, x + 12, 282, 180, 18, [[("Finds the screen: ", {}), (found, {"bold": True, "color": RED}),
+                                    (" (dev)", {"color": MUTED, "size": 10})]], size=12, color=DARK, bold=True)
+card(s, 36, 316, 648, 58, name="Data and metrics")
+text(s, 50, 321, 620, 50, [
+    {"runs": [("Data: ", {"bold": True, "color": DARK}),
+              ("GUI-Odyssey, 188 development cases (5-fold, grouped by trajectory) and 93 held-out cases from "
+               "unseen trajectories.", {})], "after": 4},
+    {"runs": [("Metrics: ", {"bold": True, "color": DARK}),
+              ("“finds screen” = the chosen screen contains the answer; “types text” = the final "
+               "output contains the answer.", {})]},
+], size=12, color=GREY, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "We compare against three baselines. All of them read the same OCR text as our selectors, and none is trained "
+         "on our labels. First, the full-history prompt, the usual practice: put the OCR of all earlier screens into one "
+         "prompt and ask a 14B model which screen holds the answer. Second, a screen index in the style of ReadAgent: the "
+         "14B model first writes a short note for every screen, then picks a screen from the notes and reads it. Third, "
+         "the untrained per-screen model: exactly our scorer's model and prompt, but without training, so it shows what "
+         "the labels add. We use 188 development cases with five-fold cross-validation and 93 held-out cases, and we "
+         "score whether the chosen screen contains the answer and whether the final text is right.")
 
 # ---------------------------------------------------------------- result 1: main table
 s = new_slide("Result 1: the free labels work")
