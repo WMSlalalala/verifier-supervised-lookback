@@ -253,6 +253,17 @@ keys at 188.
 | [`configure.sh`](configure.sh) | Rewrites the absolute data and interpreter paths in `src/` to point at a local staging directory. |
 | [`requirements.txt`](requirements.txt) | Third-party packages used by `src/`. The figure and slide builders under `doc/` also need matplotlib, PyMuPDF, Pillow, reportlab, python-pptx and lxml. |
 
+### Authorship
+
+The research idea and the design of the method and experiments are the author's own (Mingshuo Wang): deriving
+look-back labels from logged text entries, the case and leakage filters, the two selectors, the reader setup,
+the baselines and the evaluation protocol. The code in `src/` was implemented by the author with the help of
+Claude, an AI coding assistant. The programs do not train models from scratch: they call pretrained
+Qwen2.5-7B-Instruct (the two selectors, with LoRA adapters from PEFT, and the screen-index note writer) and
+Qwen2.5-14B-Instruct (the reader and the prompted baselines) through Hugging Face Transformers. EasyOCR does the
+text recognition, and the screenshots and demonstrations come from GUI-Odyssey. The scripts under `doc/` only
+build the report figures and the slides.
+
 ### Main entry points
 
 | Purpose | Entry point |

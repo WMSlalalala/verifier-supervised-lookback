@@ -10,7 +10,29 @@
 \section{Code and reproduction}
 All code, derived data and per-case predictions are released in the \href{https://github.com/WMSlalalala/verifier-supervised-lookback}{project repository}. Its \texttt{src/} directory holds the scripts that sample GUI-Odyssey trajectories, run OCR and verify cases, build the case--screen labels (\texttt{build\_scorer\_data.py}), train the two selectors (\texttt{train\_scorer.py} and \texttt{train\_fullhist.py}) and run the reader (\texttt{read\_scorer.py}), together with the analysis scripts behind every table and figure. EasyOCR provides text recognition, and Transformers and PEFT run the Qwen2.5 models and their LoRA adapters.
 
-Because the OCR records, labels and predictions are released in \texttt{data/} and \texttt{results/}, the numbers in Tables~\ref{tab:main} and~\ref{tab:controls} and in Figure~\ref{fig:distance} can be recomputed on a CPU with the Python standard library, without the original screenshots or model weights. Retraining requires a CUDA GPU (the reported 7B runs used a 48~GB card) and follows the five-fold commands in the repository README, which also maps each table and figure in this report to the files that produce it.
+Because the OCR records, labels and predictions are released in \texttt{data/} and \texttt{results/}, the main numbers can be recomputed on a CPU without the original screenshots or model weights. The snippet below uses only the Python standard library and prints 188/123/80, 188/136/84, 93/71/48 and 93/74/46 (cases, correct screens, correct typed text) for the trained full-history selector and the scorer on the development and held-out sets, matching Table~\ref{tab:main}.
+\begin{lstlisting}[language=Python]
+import json
+from pathlib import Path
+for split in ("", "_more"):
+    for model in ("fullhist", "scorer"):
+        path = Path("results") / f"{model}_trained{split}_hist_e2e.json"
+        rows = json.loads(path.read_text(encoding="utf-8"))
+        print(model, len(rows), sum(r["loc"] for r in rows),
+              sum(r["e2e"] for r in rows))
+\end{lstlisting}
+Retraining both selectors over the five folds and running the reader needs a CUDA GPU (the reported 7B runs used a 48~GB card); for the held-out set, set \texttt{FOLD=ext} for the trainers and \texttt{SET=\_more} for the reader. The repository README lists the remaining commands and maps each table and figure in this report to the files that produce it.
+\begin{lstlisting}[language=bash]
+mkdir -p run-data && cp data/*.json* results/*.json run-data/
+bash configure.sh "$PWD/run-data"
+for f in 0 1 2 3 4; do
+  FOLD=$f python src/train_scorer.py
+  FOLD=$f python src/train_fullhist.py
+done
+for model in scorer fullhist; do
+  PREFIX=$model SRC=trained HIST=1 python src/read_scorer.py
+done
+\end{lstlisting}
 
 \section{Conclusion and limitations}
 A recorded text entry already tells us which earlier screens hold the answer. Using these matches as labels, without human annotation or a teacher model, a 7B per-screen scorer finds the source screen in 72.3\% of development cases instead of 50.0\% and in 79.6\% of held-out cases instead of 41.9\%, and a full-history selector trained on the same labels performs comparably. Reading remains the bottleneck: the reader still misses the value in 62 of the scorer's 136 correct selections.
